@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="../src/favicon-location.jpg" type="image/x-icon">
+<style>
+    /*  reference web site: 
+    https://www.w3schools.com/css/tryit.asp?filename=trycss_image_text_top_left
+    */
+.container {
+  position: relative;
+  width: 80%;
+}
+
+.pos {
+  position: absolute;
+  font-size: 18px;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 1);
+  border-radius: 5px;
+  padding: 5px;
+  color: red;
+}
+.pos::first-letter{
+  color: rgb(64, 255, 0);
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.pos:hover{
+    color: rgb(0, 208, 255);
+    cursor: pointer;
+}
+.pos:hover::first-letter{
+  color: blueviolet;
+}
+
+img { 
+  width: 100%;
+  height: auto;
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+<H1>India Map</H1>
+<div class="container">
+  <img src="../src/india_map.jpg" alt="My Country" width="1000" height="300"/>
+  <p class="pos" style="top: 0;left: 0;">Pakistan</p>
+  <p class="pos" style="top: 0;left: 45%;">Kyrgystan</p>
+  <p class="pos" style="top: 0;right: 0;">China</p>
+
+  <p class="pos" style="bottom: 45%;right: 0;">Myanmar</p>
+  <p class="pos" style="bottom: 45%;left: 0;">Gujarat</p>
+
+  <p class="pos" style="bottom: 0;left: 0;">Arabian Sea</p>
+  <p class="pos" style="bottom: 0;left: 45%;">Sri Lanka</p>
+  <p class="pos" style="bottom: 0;right: 0;">Bay of Bengal</p>
+</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1726113850 source:z:\coding\sem1\c lab\workout\c-problems-1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

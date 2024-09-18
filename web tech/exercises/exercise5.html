@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EXERCISE 5</title>
+    <style>
+      input{
+        margin: 10px 0;
+      }
+      input:focus{
+        outline: 1px solid rgb(0, 255, 42);
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post" style="display: flex;flex-direction: column;gap: 5px;">
+      <fieldset>
+        <legend>Personal Details</legend>
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" />
+        <br />
+        <label for="middle-name">Middle Name</label>
+        <input type="text" id="middle-name" />
+        <br />
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" />
+        <br />
+        <label for="dob">Date of birth</label>
+        <input type="date" id="dob" />
+        <br />
+        <label for="email">Email</label>
+        <input type="email" id="email" />
+        <br />
+        <label for="phonenumber">Phone Number</label>
+        <input type="tel" id="phonenumber" />
+      </fieldset>
+      <fieldset>
+        <legend>Hobbies & Skill sets</legend>
+        <input type="checkbox" name="drawing" id="drawing">
+        <label for="drawing">drawing</label><br>
+        <input type="checkbox" name="singing" id="singing">
+        <label for="singing">singing</label><br>
+        <input type="checkbox" name="sports" id="sports">
+        <label for="sports">sports</label><br>
+        <input type="checkbox" name="music" id="music">
+        <label for="music">music</label>
+      </fieldset>
+      <fieldset>
+        <legend>Residence Details</legend>
+        <input type="radio" id="day-scholar" />
+        <label for="day-scholar">Day Scholar</label><br>
+        <input type="radio" id="hostel" />
+        <label for="hostel">Hostel</label><br>
+        <input type="radio" id="private-room" />
+        <label for="private-room">Private Room</label><br>
+        <input type="radio" id="rented-room" />
+        <label for="rented-room">Rented Room</label>
+      </fieldset>
+    </form>
+  </body>
+</html>

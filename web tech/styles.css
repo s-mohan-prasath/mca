@@ -1,0 +1,9 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    box-sizing: content-box;
+}
+body{
+    padding: 0 50px;
+}

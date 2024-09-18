@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BASIC LANDING PAGE</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      nav {
+        display: flex;
+        height: 80px;
+        background-color: rgb(176, 217, 255);
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 10px;
+      }
+      nav div:nth-child(even) {
+        display: flex;
+        flex-direction: row;
+      }
+      nav div:nth-child(1) {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        background-color: rgb(255, 255, 255);
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      nav div p {
+        padding: 20px;
+        cursor: pointer;
+        border: 1px solid rgb(176, 217, 255);
+      }
+      nav div p:hover {
+        background-color: yellow;
+        border: 1px solid black;
+      }
+      .opacity-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 10;
+      }
+      .title {
+        color: white;
+        z-index: 11;
+        background-color: black;
+        padding: 10px;
+      }
+      .hero {
+        width: 100%;
+        height:50vh;
+        position: relative;
+      }
+
+      @media screen and (min-width: 450px) {
+        .hero {
+            height: 70vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div>
+        <img
+          src="../src/legendmp-logo.avif"
+          alt=""
+          style="width: 40px; height: 40px"
+          srcset=""
+        />
+      </div>
+      <div>
+        <p>HOME</p>
+        <p>ABOUT US</p>
+        <p>CONTACT US</p>
+      </div>
+    </nav>
+    <div class="hero">
+      <img style="width: 100%;height: 100%;object-fit: cover;object-position: top;" src="../src/banner.jpg" alt="" srcset="" />
+      <!-- <div class="opacity-layer"></div> -->
+      <h1 class="title"><center>Learn Coding Today!!</center></h1>
+    </div>
+  </body>
+</html>
