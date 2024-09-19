@@ -8,12 +8,12 @@ void prob3();
 void prob4();
 void prob5();
 void prob6();
-//COMPLETE PROB7
 void prob7();
 void prob8();
 void prob9();
 void getArrayLen(int*len);
 void getArray(int len,int*array);
+int findElementInArray(int len,int *arr,int ele);
 
 int main()
 {
@@ -74,10 +74,11 @@ void prob3(){
     scanf("%d",&k);
     for(int i = 0;i<n;i++){
         if(k==arr[i]){
-            printf("value = %d and index = %d",k,i);
+            printf("value = %d and index = %d\n",k,i);
             break;
         }
     }
+    printf("value = %d is not present in the array",k);
 }
 
 void prob4(){
@@ -136,8 +137,36 @@ void prob6(){
 }
 
 void prob7(){
-
+    int n;
+    getArrayLen(&n);
+    int arr[n];
+    getArray(n,arr);
+    int k;
+    printf("\nEnter the value of k : ");
+    scanf("%d",&k);
+    int t = ceil((float)n/k);
+    int times[n];
+    int i = 0;
+    while(i<n){
+        int count = 0;
+        for(int j=0;j<n;j++){
+            if(arr[i]==arr[j])count++;
+        }
+        times[i] = count;
+        i++;
+    }
+    int finalArr[n];
+    int end = 0;
+    for(i=0;i<n;i++){
+        if(times[i]>t && findElementInArray(end,finalArr,arr[i])==0){
+            printf("%d ",arr[i]);
+            finalArr[end] = arr[i];
+            end++;
+        }
+    }
+    printf("\n");
 }
+
 void prob8(){
     int i,j,n,key,start,end;
     getArrayLen(&n);
@@ -168,11 +197,17 @@ void prob9(){
     int i=0,j=0,k=0,arr1Exceed = 0,arr2Exceed = 0;
     int a=arr1[i],b=arr2[j];
     while(arr1Exceed!=1 || arr2Exceed!=1){
-        if(arr1Exceed==1 || a>b){
+        if(arr1Exceed==1){
             merged[k] = b;
             j++;
         }
-        else if(arr2Exceed==1 || a<b){
+        else if(arr2Exceed==1){
+            merged[k] = a;
+            i++;
+        }else if(a>=b){
+            merged[k] = b;
+            j++;
+        }else{
             merged[k] = a;
             i++;
         }
@@ -213,8 +248,8 @@ void printArray(int len,int*arr){
     for(int i = 0;i<len;i++){
         printf("%d ",arr[i]);
     }
+    printf("\n");
 }
-
 void sortArray(int len,int*arr,char c){
     for(int i = 0;i<len;i++){
         for(int j = i+1;j<len;j++){
@@ -230,6 +265,15 @@ void sortArray(int len,int*arr,char c){
     }
 
 }
+int findElementInArray(int len,int *arr,int ele){
+    for(int i = 0;i<len;i++){
+        if(arr[i]==ele){
+                return 1;
+        }
+    }
+    return 0;
+}
+
 
 //ERROR LOGS
 /*
@@ -249,5 +293,4 @@ problem 9 errors
 variable sized objects may not be initialized
 
 */
-
 

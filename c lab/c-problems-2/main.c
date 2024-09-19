@@ -12,7 +12,8 @@ void prob6();
 
 int main()
 {
-    prob6();
+    //prob1();
+    printf("%d",9);
     return 0;
 }
 void prob1(){

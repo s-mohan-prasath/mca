@@ -4,6 +4,8 @@
 
 int prob2Disc(int a,int b,int c);
 void prob4PrintDay(int n);
+int prob9FindNumOfDigits(int n);
+void prob9IntToArray(int n,int *arr);
 void prob1();
 void prob2();
 void prob3();
@@ -12,10 +14,11 @@ void prob5(int,int);
 void prob6();
 void prob7();
 void prob8();
+void prob9();
 void prob10();
 
 int main(){
-    prob7();
+    prob10();
     return 0;
 }
 
@@ -87,7 +90,7 @@ void prob5(int a, int b){
 
 void prob6(){
     printf("\nProblem - 6\nWhat do you want to print in the console : \n");
-    printf("Type 1 for triangle\nType 2 for Pyramid\nType 3 for Diamond\nType 4 for Right Arrow\n\ntype: ");
+    printf("Type 1 for triangle\nType 2 for Pyramid\nType 3 for Diamond\nType 4 for Right Arrow\nType 5 for Inverse Right Arrow\n\ntype: ");
     int n;
     scanf("%d",&n);
     if(n==1){
@@ -98,6 +101,8 @@ void prob6(){
         prob6Diamond();
     }else if(n==4){
         prob6RightArrow();
+    }else if(n==5){
+        prob6InversePyramid();
     }
 
 }
@@ -153,6 +158,37 @@ void prob8(){
     }
 }
 
+void prob9(){
+    int n,i,nd,start,end;
+    printf("Enter a number : ");
+    scanf("%d",&n);
+    if(n<0){
+        printf("ERROR : Enter a number greater than 0\n");
+        return;
+    }
+    i = n+1;
+    while(1){
+        nd = prob9FindNumOfDigits(i);
+        int num[nd];
+        prob9IntToArray(i,num);
+        start = 0;
+        end = nd-1;
+        while(start<end){
+            if(num[start]!=num[end]){
+                break;
+            }
+            start++;
+            end--;
+        }
+        if(start==end || start>end){
+            printf("Smallest palindrome number greater than %d is %d\n",n,i);
+            return;
+        }
+        i++;
+    }
+}
+
+
 void prob10(){
     int y;
     float x,i;
@@ -178,6 +214,34 @@ void prob6RightTriangle(){
         }
         printf("\n");
     }
+}
+
+void prob6InversePyramid(){
+    int k;
+    printf("\nEnter the length of Pyramid (odd number) : ");
+    scanf("%d",&k);
+    printf("\n");
+    if(k%2==0){
+        printf("I won't print Pyramid for your even number input...\n");
+    }else{
+        int mid = (int)floor(k/2);
+        int startPin = 0;
+        int rows = k;
+        int columncount = k;
+        for(int i = 0;i<rows;i++){
+            for(int j = 0;j<columncount;j++){
+                if(j>=startPin){
+                    printf("*");
+                }else{
+                    printf(" ");
+                }
+            }
+            startPin++;
+            columncount--;
+            printf("\n");
+        }
+    }
+
 }
 
 void prob6Pyramid(){
@@ -290,16 +354,25 @@ void prob4PrintDay(int n){
 }
 
 int prob2Disc(int a,int b,int c){
-    return (int)(b*b-4*a*c);
+    return (b*b-4*a*c);
 }
 
-int prob9LenOfNumber(int n){
+int prob9FindNumOfDigits(int n){
     int count = 0;
     while(n>0){
         count++;
         n/=10;
     }
     return count;
+}
+
+void prob9IntToArray(int n,int *arr){
+    int i = 0;
+    while(n>0){
+        arr[i] = n%10;
+        i++;
+        n/=10;
+    }
 }
 
 
