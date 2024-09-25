@@ -1,48 +1,67 @@
 import java.util.*;
-public class Main{
-    public static void main(String[] arg){
-        problems4 p = new problems4();
+
+public class Main {
+        public static void main(String[] arg) {
+
+                twodarrays twoD = new twodarrays();
+
+                // PROBLEM 1
+                // int[][] arr = {{1,2,3},{0,1,0},{0,0,0}};
+                // twoD.prob1(arr);
+
+                // PROBLEM 2
+                int[][] arr = {{6,4,6,9},{2,6,1,8},{5,5,2,2},{4,4,1,3}};
+                twoD.prob2(arr);
+
+
+                // problems4 p = new problems4();
+
+                // PROBLEM 1
+
+                // ArrayList<Integer> l = new ArrayList<Integer>();
+                // l.add(100);
+                // l.add(200);
+                // l.add(31);
+                // l.add(13);
+                // l.add(97);
+                // l.add(10);
+                // l.add(20);
+                // l.add(11);
+                // p.prob1(l);
+
+                // PROBLEM 2
+
+                // int[] arr = {1,2,3,4,5,6,7,8};
+                // int len=8,k=4;
+                // prob2(len,k,arr);
+
+                // PROBLEM 3
+
+                // prob3(new int[]{1, 2, 3, 4, 5, 4, 9, 0});
+
+                // PROBLEM 5
+                // int[] arr = {1,0,0,2,1,0,2,2};
+                // p.prob5(arr);
+
+                // PROBLEM 6
+
+                // int[] arr = {1,2,-2,10,-16,77,0,-55};
+                // p.prob6(arr);
+
+                // PROBLEM 7
+
+                // p.prob7("Good to see you today!");
+                // p.prob7ii("nice");
+
+                // PROBLEM 8
+
+                // p.prob8("GooD");
+
+                // PROBLEM 9
+                // p.prob9("You            are  interested     in programming");
+
+                // PROBLEM 10
+                // p.prob10(4, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
         
-//        PROBLEM 1
-
-        // ArrayList<Integer> l = new ArrayList<Integer>();
-        // l.add(100);
-        // l.add(200);
-        // l.add(31);
-        // l.add(13);
-        // l.add(97);
-        // l.add(10);
-        // l.add(20);
-        // l.add(11);
-        // p.prob1(l);
-
-//         PROBLEM 2
-
-        // int[] arr = {1,2,3,4,5,6,7,8};
-        // int len=8,k=4;
-        // prob2(len,k,arr);
-
-//        PROBLEM 3
-
-//        prob3(new int[]{1, 2, 3, 4, 5, 4, 9, 0});
-
-//        PROBLEM 5
-        // int[] arr = {1,0,0,2,1,0,2,2};
-        // p.prob5(arr);
-
-//        PROBLEM 6
-
-        // int[] arr = {1,2,-2,10,-16,77,0,-55};
-        // p.prob6(arr);
-
-//        PROBLEM 7
-
-        // p.prob7("Good to see you today!");
-        // p.prob7ii("nice");
-
-//        PROBLEM 8
-
-        // p.prob8("GooD");
-
-    }
+        }
 }
