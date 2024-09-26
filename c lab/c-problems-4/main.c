@@ -9,7 +9,7 @@ void prob3();
 
 int main()
 {
-    prob8();
+
     return 0;
 }
 
