@@ -10,9 +10,11 @@ public class Main {
                 // twoD.prob1(arr);
 
                 // PROBLEM 2
-                int[][] arr = {{6,4,6,9},{2,6,1,8},{5,5,2,2},{4,4,1,3}};
-                twoD.prob2(arr);
+                // int[][] arr = {{6,4,6,9},{2,6,1,8},{5,5,2,2},{4,4,1,3}};
+                // twoD.prob2(arr);
 
+                int[][] arr = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
+                twoD.prob3(arr);
 
                 // problems4 p = new problems4();
 
@@ -58,10 +60,10 @@ public class Main {
                 // p.prob8("GooD");
 
                 // PROBLEM 9
-                // p.prob9("You            are  interested     in programming");
+                // p.prob9("You are interested in programming");
 
                 // PROBLEM 10
                 // p.prob10(4, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-        
+
         }
 }
