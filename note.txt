@@ -1,0 +1,10 @@
+STEP 1
+
+Clone the Repo
+
+STEP 2
+
+Whenever you start coding, pull the lastest
+changes in the Repo
+
+git pull https://github.com/s-mohan-prasath/mca.git master

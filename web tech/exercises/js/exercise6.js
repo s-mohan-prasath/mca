@@ -14,6 +14,7 @@ function btnClick() {
 // NODEJS PROMPT PROGRAM
 
 import promptSync from "prompt-sync";
+import process from 'process'
 
 // Create an instance of the prompt
 const prompt = promptSync();
@@ -76,24 +77,81 @@ const prob6 = () => {
     len++;
     m = parseInt(Math.floor(m / 10))
   }
-  console.log("Number of digits in the Number is "+len)
+  console.log("Number of digits in the Number is " + len)
 };
-//TODO: work on the problem7
 
 const prob7 = () => {
-  var m = JSON.stringify(getANumber())
+  var m = String(getANumber())
   var len = m.length
-  if(len==1){
-    console.log("Reverse Number is "+m)
+  if (len == 1) {
+    console.log("Reverse Number is " + m)
   }
-  if(len==2){
-    console.log("Reverse Number is "+m.charAt[1]+m.charAt[0])
+  if (len == 2) {
+    console.log("Reverse Number is " + m[1] + m[0])
+  } else {
+    var reversed = m[len - 1] + m.substring(1, len - 1) + m[0]
+    console.log("Reversed String is " + reversed);
   }
-  var str = ""
-  m.substring(1,len-2)
 };
 
+const prob8 = () => {
+  let str = String(getANumber())
+  let len = str.length;
+  let i = len - 1;
+  while (i >= 0) {
+    process.stdout.write(str[i] + "")
+    i--;
+  }
+};
 
+const prob9 = () => {
+  var m = String(getANumber())
+  var len = m.length;
+  var i, j;
+  i = 0;
+  j = len - 1;
+  while (i < j) {
+    if (m[i] != m[j]) {
+      console.log("Not a Palindrome")
+      return;
+    }
+    i++;
+    j--;
+  }
+  console.log("Given Number is in Palindrome")
+  return
+};
+
+const prob10 = () => {
+  var m = String(getANumber())
+  var map = {}
+
+  var i = 0;
+  var len = m.length;
+  while (i < len) {
+    if (map[m[i]]) {
+      map[m[i]]++
+    } else {
+      map[m[i]] = 1
+    }
+    i++;
+  }
+
+  i = 0;
+  while (i < len) {
+    console.log("Frequency of digit " + m[i] + " is " + map[m[i]])
+    i++
+  }
+
+};
+
+const prob11 = () => {
+  var num = String(getANumber())
+  var arr = num.split("").map((x) => {
+    return (x == 1) ? "0" : "1"
+  })
+  console.log(arr.join(""))
+};
 
 while (1) {
   console.log(`
@@ -156,12 +214,6 @@ while (1) {
   }
 }
 
-
-const prob8 = () => { };
-const prob9 = () => { };
-const prob10 = () => { };
-const prob11 = () => { };
-const prob12 = () => { };
 const prob13 = () => {
   const n = prompt("Enter a Number: ", "0"); // Prompt for user input
   const x = parseInt(n) % 2; // Check if the number is even or odd

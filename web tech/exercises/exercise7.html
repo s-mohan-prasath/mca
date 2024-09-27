@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Page with DOM</title>
+  </head>
+  <body>
+    <p>Click the button to swap the text of the DIV element:</p>
+    <p><button onclick="myFunction()" id="button">Click Me</button></p>
+    <p style="color: red; visibility: hidden" id="alert">Button disabled</p>
+    <div id="myDIV">Hi</div>
+    <script>
+        var count = 0;
+        function myFunction() {
+          var btn = document.getElementById("button");
+          var alert = document.getElementById("alert");
+          if (count == 10) {
+            btn.disabled = true;
+            alert.style.visibility = "visible";
+            return;
+          }
+          var x = document.getElementById("myDIV");
+          if (x.innerHTML === "Hi") {
+            x.innerHTML = "GoodMorning!";
+          } else {
+            x.innerHTML = "Hi";
+          }
+          count++;
+        }
+      </script>
+  </body>
+</html>
