@@ -3,19 +3,6 @@ import java.util.*;
 public class Main {
         public static void main(String[] arg) {
 
-                twodarrays twoD = new twodarrays();
-
-                // PROBLEM 1
-                // int[][] arr = {{1,2,3},{0,1,0},{0,0,0}};
-                // twoD.prob1(arr);
-
-                // PROBLEM 2
-                // int[][] arr = {{6,4,6,9},{2,6,1,8},{5,5,2,2},{4,4,1,3}};
-                // twoD.prob2(arr);
-
-                int[][] arr = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
-                twoD.prob3(arr);
-
                 // problems4 p = new problems4();
 
                 // PROBLEM 1
@@ -64,6 +51,41 @@ public class Main {
 
                 // PROBLEM 10
                 // p.prob10(4, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+
+                ////////////////////////////////////////////////////////////////////////////////////////////////
+                
+                
+                // twodarrays twoD = new twodarrays();
+
+                // PROBLEM 1
+                // int[][] arr = {{1,2,3},{0,1,0},{0,0,0}};
+                // twoD.prob1(arr);
+
+                // PROBLEM 2
+                // int[][] arr = {{6,4,6,9},{2,6,1,8},{5,5,2,2},{4,4,1,3}};
+                // twoD.prob2(arr);
+
+                // PROBLEM 3
+
+                // int[][] arr = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14,
+                // 15, 16 } };
+                // twoD.prob3(arr);
+
+                // PROBLEM 4
+
+                // int[][] arr3 = { { 1, 2, 3, 4, 5 }, { 6, 7, 8, 9, 10 }, { 11, 12, 15, 14, 15
+                // }, { 16, 17, 18, 19, 20 },
+                // { 21, 22, 23, 24, 25 } };
+                // System.out.println(twoD.prob4(arr3, 30));
+
+                // PROBLEM 5
+                // int[][] arr1 = { { 1, 2, 3 }, { 8, 9, 4 }, { 7, 6, 5 } };
+                // int[][] arr2 = { { 1, 2, 3, 4 }, { 12, 13, 14, 5 }, { 11, 16, 15, 6 }, { 10,
+                // 9, 8, 7 } };
+                // int[][] arr3 = { { 1, 2, 3, 4, 5 }, { 16, 17, 18, 19, 6 }, { 15, 24, 25, 20,
+                // 7 }, { 14, 23, 22, 21, 8 },
+                // { 13, 12, 11, 10, 9 } };
+                // twoD.prob5(arr1);
 
         }
 }

@@ -2,7 +2,6 @@ import java.util.*;
 
 public class twodarrays {
     public twodarrays() {
-
     }
 
     public void prob1(int[][] arr) {
@@ -101,5 +100,108 @@ public class twodarrays {
             i++;
         }
         System.out.println(Arrays.deepToString(arr));
+    }
+
+    public boolean prob4(int[][] arr, int ele) {
+        int i, j, m, n, mid1 = 0, mid2, kstart, kend;
+        m = arr[0].length;
+        n = arr.length;
+
+        if (n == 0 || m == 0)
+            return false;
+        i = 0;
+        j = m - 1;
+        kstart = 0;
+        kend = n - 1;
+
+        mid1 = (kstart + kend) / 2;
+        // BINARY SEARCH TO SEARCH A APPROPRIATE ROW
+        while (kstart != kend) {
+            if (arr[mid1][0] == ele || arr[mid1][m - 1] == ele)
+                return true;
+            else if (arr[mid1][0] < ele && arr[mid1][m - 1] > ele)
+                break;
+            else if (arr[mid1][0] < ele)
+                kstart = mid1 + 1;
+            else if (arr[mid1][0] > ele)
+                kend = mid1 - 1;
+            mid1 = (kstart + kend) / 2;
+
+        }
+        if (arr[mid1][0] == ele)
+            return true;
+
+        mid2 = (i + j) / 2;
+
+        // BINARY SEARCH TO SEARCH A APPROPRIATE COLUMN IN A ROW
+        while (i != j) {
+            if (arr[mid1][mid2] == ele)
+                return true;
+            else if (arr[mid1][mid2] > ele)
+                j = mid2 - 1;
+            else
+                i = mid2 + 1;
+            mid2 = (i + j) / 2;
+        }
+        if (arr[mid1][mid2] == ele)
+            return true;
+        return false;
+    }
+
+    public void prob5(int[][] arr) {
+        int len, sr, er, sc, ec, i, j, k, stage, mid;
+        len = arr.length;
+        mid = len / 2;
+        sr = 0;
+        er = len - 1;
+        sc = 0;
+        ec = len - 1;
+
+        k = 0;
+        stage = 1;
+        while (k < mid) {
+            i = sr;
+            j = sc;
+            while (true) {
+                System.out.println(arr[i][j]);
+                if (stage == 1) {
+                    if (j == ec) {
+                        stage = 2;
+                        i++;
+                    } else {
+                        j++;
+                    }
+                } else if (stage == 2) {
+                    if (i == er) {
+                        stage = 3;
+                        j--;
+                    } else {
+                        i++;
+                    }
+                } else if (stage == 3) {
+                    if (j == sr) {
+                        if (len % 2 == 0 && i == mid)
+                            break;
+                        stage = 4;
+                        i--;
+                    } else {
+                        j--;
+                    }
+                } else if (stage == 4) {
+                    if (i == sr + 1)
+                        break;
+                    i--;
+                }
+            }
+            k++;
+            sr++;
+            er--;
+            sc++;
+            ec--;
+            stage = 1;
+        }
+        if (len % 2 == 0)
+            return;
+        System.out.println(arr[mid][mid]);
     }
 }
