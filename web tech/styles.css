@@ -1,10 +1,5 @@
-*{
-    font-family: "Open Sans",sans-serif;
-    margin: 0px;
-    padding: 0px;
-    position: relative;
-    box-sizing: content-box;
-}
-body{
-    padding: 0px 10px;
+* {
+  font-family: "Open Sans", sans-serif;
+  position: relative;
+  box-sizing: content-box;
 }
