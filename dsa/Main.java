@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
         public static void main(String[] arg) {
 
-                // problems4 p = new problems4();
+                problems4 p = new problems4();
 
                 // PROBLEM 1
 
@@ -22,11 +22,15 @@ public class Main {
 
                 // int[] arr = {1,2,3,4,5,6,7,8};
                 // int len=8,k=4;
-                // prob2(len,k,arr);
+                // p.prob2(len, k, arr);
 
                 // PROBLEM 3
 
                 // prob3(new int[]{1, 2, 3, 4, 5, 4, 9, 0});
+
+                int[] arr = { 1, 5, 3, 8, 2, 4, 7, 6, 9 };
+                int k = 5;
+                p.prob4(arr, k);
 
                 // PROBLEM 5
                 // int[] arr = {1,0,0,2,1,0,2,2};
@@ -53,8 +57,7 @@ public class Main {
                 // p.prob10(4, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
                 ////////////////////////////////////////////////////////////////////////////////////////////////
-                
-                
+
                 // twodarrays twoD = new twodarrays();
 
                 // PROBLEM 1

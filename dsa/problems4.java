@@ -63,8 +63,7 @@ public class problems4 {
         }
     }
 
-    public void prob4(int[] arr) {
-
+    public void prob4(int[] arr, int k) {
     }
 
     public void prob5(int[] arr) {
@@ -195,7 +194,7 @@ public class problems4 {
         len = str.length();
         i = 0;
         while (i < len) {
-            ele = str.substring(i,i+1);
+            ele = str.substring(i, i + 1);
             if (ele.equals(space)) {
                 alreadyHaveSpace = true;
             } else if (alreadyHaveSpace) {
@@ -206,24 +205,24 @@ public class problems4 {
             }
             i++;
         }
-        if(str.substring(len-1).equals(space)){
-            output+=" ";
+        if (str.substring(len - 1).equals(space)) {
+            output += " ";
         }
         System.out.println(output);
     }
 
-    public void prob10(int w,String str){
-        int len,i;
+    public void prob10(int w, String str) {
+        int len, i;
         String sub;
         len = str.length();
 
         i = 0;
-        while(i+w<len){
-            sub = str.substring(i, i+w);
+        while (i + w < len) {
+            sub = str.substring(i, i + w);
             System.out.println(sub);
-            i+=w;
+            i += w;
         }
-        if(len%w!=0){
+        if (len % w != 0) {
             sub = str.substring(i);
             System.out.println(sub);
         }
