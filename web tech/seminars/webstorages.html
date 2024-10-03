@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEB STORAGES</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Open Sans", sans-serif;
+        position: relative;
+        box-sizing: content-box;
+      }
+      h1:nth-child(1) {
+        background-color: black;
+        color: white;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+      }
+      li {
+        font-size: 20px;
+      }
+      .editorCont {
+        display: flex;
+        width: 100%;
+        height: 35vh;
+        gap: 10px;
+        justify-content: center;
+        align-items: start;
+      }
+      .editorCont textarea {
+        width: 40%;
+      }
+      .editorCont div {
+        width: 50%;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Web Storages</h1>
+    <ul>
+      <li>Local Storage</li>
+      <li>Session Storage</li>
+      <li>Cookies</li>
+    </ul>
+    <h4>How to Use?</h4>
+    <ul>
+      <li>setItem</li>
+      <li>getItem</li>
+      <li>deleteItem</li>
+      <li>clear</li>
+    </ul>
+    <hr />
+    <h1>Local Storage</h1>
+    <ul>
+      <li>Persistent Storage</li>
+      <li>Store in Key value-pairs</li>
+      <li>Accessible only on Browser</li>
+    </ul>
+    <h3>Javascript Editor</h3>
+    <ul id="note-list">
+      <li>Add Notes below list id = "note-list"</li>
+    </ul>
+    <div class="editorCont">
+      <textarea name="editor" id="editor1" cols="100" rows="10"></textarea>
+      <button class="btn-run" onclick="run('editor1')">run</button>
+    </div>
+    <h1 style="margin-top: 100px">Cookies</h1>
+    <ul>
+      <li>store upto 4kb</li>
+      <li>Store in Key value-pairs</li>
+      <li>Cookie storage - expire</li>
+    </ul>
+    <script>
+      var note0 = `
+var ele = document.createElement("li")
+var notesList = document.getElementById("note-list")
+ele.innerText = "Hello"
+notesList.appendChild(ele)
+    `;
+      var note1 = `
+var list = JSON.parse(localStorage.getItem("notes"))
+var ul = document.getElementById("note-list")
+var i = 0;
+var len = list.length;
+while(i<len){
+var ele = document.createElement("li")
+ele.innerText = list[i]
+ul.appendChild(ele)
+i++
+}
+    `;
+    document.cookie = "name=mohan"
+      function run(editorId) {
+        const editor = document.getElementById(editorId);
+        var script = document.createElement("script");
+        script.innerHTML = editor.value;
+        document.body.appendChild(script);
+      }
+    </script>
+  </body>
+</html>
