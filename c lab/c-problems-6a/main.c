@@ -1,12 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+#include <limits.h>
 
 void prob1();
+void prob2();
+void prob3();
+void prob4();
+//TODO: work on the problem 5, you got the logic but you don't know how to give the base condition for the recursive function
+void prob5();
+int min2(int,int);
+int min3(int,int,int);
 void print2DArray(int arr[][5],int n,int m);
+int prob5Sum(int arr[][3],int row,int col,int n,int m);
 
 int main()
 {
-    prob2();
+    int arr[5][5] = {{1,2,3,4,5},{6,7,8,9,10},{11,12,13,14,15},{0,17,18,19,20},{21,22,23,24,25}};
+    prob5();
     return 0;
 }
 void prob1(){
@@ -71,6 +82,60 @@ void prob2(){
         }
     }
     print2DArray(arr,n,m);
+}
+void prob3(){
+    printf("Given an n x n matrix where each of the rows and columns is sorted in ascending order, return the kth smallest element in the matrix. Note that it is the kth smallest element in the sorted order, not the kth distinct element.\n\n");
+    int arr[5][5] = {{1,2,3,4,5},{6,7,8,9,10},{11,12,13,14,15},{0,17,18,19,20},{21,22,23,24,25}};
+    int k,n=5;
+    print2DArray(arr,5,5);
+    printf("Enter the value of k : ");
+    scanf("%d",&k);
+    printf("The index of kth smallest element in the matrix is %d\n",arr[k/n][k%n-1]);
+}
+void prob4(){
+    //int arr[][4] = {{0,1,0,0},{1,1,1,0},{0,1,0,0},{1,1,0,0}};
+    int arr[][6] = {{0,0,0,0,0,0},{0,1,1,0,0,0},{0,1,1,1,0,0},{0,0,1,0,0,0},{0,0,0,0,0,0}};
+    int row,col,top,left,bottom,right,n,m,sides=0,total=0;
+    n = sizeof(arr)/sizeof(arr[0]);
+    m = sizeof(arr[0])/sizeof(arr[0][0]);
+    for(int row = 0;row<n;row++){
+        for(int col = 0;col<m;col++){
+            if(arr[row][col]==1){
+                top = ((row-1)<0) ? 1 : (arr[row-1][col]==1) ? 0 : 1;
+                bottom = ((row+1)==n) ? 1 : (arr[row+1][col]==1) ? 0 : 1;
+                left = ((col-1)<0) ? 1 : (arr[row][col-1]==1) ? 0 : 1;
+                right = ((col+1)==m) ? 1 : (arr[row][col+1]==1) ? 0 : 1;
+                sides = top+bottom+left+right;
+                total+=sides;
+            }
+        }
+    }
+    printf("Perimeter of the Island is %d\n",total);
+}
+void prob5(){
+    int arr[][3] = {{2,1,3},{6,5,4},{7,8,9}};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int m = sizeof(arr[0])/sizeof(arr[0][0]);
+
+    int mini=INT_MAX/10;
+    int row = 0;
+    for(int col = 0;col<m;col++){
+        mini = min2(mini,prob5Sum(arr,row,col,n,m));
+    }
+    printf("The Minimum sum of the falling path is %d",mini);
+}
+int prob5Sum(int arr[][3],int row,int col,int n,int m){
+    if(row==n || col<0 || col==m){
+        return 0;
+    }else{
+        return arr[row][col] + min3(prob5Sum(arr,row+1,col,n,m),prob5Sum(arr,row+1,col-1,n,m),prob5Sum(arr,row+1,col+1,n,m));
+    }
+}
+int min2(int a,int b){
+    return (a<b) ? a:b;
+}
+int min3(int a,int b,int c){
+    return min2(a,min2(b,c));
 }
 void print2DArray(int arr[][5],int n,int m){
     for(int i = 0;i<n;i++){
