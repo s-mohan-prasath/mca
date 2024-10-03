@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1727926502 source:z:\mca\c lab\c-problems-6a\main.c
+	<stdio.h>
+	<stdlib.h>
+
