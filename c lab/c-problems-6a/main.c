@@ -12,7 +12,7 @@ void prob5();
 int min2(int,int);
 int min3(int,int,int);
 void print2DArray(int arr[][5],int n,int m);
-int prob5Sum(int arr[][3],int row,int col,int n,int m);
+int prob5Sum(int arr[][4],int row,int col,int n,int m);
 
 int main()
 {
@@ -113,22 +113,37 @@ void prob4(){
     printf("Perimeter of the Island is %d\n",total);
 }
 void prob5(){
-    int arr[][3] = {{2,1,3},{6,5,4},{7,8,9}};
+    int arr[][4] = {{5,3,8,4},{2,1,6,3},{7,2,4,5},{9,6,1,3}};
     int n = sizeof(arr)/sizeof(arr[0]);
     int m = sizeof(arr[0])/sizeof(arr[0][0]);
 
-    int mini=INT_MAX/10;
+    int mini=INT_MAX;
     int row = 0;
     for(int col = 0;col<m;col++){
         mini = min2(mini,prob5Sum(arr,row,col,n,m));
     }
     printf("The Minimum sum of the falling path is %d",mini);
 }
-int prob5Sum(int arr[][3],int row,int col,int n,int m){
-    if(row==n || col<0 || col==m){
-        return 0;
+int prob5Sum(int arr[][4],int row,int col,int n,int m){
+    if(row==n-1){
+        return arr[row][col];
     }else{
-        return arr[row][col] + min3(prob5Sum(arr,row+1,col,n,m),prob5Sum(arr,row+1,col-1,n,m),prob5Sum(arr,row+1,col+1,n,m));
+        int a,b,c;
+        int sum;
+        b = prob5Sum(arr,row+1,col,n,m);
+        if(col-1>=0 && col+1<m){
+            a = prob5Sum(arr,row+1,col-1,n,m);
+            c = prob5Sum(arr,row+1,col+1,n,m);
+            sum = min3(a,b,c);
+        }
+        else if(col-1>=0){
+            a = prob5Sum(arr,row+1,col-1,n,m);
+            sum = min2(a,b);
+        }else if(col+1<m){
+            c = prob5Sum(arr,row+1,col+1,n,m);
+            sum = min2(b,c);
+        }
+        return arr[row][col] + sum;
     }
 }
 int min2(int a,int b){
