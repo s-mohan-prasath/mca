@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 7a</title>
+    <style>
+        .container {
+            border: 1px solid black;
+            padding: 10px;
+            width: fit-content;
+        }
+
+        .container div {
+            padding: 5px;
+        }
+
+        .container input[type="text"],
+        .container input[type="tel"],
+        .container input[type="email"] {
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .container input[type="submit"] {
+            background-color: rgb(53, 208, 255);
+            padding: 5px;
+
+        }
+
+        .container label {
+            display: inline-block;
+            width: 100px;
+            text-align: end;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Hello</p>
+    <div class="container">
+        <center>
+            <h2>Register</h2>
+        </center>
+        <form method="post" id="registerForm">
+            <div>
+                <label for="first-name">First Name</label>
+                <input type="text" name="fname" id="fname" pattern="[a-z\S]+" required>
+            </div>
+            <div>
+                <label for="last-name">Last Name</label>
+                <input type="text" name="lname" pattern="[a-z\S]+" id="lname" required>
+            </div>
+            <div>
+                <label for="district">District</label>
+                <input type="text" name="district" pattern="[a-z\S]+" id="district" required>
+            </div>
+            <div>
+                <label for="phone">Phone Number</label>
+                <input type="text" name="phone" id="phone" min="1000000000"
+                 pattern="[0-9]{10}"   max="9999999999" required>
+            </div>
+            <div>
+                <label for="email">Email Address</label>
+                <input type="email" name="email" id="email"
+                    pattern="[a-z]{3}\.[a-z]{3}@[a-z0-9]{5,}\.[a-z]{2}\.[a-z]{2}" required>
+            </div>
+            <center style="margin-top: 10px;"><input id="submit" type="submit" value="SUBMIT"></center>
+        </form>
+    </div>
+    <script>
+        var submit = document.getElementById("submit")
+        var form = document.getElementById("registerForm")
+        form.addEventListener("submit", (e) => {
+            e.preventDefault()
+            var fname = document.getElementById("fname").value
+            var lname = document.getElementById("lname").value
+            var phone = document.getElementById("phone").value
+            var email = document.getElementById("email").value
+            var district = document.getElementById("district").value
+            localStorage.setItem("fname",fname)
+            localStorage.setItem("lname",lname)
+            localStorage.setItem("phone",phone)
+            localStorage.setItem("email",email)
+            localStorage.setItem("district",district)
+            location.href = "http://127.0.0.1:5500/web%20tech/exercises/exercise7bb.html"
+        })
+    </script>
+</body>
+
+</html>
