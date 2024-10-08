@@ -73,10 +73,8 @@
         </form>
     </div>
     <script>
-        var submit = document.getElementById("submit")
         var form = document.getElementById("registerForm")
-        form.addEventListener("submit", (e) => {
-            e.preventDefault()
+        form.addEventListener("submit", (event) => {
             var fname = document.getElementById("fname").value
             var lname = document.getElementById("lname").value
             var phone = document.getElementById("phone").value
@@ -87,7 +85,7 @@
             localStorage.setItem("phone",phone)
             localStorage.setItem("email",email)
             localStorage.setItem("district",district)
-            location.href = "http://127.0.0.1:5500/web%20tech/exercises/exercise7bb.html"
+            location.href = "exercise7bb.html"
         })
     </script>
 </body>

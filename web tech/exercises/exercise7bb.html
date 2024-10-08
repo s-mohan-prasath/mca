@@ -8,14 +8,11 @@
     <title>Document</title>
 </head>
 
-<body onload="load()">
+<body>
     <div>
-        <p id="text">
-
-        </p>
+        <p id="text"></p>
     </div>
     <script>
-        function load() {
             var fname = localStorage.getItem("fname")
             var lname = localStorage.getItem("lname")
             var email = localStorage.getItem("email")
@@ -24,7 +21,6 @@
 
             var text = document.getElementById("text")
             text.innerText = "Welcome " + fname + " " + lname + "\n" + "You are from " + district + "\nYou contact details are\n" + phone + "\n" + email
-        }
     </script>
 </body>
 
