@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ex6": "node ./exercises/js/exercise6.js"
+    "ex6": "node ./exercises/js/exercise6.js",
+    "practice":"node ./practice/index.js"
   },
   "type": "module",
   "keywords": [],

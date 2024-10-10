@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 3 Question 3</title>
+    <style>
+        fieldset{
+            margin: 20px 0;
+        }
+        fieldset.gen-info label {
+            width: 100px;
+            display: inline-block;
+            text-align: end;
+            margin: 10px;
+        }
+        .contact-section input{
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="post">
+        <fieldset class="gen-info">
+            <legend>General Information</legend>
+            <div class="">
+                <label for="arrival-date">Arrival date : </label>
+                <input type="date" name="" id="arrival-date">
+            </div>
+            <div class="">
+                <label for="no-of-nights">Nights : </label>
+                <input type="text" name="" id="no-of-nights">
+            </div>
+            <div class="">
+                <label for="no-of-adults">Adults : </label>
+                <select name="" id="no-of-adults">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="">
+                <label for="no-of-children">Children : </label>
+                <select name="" id="no-of-children">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Preferences</legend>
+            <div class="">
+                <label>Room Type : </label>
+                <span>
+                    <input type="radio" name="room" id="standard-room">
+                    <label for="standard-room">Standard</label>
+                    <input type="radio" name="room" id="business-room">
+                    <label for="business-room">Business</label>
+                    <input type="radio" name="room" id="suite-room">
+                    <label for="suite-room">Suite</label>
+                </span>
+            </div>
+            <div class="">
+                <label for="">Bed Type : </label>
+                <span>
+                    <input type="radio" name="bed" id="kind-bed">
+                    <label for="kind-bed">King</label>
+                    <input type="radio" name="bed" id="double-bed">
+                    <label for="double-bed">Double Double</label>
+                </span>
+            </div>
+            <input type="checkbox" name="smoking" id="smoking">
+            <label for="smoking">Smoking</label>
+        </fieldset>
+        <fieldset class="contact-section">
+            <legend>Contact Information</legend>
+            <div class="">
+                <label for="name">Name : </label>
+                <input type="text" name="" id="name">
+            </div>
+            <div class="">
+                <label for="email">Email : </label>
+                <input type="text" name="" id="email">
+            </div>
+            <div class="">
+                <label for="phone">Phone : </label>
+                <input type="text" name="" id="phone">
+            </div>
+        </fieldset>
+        <input type="submit" value="Submit Reservation">
+        <input type="reset" value="Clear">
+    </form>
+</body>
+
+</html>

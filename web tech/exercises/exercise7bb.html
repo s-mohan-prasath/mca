@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <p id="text"></p>
+    </div>
+    <script>
+            var fname = localStorage.getItem("fname")
+            var lname = localStorage.getItem("lname")
+            var email = localStorage.getItem("email")
+            var phone = localStorage.getItem("phone")
+            var district = localStorage.getItem("district")
+
+            var text = document.getElementById("text")
+            text.innerText = "Welcome " + fname + " " + lname + "\n" + "You are from " + district + "\nYou contact details are\n" + phone + "\n" + email
+    </script>
+</body>
+
+</html>
