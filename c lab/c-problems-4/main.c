@@ -6,12 +6,12 @@ void getArrayLen(int *len);
 void getArray(int len, int *arr);
 void printArray(int len, int *arr);
 void printSubArray(int *arr, int len, int start, int end);
+int max2(int,int);
 void prob1();
 void prob2();
 void prob3();
 void prob4();
 void prob5();
-// TODO: need to complete problem 6
 void prob6();
 void prob7();
 //TODO: check the function with the wide range of test cases and make it suitable to handle all the test cases
@@ -19,10 +19,7 @@ void prob8();
 
 int main()
 {
-    while (1)
-    {
-        prob8();
-    }
+    prob6();
     return 0;
 }
 
@@ -254,31 +251,37 @@ void prob5()
 
 void prob6()
 {
+    int arr[] = {1,2,3,0,-1,-10};
+    int len = 6;
+    int i;
+
+    int prod1 = arr[0];
+    int maxProd1 = arr[0];
+    for(i = 1;i<len;i++){
+        if(prod1==0)prod1=arr[i];
+        else{
+            prod1*=arr[i];
+            maxProd1 = max2(maxProd1,prod1);
+        }
+    }
+    maxProd1 = max2(maxProd1,prod1);
+
+    int prod2 = arr[len-1];
+    int maxProd2 = arr[len-1];
+    for(i = len-2;i>=0;i--){
+        if(prod2==0)prod2=arr[i];
+        else{
+            prod2*=arr[i];
+            maxProd2 = max2(maxProd2,prod2);
+        }
+    }
+    maxProd2 = max2(maxProd2,prod2);
+
+    printf("%d",max2(maxProd1,maxProd2));
 }
 
 void prob8()
 {
-    printf("\nWrite a C program to find all pairs on integer array whose sum is equal to given number\n");
-    int len;
-    getArrayLen(&len);
-    int arr[len];
-    getArray(len, arr);
-    int k;
-    printf("Enter the value of the sum of the pairs : ");
-    scanf("%d", &k);
-    printf("Pair of Element are : \n");
-    int map[n * n][2];
-    int start, end;
-    for (int i = 0; i < len; i++)
-    {
-        for (int j = i + 1; j < len; j++)
-        {
-            if (arr[i] + arr[j] == k)
-            {
-                printf("(%d,%d) ", arr[i], arr[j]);
-            }
-        }
-    }
 }
 
 void prob7()
@@ -335,6 +338,10 @@ void prob7()
 }
 
 // HELPER FUNCTION
+
+int max2(int a,int b){
+    return (a>b) ? a:b;
+}
 
 void getArrayLen(int *len)
 {

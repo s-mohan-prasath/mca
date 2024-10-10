@@ -1,4 +1,5 @@
-def(1,2,3,4,5,6)
+
+
 function def(x,...arg){
     var result = 0;
     if(arguments.length <=1)result = x;
