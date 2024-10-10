@@ -3,7 +3,10 @@ import java.util.*;
 public class Main {
         public static void main(String[] arg) {
 
-                problems4 p = new problems4();
+                twodarrays_strings_2 twod = new twodarrays_strings_2();
+                int[][] arr = { { 1, 2, 3, 4 }, { 5, 1, 6, 3 }, { 9, 5, 1, 2 } };
+                twod.prob1(arr);
+                // problems4 p = new problems4();
 
                 // PROBLEM 1
 
@@ -28,9 +31,9 @@ public class Main {
 
                 // prob3(new int[]{1, 2, 3, 4, 5, 4, 9, 0});
 
-                int[] arr = { 1, 5, 3, 8, 2, 4, 7, 6, 9 };
-                int k = 5;
-                p.prob4(arr, k);
+                // int[] arr = { 1, 5, 3, 8, 2, 4, 7, 6, 9 };
+                // int k = 5;
+                // p.prob4(arr, k);
 
                 // PROBLEM 5
                 // int[] arr = {1,0,0,2,1,0,2,2};
