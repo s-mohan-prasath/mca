@@ -3,17 +3,28 @@ import java.util.*;
 public class Main {
         public static void main(String[] arg) {
 
-                // PROBLEM 5
-
                 twodarrays_strings_2 twod = new twodarrays_strings_2();
+
 
                 // PROBLEM 1
 
 //                int[][] arr = { { 1, 2, 3, 4 }, { 5, 1, 6, 3 }, { 9, 5, 1, 2 } };
 //                twod.prob1(arr);
 
+//                PROBLEM 3
+//                int[][] arr = {{1,2,3,4},{5,6,7,8}};
+//                twod.prob3(4,2,arr);
+
                 // PROBLEM 4
-//                twod.prob4("");
+//                twod.prob4("599642");
+
+                // PROBLEM 5
+//                twod.prob5();
+
+
+
+
+
 
 
 
