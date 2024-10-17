@@ -9,6 +9,7 @@
     <style>
         table td {
             padding: 10px;
+            background-color: rgb(5, 218, 255);
         }
     </style>
 </head>
@@ -16,7 +17,7 @@
 <body>
     <table border="1">
         <tr>
-            <th colspan="2">User Form</th>
+            <th colspan="2" style="background-color: yellow;color:red">User Form</th>
         </tr>
         <tr>
             <td>Enter Name</td>
@@ -66,15 +67,19 @@
             </td>
         </tr>
         <tr>
+            <td><label for="no-of-adults">Select ur Age :</label></td>
+            <td>
+                <input type="range" min="18" max="100" name="" id="">
+            </td>
+        </tr>
+        <tr>
             <td colspan="2">Gender</td>
         </tr>
         <tr>
-            <td>Gender</td>
-            <td>
-                <input type="radio" name="gender" id="male">
-                <label for="male">Male</label>
-                <input type="radio" name="gender" id="female">
-                <label for="female">Female</label>
+            <td colspan="2">
+                <input type="button" value="CLICK ME">
+                <input type="submit" value="SUBMIT">
+                <input type="reset" value="RESET">
             </td>
         </tr>
     </table>
