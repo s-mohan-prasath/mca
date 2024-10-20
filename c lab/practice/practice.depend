@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1729160365 source:z:\mca\c lab\practice\main.c
+	<stdio.h>
+	<stdlib.h>
+	<limits.h>
+

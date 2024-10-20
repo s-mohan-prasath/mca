@@ -100,11 +100,6 @@ public class twodarrays_strings_2 {
         printArrayListString(output);
     }
 
-    private boolean isPresentInArrayList(String target,ArrayList<String> arr){
-        for(String s : arr){
-            if(s.equals(target))return true;
-        }return false;
-    }
     private void prob4Recursion(int i,int len,String str,String s,String[] alphabets){
         if(i==len){
             System.out.printf("%s ",s);
@@ -156,5 +151,10 @@ public class twodarrays_strings_2 {
         for(int[] x : arr){
             System.out.println(Arrays.toString(x));
         }
+    }
+    private boolean isPresentInArrayList(String target,ArrayList<String> arr){
+        for(String s : arr){
+            if(s.equals(target))return true;
+        }return false;
     }
 }
