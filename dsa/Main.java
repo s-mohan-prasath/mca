@@ -4,7 +4,7 @@ public class Main {
         public static void main(String[] arg) {
 
                 twodarrays_strings_2 twod = new twodarrays_strings_2();
-
+                
 
                 // PROBLEM 1
 

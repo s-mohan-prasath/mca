@@ -2,25 +2,75 @@
 #include <stdlib.h>
 
 void prob1();
+void prob4();
 
 int main()
 {
+    prob4();
     return 0;
 }
 void prob1(){
-    int[][] arr = {{1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22},{10,13,14,17,24},{18,21,23,26,30}};
-    int t = 5;
 
-    int m,n;
-    n = sizeof(arr)/sizeof(arr[0]);
-    m = sizeof(arr[0])/sizeof(arr[0][0]);
+}
 
-    int i=0,j=m,mid,row,col,ele;
-    while(i<j){
-        mid = (i+j)/2;
-        if( arr[0][mid] == t || arr[n-1][mid]==t )return true;
-        else if(arr[])
+void prob4(){
+    int i,j,k,ii,row,col,count,x,y;
+    printf("Enter The Weakest row k : ");
+    scanf("%d",&k);
+    printf("Enter Number of Rows : ");
+    scanf("%d",&row);
+    printf("Enter Number of Columns : ");
+    scanf("%d",&col);
+    int arr[row][col];
+    int tmp[row][2];
+    printf("Enter Number of Soldiers in Each Row - \n");
+    i = 0;
+    while(i<row){
+        printf("Enter Number : ");
+        scanf("%d",&count);
+        tmp[i][0] = count;
+        tmp[i][1] = i;
+        j = 0;
+        while(j<col){
+            if(j<count){
+                arr[i][j] = 1;
+            }else{
+                arr[i][j] = 0;
+            }
+            j++;
+        }
         i++;
     }
 
+    // SORTING THE ROWS of tmp
+
+    for(i=0;i<row;i++){
+        for(j=i+1;j<row;j++){
+            if((tmp[i][0] > tmp[j][0]) || (tmp[i][0] == tmp[j][0] && tmp[i][1] > tmp[j][1])){
+                x = tmp[i][0];
+                tmp[i][0] = tmp[j][0];
+                tmp[j][0] = x;
+                y = tmp[i][1];
+                tmp[i][1] = tmp[j][1];
+                tmp[j][1] = y;
+            }
+        }
+    }
+    i = 0;
+    printf("\nWeakest Row Indices...\n");
+    while(i<k){
+        printf("%d ",tmp[i][1]);
+        i++;
+    }
+
+    /*
+    // to print the tmp array
+    for(i = 0;i<row;i++){
+        for(j = 0;j<2;j++){
+            printf("%d, ",tmp[i][j]);
+        }
+    printf("\n");
+    }
+    */
 }
+
