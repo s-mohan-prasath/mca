@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Summary</title>
+</head>
+
+<body>
+    <h1>Reservation Summary</h1>
+    <div id="summary"></div>
+
+    <script>
+        // Retrieve data from localStorage
+        let reservationData = JSON.parse(localStorage.getItem("reservationData"));
+
+        if (reservationData) {
+            // Display the data
+            document.getElementById("summary").innerHTML = `
+                <p><strong>Arrival Date:</strong> ${reservationData.arrivalDate}</p>
+                <p><strong>Nights:</strong> ${reservationData.nights}</p>
+                <p><strong>Adults:</strong> ${reservationData.adults}</p>
+                <p><strong>Children:</strong> ${reservationData.children}</p>
+                <p><strong>Room Type:</strong> ${reservationData.roomType}</p>
+                <p><strong>Bed Type:</strong> ${reservationData.bedType}</p>
+                <p><strong>Smoking:</strong> ${reservationData.smoking}</p>
+                <p><strong>Name:</strong> ${reservationData.name}</p>
+                <p><strong>Email:</strong> ${reservationData.email}</p>
+                <p><strong>Phone:</strong> ${reservationData.phone}</p>
+            `;
+        } else {
+            document.getElementById("summary").innerHTML = "<p>No reservation data found.</p>";
+        }
+    </script>
+</body>
+
+</html>

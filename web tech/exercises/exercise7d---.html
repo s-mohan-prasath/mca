@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 3 Question 3</title>
+    <style>
+        fieldset {
+            margin: 20px 0;
+        }
+
+        fieldset.gen-info label {
+            width: 100px;
+            display: inline-block;
+            text-align: end;
+            margin: 10px;
+        }
+
+        .contact-section input {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="reservation-form">
+        <fieldset class="gen-info">
+            <legend>General Information</legend>
+            <div class="">
+                <label for="arrival-date">Arrival date : </label>
+                <input type="date" name="" id="arrival-date">
+            </div>
+            <div class="">
+                <label for="no-of-nights">Nights : </label>
+                <input type="text" name="" id="no-of-nights">
+            </div>
+            <div class="">
+                <label for="no-of-adults">Adults : </label>
+                <select name="" id="no-of-adults">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="">
+                <label for="no-of-children">Children : </label>
+                <select name="" id="no-of-children">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Preferences</legend>
+            <div class="">
+                <label>Room Type : </label>
+                <span>
+                    <input type="radio" name="room" id="standard-room" value="Standard">
+                    <label for="standard-room">Standard</label>
+                    <input type="radio" name="room" id="business-room" value="Business">
+                    <label for="business-room">Business</label>
+                    <input type="radio" name="room" id="suite-room" value="Suite">
+                    <label for="suite-room">Suite</label>
+                </span>
+            </div>
+            <div class="">
+                <label>Bed Type : </label>
+                <span>
+                    <input type="radio" name="bed" id="king-bed" value="King">
+                    <label for="king-bed">King</label>
+                    <input type="radio" name="bed" id="double-bed" value="Double">
+                    <label for="double-bed">Double Double</label>
+                </span>
+            </div>
+            <input type="checkbox" name="smoking" id="smoking" value="Smoking">
+            <label for="smoking">Smoking</label>
+        </fieldset>
+        <fieldset class="contact-section">
+            <legend>Contact Information</legend>
+            <div class="">
+                <label for="name">Name : </label>
+                <input type="text" name="" id="name">
+            </div>
+            <div class="">
+                <label for="email">Email : </label>
+                <input type="text" name="" id="email">
+            </div>
+            <div class="">
+                <label for="phone">Phone : </label>
+                <input type="text" name="" id="phone">
+            </div>
+        </fieldset>
+        <input type="submit" value="Submit Reservation">
+        <input type="reset" value="Clear">
+    </form>
+
+    <script>
+        document.getElementById("reservation-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Retrieve form data
+            let arrivalDate = document.getElementById("arrival-date").value;
+            let nights = document.getElementById("no-of-nights").value;
+            let adults = document.getElementById("no-of-adults").value;
+            let children = document.getElementById("no-of-children").value;
+            let roomType = document.querySelector('input[name="room"]:checked') ? document.querySelector('input[name="room"]:checked').value : "";
+            let bedType = document.querySelector('input[name="bed"]:checked') ? document.querySelector('input[name="bed"]:checked').value : "";
+            let smoking = document.getElementById("smoking").checked ? "Yes" : "No";
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+
+            // Save data in localStorage
+            localStorage.setItem("reservationData", JSON.stringify({
+                arrivalDate,
+                nights,
+                adults,
+                children,
+                roomType,
+                bedType,
+                smoking,
+                name,
+                email,
+                phone
+            }));
+
+            // Redirect to About.html
+            window.location.href = "exercise7dd---.html";
+        });
+    </script>
+</body>
+
+</html>

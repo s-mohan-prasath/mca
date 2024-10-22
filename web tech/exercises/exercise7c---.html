@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+    <style>
+        table td {
+            padding: 10px;
+            background-color: rgb(5, 218, 255);
+        }
+
+        .error {
+            border: 2px solid red;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+
+        textarea {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body onload="setDefaultGender()">
+
+    <form action="" method="post">
+        <table border="1">
+            <tr>
+                <th colspan="2" style="background-color: yellow;color:red">User Form</th>
+            </tr>
+            <tr>
+                <td>Enter Name</td>
+                <td><input type="text" id="name" placeholder="Name" required></td>
+            </tr>
+            <tr>
+                <td>Enter Password</td>
+                <td><input type="password" id="password" placeholder="Password" required></td>
+            </tr>
+            <tr>
+                <td>Enter Address</td>
+                <td><textarea id="address" cols="30" rows="4" placeholder="Address (Min 2 lines, Max 4 lines)"
+                        required></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Select Game</td>
+                <td>
+                    <div>
+                        <input type="checkbox" name="game" id="hockey">
+                        <label for="hockey">Hockey</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="game" id="football">
+                        <label for="football">Football</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="game" id="badminton">
+                        <label for="badminton">Badminton</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="game" id="cricket">
+                        <label for="cricket">Cricket</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="game" id="volleyball">
+                        <label for="volleyball">Volleyball</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" id="male" value="Male">
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" id="female" value="Female">
+                    <label for="female">Female</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Select Age</td>
+                <td><input type="number" id="age" min="18" max="100" value="18" required></td>
+            </tr>
+            <tr>
+                <td>Select Image</td>
+                <td><input type="file" id="file" accept="image/jpeg, image/png" required></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="CLICK ME" onclick="highlightInvalidFields()">
+                    <input type="submit" value="SUBMIT" onclick="submitForm(event)">
+                    <input type="reset" value="RESET" onclick="resetForm()">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function setDefaultGender() {
+            document.getElementById("male").checked = true;
+        }
+
+        function highlightInvalidFields() {
+            // Name validation: only alphabets and up to two spaces
+            let name = document.getElementById("name");
+            let nameRegex = /^[A-Za-z]+(\s[A-Za-z]+){0,2}$/;
+            if (!nameRegex.test(name.value)) {
+                name.classList.add("error");
+            } else {
+                name.classList.remove("error");
+            }
+
+            // Password validation: strong password check
+            let password = document.getElementById("password");
+            let passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/; // Strong password regex
+            if (!passwordRegex.test(password.value)) {
+                password.classList.add("error");
+            } else {
+                password.classList.remove("error");
+            }
+
+            // Address validation: 2 to 4 lines
+            let address = document.getElementById("address");
+            let addressLines = address.value.split("\n").filter(line => line.trim() !== "");
+            if (addressLines.length < 2 || addressLines.length > 4) {
+                address.classList.add("error");
+            } else {
+                address.classList.remove("error");
+            }
+
+            // Game validation: at least one must be selected
+            let games = document.querySelectorAll('input[name="game"]:checked');
+            if (games.length < 1) {
+                alert("Please select at least one game.");
+            }
+
+            // Age validation: must be above 18
+            let age = document.getElementById("age");
+            if (age.value < 18) {
+                age.classList.add("error");
+            } else {
+                age.classList.remove("error");
+            }
+
+            // File validation: image file, JPEG/PNG only
+            let file = document.getElementById("file");
+            if (file.files.length > 0) {
+                let fileType = file.files[0].type;
+                if (fileType !== "image/jpeg" && fileType !== "image/png") {
+                    file.classList.add("error");
+                } else {
+                    file.classList.remove("error");
+                }
+            }
+        }
+
+        function resetForm() {
+            let fields = document.querySelectorAll("input, textarea");
+            fields.forEach(field => field.classList.remove("error", "highlight"));
+        }
+
+        function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            let confirmation = confirm("Do you want to submit the form?");
+            if (confirmation) {
+                // Get form data
+                let name = document.getElementById("name").value;
+                let password = document.getElementById("password").value;
+                let address = document.getElementById("address").value;
+                let age = document.getElementById("age").value;
+                let gender = document.querySelector('input[name="gender"]:checked').value;
+
+                // Get selected games
+                let games = [];
+                document.querySelectorAll('input[name="game"]:checked').forEach(game => {
+                    games.push(game.nextElementSibling.textContent); // Add game label text
+                });
+
+                // Get selected file (if any)
+                let file = document.getElementById("file").files.length > 0
+                    ? document.getElementById("file").files[0].name
+                    : "No file selected";
+
+                // Save data in localStorage
+                localStorage.setItem("userData", JSON.stringify({
+                    name: name,
+                    password: password,
+                    address: address,
+                    age: age,
+                    gender: gender,
+                    games: games,
+                    file: file
+                }));
+
+                // Redirect to About.html
+                window.location.href = "exercise7cc---.html";
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
