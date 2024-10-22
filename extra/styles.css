@@ -1,0 +1,25 @@
+body{
+  padding: 25px;
+}
+.title {
+	color: #5C6AC4;
+}
+
+.chakra{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid black;
+  position: relative;
+}
+
+.line{
+  width: 200px;
+  height: 3px;
+  background-color: black;
+}
+
+.abs{
+  position: absolute;
+  top: calc(50% - 1.5px);
+}
