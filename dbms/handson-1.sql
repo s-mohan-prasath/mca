@@ -57,3 +57,23 @@ select emp_no,lname,salary from employee where lname in ('Kumar','Manian','Muthu
 select emp_no,floor((sysdate-dob)/365) as age,lname,salary from employee where floor((sysdate-dob)/365) between 30 and 50;
 --13
 select * from employee where mgr in (select emp_no from employee where lname in ('Raman','Nadarajan','Saravanan'));
+--14
+select * from employee where job not in ('Analyst Manager','Manager');
+--15
+select * from employee where floor((sysdate-dob)/365) = (select min(floor((sysdate-dob)/365)) from employee where comm is not null);
+--16
+select job,count(*) from employee group by job;
+--17
+select job,sum(salary) from employee group by job;
+--18
+
+--19
+
+
+
+
+
+
+
+
+

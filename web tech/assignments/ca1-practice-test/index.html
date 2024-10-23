@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing App</title>
+    <style>
+        #billingForm {
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        #billingForm>div {
+            padding-top: 10px;
+        }
+        #billingForm>button{
+            background-color: green;
+            color: white;
+            padding: 5px;
+        }
+        div > button{
+            background-color: rgb(206, 114, 255);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        #item-container{
+            width:100%;
+            height:150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+        }
+        label {
+            display: inline-block;
+            width: 200px;
+        }
+
+        input {
+            border: 2px solid green;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form action="" method="post" id="billingForm">
+        <div>
+            <label for="name">Customer Name</label>
+            <input type="text" id="name">
+        </div>
+        <div>
+            <label for="phone">Customer Phone Number</label>
+            <input type="text" id="phone">
+        </div>
+        <div id="item-container">
+            <p>Add items</p>
+            <input type="button" value="ADD">
+        </div>
+        <input type="submit" value="SUBMIT">
+    </form>
+</body>
+
+</html>
