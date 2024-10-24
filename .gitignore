@@ -1,1 +1,3 @@
 /web tech/node_modules/
+*.exe
+*.o
