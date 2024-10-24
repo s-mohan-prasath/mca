@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Billing App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body style="padding: 10px;">
+    <form method="post" id="billingForm" onsubmit="onSubmit(event)" validate>
+        <center style="margin: 20px;">
+            <h1>Billing Application</h1>
+        </center>
+        <div>
+            <label for="name">Customer Name</label>
+            <input type="text" id="name" maxlength="30" placeholder="Enter Name" required>
+        </div>
+        <div>
+            <label for="phone">Customer Phone Number</label>
+            <input type="tel" pattern="[\d]{10}" placeholder="Enter Phone Number" id="phone" required>
+        </div>
+        <div id="item-container">
+            <div style="width: 100%;display: flex;justify-content: end;"><input type="button" value="ADD ITEM"
+                    onclick="addItemClick()"></div>
+        </div>
+        <input type="submit" value="SUBMIT">
+    </form>
+    <script>
+        /*
+            apple,orange,guava,grape
+        */
+        var i = 0;
+        const priceList = {
+            "apple": 100,
+            "orange": 200,
+            "guava": 300,
+            "grape": 400
+        }
+        function addItemClick() {
+            var itemCont = document.getElementById("item-container")
+            ++i;
+            var ele = `
+            <div class="item-row" id="item-row-${i}">
+                <select name="itemSelect" class="itemSelect" id="select-i-${i}" onchange="onItemSelect(event)" data-i="${i}" required>
+                    <option value="apple">apple</option>
+                    <option value="orange">orange</option>
+                    <option value="guava">guava</option>
+                    <option value="grape">grape</option>
+                </select>
+                <input type="number" data-i="${i}" id="kg-i-${i}" value="1" min="1" style="width: 50px;" placeholder="kg"
+                    onchange="onKgChange(event)" required>
+                <span>&#8377;<span id="price-i-${i}">${priceList['apple']}</span></span>
+                <div style="width:40px;text-align:center;"><p style="font-size:larger;background-color:red;cursor:pointer;border-radius:10px;padding-top:10px;padding-bottom:10px" onclick="onDeleteItemClick(event)" data-i=${i}>x</p></div>
+            </div>
+            `
+            itemCont.insertAdjacentHTML("beforeend", ele)
+            i++;
+        }
+        function onItemSelect(event) {
+            //select current element
+            var ele = event.target;
+            var selectValue = event.target.value;
+            var i = event.target.dataset.i;
+
+            var kgEle = document.getElementById("kg-i-" + i)
+            var priceEle = document.getElementById("price-i-" + i)
+
+            var no_of_kgs = parseInt(kgEle.value)
+            var tot_price = priceList[selectValue] * no_of_kgs
+
+            priceEle.innerText = tot_price
+        }
+        function onKgChange(event) {
+            //select current element
+            var ele = event.target;
+            var i = event.target.dataset.i;
+
+            var selectEle = document.getElementById("select-i-" + i)
+            var kgEle = document.getElementById("kg-i-" + i)
+            var priceEle = document.getElementById("price-i-" + i)
+
+            var no_of_kgs = parseInt(kgEle.value)
+            var selectValue = selectEle.value
+            var tot_price = priceList[selectValue] * no_of_kgs
+
+            priceEle.innerText = tot_price
+        }
+        function onDeleteItemClick(event) {
+            var ele = event.target
+            var i = ele.dataset.i;
+
+            var itemRowEle = document.getElementById("item-row-" + i)
+            itemRowEle.remove()
+        }
+        function onSubmit(event) {
+            event.preventDefault()
+            var name = document.getElementById('name')
+            var phone = document.getElementById('phone')
+            const itemDetails = {
+                "apple": { kg: 0, price: 0 },
+                "orange": { kg: 0, price: 0 },
+                "guava": { kg: 0, price: 0 },
+                "grape": { kg: 0, price: 0 }
+            }
+            var init = 1;
+            var count = 0;
+            var totalPrice = 0
+            while (init <= i) {
+                var selectValue = document.getElementById("select-i-" + init)
+                var kg = document.getElementById("kg-i-" + init)
+                var price = document.getElementById("price-i-" + init)
+
+                if (selectValue) {
+                    ++count;
+                    itemDetails[selectValue.value].kg += parseInt(kg.value)
+                    itemDetails[selectValue.value].price += parseInt(price.innerText)
+                    totalPrice += parseInt(price.innerText)
+                }
+                init++
+            }
+            if (count != 0) {
+                let data = {
+                    name: name.value,
+                    phone: phone.value,
+                    itemDetails,
+                    totalPrice
+                }
+                console.log(JSON.stringify(itemDetails))
+                var confirmation = confirm("Total Price is ₹" + totalPrice + "\nDo you want to submit the form?")
+                if (confirmation) {
+                    window.location.href = "summary.html"
+                    localStorage.setItem("data", JSON.stringify(data))
+                } else {
+                    return;
+                }
+            } else {
+                alert("No item selected");
+            }
+        }
+    </script>
+</body>
+
+</html>
