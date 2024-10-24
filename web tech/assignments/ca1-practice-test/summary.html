@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            padding: 10px;
+        }
+
+        h1 {
+            font-size: xx-large;
+        }
+
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 80%;
+            margin: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body onload="call()">
+    <h1>Summary</h1>
+    <div style="margin-top: 30px;">
+        <p><strong>NAME : </strong><span id="name"></span></p>
+        <p><strong>PHONENUMBER : </strong><span id="phone"></span></p>
+    </div>
+    <table border="2" id="summary-table">
+        <tr>
+            <th>Item</th>
+            <th>Kg</ht>
+            <th>Price</ht>
+        </tr>
+    </table>
+    <script>
+        function call() {
+            const data = JSON.parse(localStorage.getItem("data"))
+            const itDetails = data.itemDetails
+            console.log(itDetails['orange'])
+            var ele = `
+        <tr>
+            <td>Apple</td>
+            <td>${itDetails['apple'].kg}</td>
+            <td>${itDetails['apple'].price}</td>
+        </tr>
+        <tr>
+            <td>Orange</td>
+            <td>${itDetails['orange'].kg}</td>
+            <td>${itDetails['orange'].price}</td>
+        </tr>
+        <tr>
+            <td>Guava</td>
+            <td>${itDetails['guava'].kg}</td>
+            <td>${itDetails['guava'].price}</td>
+        </tr>
+        <tr>
+            <td>Grape</td>
+            <td>${itDetails['grape'].kg}</td>
+            <td>${itDetails['grape'].price}</td>
+        </tr>
+        <tr>
+            <td colspan="2">Total Price</td>
+            <td>${data.totalPrice}</td>
+        </tr>
+        `
+            var table = document.getElementById("summary-table")
+            var phone = document.getElementById("phone")
+            var customer_name = document.getElementById("name")
+            phone.innerHTML = data.phone
+            customer_name.innerText = data.name
+            table.insertAdjacentHTML('beforeend', ele)
+        }
+    </script>
+</body>
+
+</html>
