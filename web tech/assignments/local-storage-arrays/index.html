@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../ca1-practice-test/styles.css">
+    <title>LEDGER</title>
+</head>
+
+<body style="padding: 10px;">
+    <form method="post" id="billingForm" onsubmit="onSubmit(event)" validate>
+        <center style="margin: 20px;">
+            <h1>LEDGER</h1>
+        </center>
+        <div>
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" maxlength="10" placeholder="Enter First Name" required>
+        </div>
+        <div>
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" maxlength="10" placeholder="Enter Last Name" required>
+        </div>
+        <input type="submit" value="ADD">
+        <a href="summary.html">GET SUMMARY</a>
+    </form>
+    <script>
+        function onSubmit(event) {
+            event.preventDefault()
+            var fname = document.getElementById('fname').value
+            var lname = document.getElementById('lname').value
+
+            var confirmation = confirm("Do you want to submit the form?")
+            if (confirmation) {
+                var arr = JSON.parse(localStorage.getItem("arr"));
+                let obj = { fname, lname }
+                if (arr) {
+                    arr.push(obj)
+                    localStorage.setItem("arr", JSON.stringify(arr))
+                    window.location.href = "summary.html"
+                } else {
+                    let localArr = [];
+                    localArr.push(obj)
+                    localStorage.setItem("arr", JSON.stringify(localArr))
+                    window.location.href = "summary.html"
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

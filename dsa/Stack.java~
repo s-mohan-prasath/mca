@@ -1,0 +1,11 @@
+public class Stack {
+    public Stack(){
+
+    }
+    public int pop(){
+
+    }
+    public void push(){
+
+    }
+}
