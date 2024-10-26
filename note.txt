@@ -8,3 +8,6 @@ Whenever you start coding, pull the lastest
 changes in the Repo
 
 git pull https://github.com/s-mohan-prasath/mca.git master
+
+### to remove git cache
+git rm --cached -r .
