@@ -3,32 +3,29 @@ import java.util.*;
 public class Main {
         public static void main(String[] arg) {
 
-                twodarrays_strings_2 twod = new twodarrays_strings_2();
-                
+                // twodarrays_strings_2 twod = new twodarrays_strings_2();
 
+                int[] arr = { 1, 2 };
+                ArrayList<Integer> arr2 = new ArrayList<>();
+                arr2.add(1);
+                arr2.get('a'%97);
+                System.out.println(arr2.get('a'));
                 // PROBLEM 1
 
-//                int[][] arr = { { 1, 2, 3, 4 }, { 5, 1, 6, 3 }, { 9, 5, 1, 2 } };
-//                twod.prob1(arr);
+                // int[][] arr = { { 1, 2, 3, 4 }, { 5, 1, 6, 3 }, { 9, 5, 1, 2 } };
+                // twod.prob1(arr);
 
-//                PROBLEM 3
-//                int[][] arr = {{1,2,3,4},{5,6,7,8}};
-//                twod.prob3(4,2,arr);
+                // PROBLEM 3
+                // int[][] arr = {{1,2,3,4},{5,6,7,8}};
+                // twod.prob3(4,2,arr);
 
                 // PROBLEM 4
-//                twod.prob4("599642");
+                // twod.prob4("599642");
 
                 // PROBLEM 5
-//                twod.prob5();
+                // twod.prob5();
 
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////////
                 // problems4 p = new problems4();
 
                 // PROBLEM 1
