@@ -44,7 +44,7 @@ select * from employee where lname like '%an%';
 --6
 select fname from employee where fname like 'K%' or fname like 'S%';
 --7
-select * from employee where (sysdate-dob)/365 = (select max((sysdate-dob)/365) from employee);
+select fname,lname,job,salary,floor((sysdate-dob)/365) as age from employee where floor((sysdate-dob)/365) = (select max(floor((sysdate-dob)/365)) from employee);
 --8
 select emp_no,fname,lname,job,salary from employee where salary >= 30000 and job in ('Analyst Manager','Manager');
 --9
@@ -66,11 +66,16 @@ select job,count(*) from employee group by job;
 --17
 select job,sum(salary) from employee group by job;
 --18
-
+select job,sal from (select job,sum(salary)as sal from employee  group by job) where sal>100000;
 --19
-
-
-
+select e.fname,e.lname,tmp.job,tmp.maxsalary from (select job,max(salary) as maxsalary from employee group by job) tmp,employee e where tmp.job = e.job and tmp.maxsalary = e.salary;
+--20
+select fname,lname,job,to_char(dob,'MONTH') as birth_month from employee where to_char(dob,'MON') in ('JAN','MAR','AUG'); 
+--21
+select count(emp_no) from employee group by to_char(dob,'YEAR');
+--22
+select fname as "Employee Name",lname as "Father Name",job as "Designation" from employee;
+--23
 
 
 

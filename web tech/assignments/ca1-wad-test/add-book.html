@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD BOOKS | PSGCT LIBRARY</title>
+    <link rel="stylesheet" href="./styles/global.css">
+    <link rel="stylesheet" href="./styles/member.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">PSGCT LIB</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="member.html">Member SignUp</a></li>
+            <li><a href="add-book.html">Add Books</a></li>
+            <li><a href="BooksIssued.html">Summary</a></li>
+        </ul>
+    </nav>
+    <div class="container" style="display: flex;flex-direction: column;align-items: center;">
+        <h1>Lend Books</h1>
+        <form action="" method="post" id="addbookForm">
+            <div class="form-group">
+                <label for="access">Book Access No</label>
+                <input type="text" id="access" placeholder="Enter Number" onblur="validateBookAccessNo()" required>
+                <span id="access-error" style="color: red; display: none;">Invalid Book Access Number</span>
+            </div>
+            <div class="form-group">
+                <label for="issue-date">Issue Date</label>
+                <input type="date" id="issue-date" min="2024-10-25" placeholder="select issue date" required>
+                <span id="email-error" style="color: red; display: none;">Invalid Member ID</span>
+            </div>
+            <div class="flex-row" style="justify-content: space-between;margin-top: 50px;">
+                <div class="flex-row">
+                    <input type="button" onclick="cancelClick()" value="CANCEL">
+                    <input type="reset" value="RESET">
+                    <input type="submit" value="ADD MORE BOOKS" onclick="addmoreBookClick(event)">
+                </div>
+                <input type="submit" value="LEND BOOK" onclick="lendbookClick(event)">
+            </div>
+        </form>
+    </div>
+    <script>
+
+        // validations
+
+        function validateBookAccessNo() {
+            const accessInput = document.getElementById('access');
+            const accessError = document.getElementById('access-error');
+            const accessPattern = /[^a-zA-Z!@#$%&*`~]{8}/;
+
+            if (!accessPattern.test(accessInput.value)) {
+                accessError.style.display = 'block';
+                return false;
+            } else {
+                accessError.style.display = 'none';
+                return true;
+            }
+        }
+
+        function cancelClick() {
+            window.location.href = "index.html"
+        }
+        function lendbookClick(event) {
+            submitForm(event)
+            window.location.href = 'BooksIssued.html'
+        }
+        function addmoreBookClick(event) {
+            submitForm(event)
+            window.location.href = 'add-book.html'
+        }
+
+        function submitForm(event) {
+            event.preventDefault()
+
+            if (!validateBookAccessNo()) {
+                return;
+            }
+            var book_access_no = document.getElementById('access').value
+            var issue_date = document.getElementById('issue-date').value
+
+            var arr = JSON.parse(localStorage.getItem("arr"));
+            let obj = { book_access_no, issue_date }
+            console.log(obj, arr)
+            if (arr) {
+                arr.push(obj)
+                localStorage.setItem("arr", JSON.stringify(arr))
+            } else {
+                let localArr = [];
+                localArr.push(obj)
+                localStorage.setItem("arr", JSON.stringify(localArr))
+            }
+        }
+    </script>
+</body>
+
+</html>

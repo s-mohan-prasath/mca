@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOKS | PSGCT LIBRARY</title>
+    <link rel="stylesheet" href="./styles/global.css">
+    <link rel="stylesheet" href="./styles/bookissue.css">
+    
+</head>
+<body onload="call()">
+    <nav class="navbar">
+        <div class="logo">PSGCT LIB</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="member.html">Member SignUp</a></li>
+            <li><a href="add-book.html">Add Books</a></li>
+            <li><a href="BooksIssued.html">Summary</a></li>
+        </ul>
+    </nav>
+    <div class="flex-row" style="width: 100%;justify-content: space-between;">
+        <button onclick="prevClick()">PREV</button>
+        <button onclick="closeClick()">CLOSE</button>
+    </div>
+    <div id="issue-container"></div>
+    <script>
+        function call() {
+            var arr = JSON.parse(localStorage.getItem("arr"))
+            var cont = document.getElementById("issue-container")
+            if (arr) {
+                arr.map((obj, i) => {
+                    cont.insertAdjacentHTML("beforeend", `
+                    <div class="book-issue-card">
+                        <p>No. ${i + 1}</p>
+                        <p><strong>Book Accession No : </strong>${obj.book_access_no}</p>
+                        <p><strong>Book Issue Date  : </strong>${obj.issue_date}</p>    
+                    </div>
+                    `)
+                })
+            }
+        }
+        function closeClick(){
+            localStorage.clear()
+            window.location.href = "index.html"
+        }
+        function prevClick(){
+            window.location.href = "add-book.html"
+        }
+    </script>
+</body>
+</html>
