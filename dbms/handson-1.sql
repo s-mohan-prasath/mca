@@ -76,9 +76,10 @@ select count(emp_no) from employee group by to_char(dob,'YEAR');
 --22
 select fname as "Employee Name",lname as "Father Name",job as "Designation" from employee;
 --23
-
-
-
-
-
-
+select 'Dear '||fname||', you were born on '|| extract(day from dob) || ', ' || to_char(dob,'Day') || '-' || to_char(dob,'Month') || '-' || extract(year from dob) as message from employee;
+--24
+select fname||lname as Name, salary, comm,case when comm is null then salary else salary + comm end as remuneration from employee;
+--25
+select fname||lname as Name, salary,case when comm is null then 0 else comm end as commision,case when comm is null then salary else salary + comm end as remuneration from employee;
+--26
+select fname||', '||job||' earns $'||salary||' with $'||comm||' as commision' as message from employee;
