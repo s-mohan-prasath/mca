@@ -288,4 +288,3 @@ int arraySum(int n,int *arr){
         sum+=arr[i];
     }
 }
-
