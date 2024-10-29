@@ -1,8 +1,8 @@
-public class Node {
-    int val;
-    Node next;
-    public Node(int val){
-        this.val = val;
+public class Node<Type> {
+    Type value;
+    Node<Type> next;
+    public Node(Type value){
+        this.value = value;
         this.next = null;
     }
 }

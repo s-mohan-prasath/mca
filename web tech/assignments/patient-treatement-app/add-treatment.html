@@ -6,30 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADD BOOKS | PSGCT LIBRARY</title>
     <link rel="stylesheet" href="./styles/global.css">
-    <link rel="stylesheet" href="./styles/member.css">
+    <link rel="stylesheet" href="./styles/patient.css">
 </head>
 
 <body>
     <nav class="navbar">
-        <div class="logo">PSGCT LIB</div>
+        <div class="logo">PSG HOSPITALS</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="member.html">Member SignUp</a></li>
-            <li><a href="add-book.html">Add Books</a></li>
-            <li><a href="BooksIssued.html">Summary</a></li>
+            <li><a href="patient.html">Patient</a></li>
+            <li><a href="add-treatment.html">Add treatment</a></li>
+            <li><a href="summary.html">Summary</a></li>
         </ul>
     </nav>
     <div class="container" style="display: flex;flex-direction: column;align-items: center;">
         <h1>Lend Books</h1>
-        <form action="" method="post" id="addbookForm">
+        <form action="" method="post" id="addTreatmentForm">
             <div class="form-group">
-                <label for="access">Book Access No</label>
-                <input type="text" id="access" placeholder="Enter Number" onblur="validateBookAccessNo()" required>
-                <span id="access-error" style="color: red; display: none;">Invalid Book Access Number</span>
+                <label for="select-disease">Disease</label>
+                <select id="select-disease" class="styled-select" onblur="validateDisease()">
+                    <option value="0">Select Disease</option>
+                </select>
+                <span id="select-disease-error" style="color: red; display: none;">disease is required</span>
             </div>
             <div class="form-group">
-                <label for="issue-date">Issue Date</label>
-                <input type="date" id="issue-date" min="2024-10-25" placeholder="select issue date" required>
+                <label for="doc_name">Doctor Name</label>
+                <input type="text" id="doc_name" maxlength="30" placeholder="Enter Doctor Name" required>
+            </div>
+            <div class="form-group">
+                <label for="treatment-date">treatment Date</label>
+                <input type="date" id="treatment-date" min="2024-10-25" placeholder="select treatment date" required>
                 <span id="email-error" style="color: red; display: none;">Invalid Member ID</span>
             </div>
             <div class="flex-row" style="justify-content: space-between;margin-top: 50px;">
@@ -65,11 +71,11 @@
         }
         function lendbookClick(event) {
             submitForm(event)
-            window.location.href = 'BooksIssued.html'
+            window.location.href = 'summary.html'
         }
         function addmoreBookClick(event) {
             submitForm(event)
-            window.location.href = 'add-book.html'
+            window.location.href = 'add-treatment.html'
         }
 
         function submitForm(event) {
@@ -79,10 +85,10 @@
                 return;
             }
             var book_access_no = document.getElementById('access').value
-            var issue_date = document.getElementById('issue-date').value
+            var treatment_date = document.getElementById('treatment-date').value
 
             var arr = JSON.parse(localStorage.getItem("arr"));
-            let obj = { book_access_no, issue_date }
+            let obj = { book_access_no, treatment_date }
             console.log(obj, arr)
             if (arr) {
                 arr.push(obj)

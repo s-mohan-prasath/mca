@@ -1,10 +1,15 @@
 body {
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
+    height: 100vh;
 }
 
 .container {
     padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .flex-row {
@@ -17,10 +22,12 @@ body {
 
 .form-group {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 15px;
+    margin: 10px;
 }
 
 .form-group label {
@@ -41,9 +48,13 @@ body {
 }
 
 .form-group input:focus {
-    border-color: rgb(92, 75, 65);
+    border-color: rgb(0, 113, 136);
     outline: none;
-    box-shadow: 0 0 8px rgb(92, 75, 65);
+    box-shadow: 0 0 8px rgb(0, 113, 136);
+}
+
+span[id$="error"]{
+    text-align: center;
 }
 
 /* BUTTONS */
@@ -52,7 +63,7 @@ input[type="submit"],
 input[type="button"],
 button {
     padding: 10px;
-    background-color: #5C4B41;
+    background-color: rgb(0, 113, 136);
     color: white;
     cursor: pointer;
 }
@@ -60,7 +71,7 @@ button {
 /* NAVBAR */
 
 .navbar {
-    background-color: #5C4B41;
+    background-color: rgb(0, 113, 136);
     /* Coffee color */
     display: flex;
     justify-content: space-between;
@@ -93,30 +104,9 @@ button {
 }
 
 .nav-links a:hover {
-    background-color: #7D5B3A;
+    background-color: rgb(0, 213, 255);
+    color: black;
     /* Lighter coffee color */
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #5C4B41;
-    /* Match navbar background */
-    min-width: 160px;
-    z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown-content a {
-    padding: 12px 16px;
-}
-
-.dropdown-content a:hover {
-    background-color: #7D5B3A;
-    /* Hover effect */
 }
 
 /* DROP DOWN */
@@ -132,7 +122,7 @@ button {
     font-size: 16px;
     margin-bottom: 10px;
     display: block;
-    color: #5C4B41;
+    color: rgb(0, 113, 136);
     /* Coffee color */
 }
 
@@ -143,7 +133,7 @@ button {
     /* Coffee color */
     border-radius: 5px;
     background-color: #fff;
-    color: #5C4B41;
+    color: rgb(0, 113, 136);
     /* Text color */
     font-size: 16px;
     appearance: none;
@@ -158,7 +148,7 @@ button {
 }
 
 .styled-select:focus {
-    border-color: #7D5B3A;
+    border-color: rgb(0, 113, 136);
     /* Lighter coffee color on focus */
     outline: none;
     /* Remove default outline */
