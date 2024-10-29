@@ -3,13 +3,26 @@ import java.util.*;
 public class Main {
         public static void main(String[] arg) {
 
-                // twodarrays_strings_2 twod = new twodarrays_strings_2();
 
-                int[] arr = { 1, 2 };
-                ArrayList<Integer> arr2 = new ArrayList<>();
-                arr2.add(1);
-                arr2.get('a'%97);
-                System.out.println(arr2.get('a'));
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////
+                stack_problems sp1 = new stack_problems();
+
+
+
+
+
+
+
+
+
+
+
+
+
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+                // twodarrays_strings_2 twod = new twodarrays_strings_2();
                 // PROBLEM 1
 
                 // int[][] arr = { { 1, 2, 3, 4 }, { 5, 1, 6, 3 }, { 9, 5, 1, 2 } };

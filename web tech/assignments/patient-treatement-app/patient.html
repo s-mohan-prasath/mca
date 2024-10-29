@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PATIENT DETAILS | PSGCT LIBRARY</title>
+    <link rel="stylesheet" href="./styles/global.css">
+    <link rel="stylesheet" href="./styles/patient.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">PSG HOSPITALS</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="patient.html">Patient</a></li>
+            <li><a href="add-treatment.html">Add treatment</a></li>
+            <li><a href="summary.html">Summary</a></li>
+        </ul>
+    </nav>
+    <div class="container" id="patientFormContainer" style="display: flex;flex-direction: column;align-items: center;height:100%;background-color: rgb(0, 113, 136);">
+        <form action="" method="post" id="patientForm">
+            <center>
+                <h1 style="margin-bottom: 60px;">Patient Details Form</h1>
+            </center>
+            <div class="form-group">
+                <label for="name">Patient Name</label>
+                <input type="text" id="name" maxlength="30" placeholder="Enter Name" required>
+            </div>
+            <div class="form-group">
+                <label for="healthid">Health id Number</label>
+                <input type="text" id="healthid" placeholder="Enter Heath Card Id Number" required onblur="validateHealthid()">
+            </div>
+            <span id="healthid-error" style="color: red; display: none;">Invalid healthid</span>
+            <div class="form-group">
+                <label for="phoneno">Phone Number</label>
+                <input type="text" id="phoneno" placeholder="Enter Phone Number" required onblur="validatePhoneNo()">
+            </div>
+            <span id="phoneno-error" style="color: red; display: none;">Invalid Phone Number</span>
+            <center style="margin-top: 80px;">
+                <input type="submit" value="SIGNUP">
+            </center>
+        </form>
+    </div>
+    <script>
+        function validateHealthid() {
+            const healthidInput = document.getElementById('healthid');
+            const healthidError = document.getElementById('healthid-error');
+            const healthidPattern = /[^a-zA-Z!@#$%&*`~]{12}/;
+
+            if (!healthidPattern.test(healthidInput.value)) {
+                healthidError.style.display = 'block';
+                return false;
+            } else {
+                healthidError.style.display = 'none';
+                return true;
+            }
+        }
+        function validatePhoneNo() {
+            const phonenoInput = document.getElementById('phoneno');
+            const phonenoError = document.getElementById('phoneno-error');
+            const phonenoPattern = /[a-zA-Z]{2}[\d]{4}/;
+
+            if (!phonenoPattern.test(phonenoInput.value)) {
+                phonenoError.style.display = 'block';
+                return false;
+            } else {
+                phonenoError.style.display = 'none';
+                return true;
+            }
+        }
+
+        // FORM SUBMISSION
+
+        var patientForm = document.getElementById("patientForm")
+        patientForm.addEventListener("submit", (event) => {
+            event.preventDefault()
+            var clickeButton = event.target;
+
+            if(!validateHealthid() && !validatePhoneNo() && !validateAge()){
+                return false;
+            }
+
+            var name = document.getElementById("name").value
+            var healthid = document.getElementById("healthid").value
+            var phoneno = document.getElementById("phoneno").value
+            localStorage.setItem("name",name)
+            localStorage.setItem("healthid",healthid)
+            localStorage.setItem("phoneno",phoneno)
+
+        })
+   
+   </script>
+</body>
+
+</html>
