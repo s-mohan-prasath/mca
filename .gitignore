@@ -1,3 +1,20 @@
+# Ignore node_modules in the /web tech directory
 /web tech/node_modules/
+bin/
+obj/
+
+# Ignore executable files and object files
 *.exe
 *.o
+*.layout
+*.depend
+
+# Ignore .idea folder
+.idea/
+*.iml
+
+# Ignore __pycache__ inside the dsa folder
+dsa/__pycache__/
+
+# Ignore any folder named example_folder at any level
+out/

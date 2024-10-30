@@ -1,27 +1,28 @@
-public class Stack<Type>{
+public class Stack<Type> {
     SLinkedList<Type> ll;
-    public Stack(){
+
+    public Stack() {
         ll = new SLinkedList<>();
     }
-    public Node<Type> peek(){
-        Node<Type> tmp = ll.head;
-        if(ll.isEmpty())return null;
-        while(tmp.next != null){
-            tmp = tmp.next;
-        }
-        return tmp;
+
+    public Node<Type> peek() {
+        return ll.tail;
     }
-    public boolean isEmpty(){
+
+    public boolean isEmpty() {
         return ll.isEmpty();
     }
-    public void push(Node<Type> node){
-        ll.push(node);
+
+    public void push(Type value) {
+        ll.push(value);
     }
-    public void pop(){
-        ll.rpop();
+
+    public Node<Type> pop() {
+        return ll.rpop();
     }
+
     @Override
-    public String toString(){
-        return ll.toString();
+    public String toString() {
+        return "(BOTTOM) " + ll.toString() + "(TOP)";
     }
 }

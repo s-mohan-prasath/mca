@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADD BOOKS | PSGCT LIBRARY</title>
+    <title>ADD TREATMENT | PSGCT LIBRARY</title>
     <link rel="stylesheet" href="./styles/global.css">
     <link rel="stylesheet" href="./styles/patient.css">
 </head>
 
 <body>
-    <nav class="navbar">
+    <nav class="navbar" id="nav">
         <div class="logo">PSG HOSPITALS</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -19,15 +19,23 @@
             <li><a href="summary.html">Summary</a></li>
         </ul>
     </nav>
-    <div class="container" style="display: flex;flex-direction: column;align-items: center;">
-        <h1>Lend Books</h1>
-        <form action="" method="post" id="addTreatmentForm">
+    <div class="container" id="add-treatment-container"
+        style="display: flex;flex-direction: column;align-items: center;">
+        <p style="background-color:blue;margin:20px;color:white;padding:20px;width:fit-content;" id='timer'></p>
+        <h1>Add Treatments</h1>
+        <form action="" method="post" id="addTreatmentForm" validate>
             <div class="form-group">
                 <label for="select-disease">Disease</label>
-                <select id="select-disease" class="styled-select" onblur="validateDisease()">
-                    <option value="0">Select Disease</option>
+                <select id="select-disease" class="styled-select" required>
+                    <option value="Endocrine Surgery">Endocrine Surgery</option>
+                    <option value="General Surgery">General Surgery</option>
+                    <option value="Gynecological Surgery">Gynecological Surgery</option>
+                    <option value="Neck Surgery">Neck Surgery</option>
+                    <option value="Hernia Surgery">Hernia Surgery</option>
+                    <option value="Neurosurgery">Neurosurgery</option>
+                    <option value="Orthopedic Surgery">Orthopedic Surgery</option>
+                    <option value="Ophthalmological Surgery">Ophthalmological Surgery</option>
                 </select>
-                <span id="select-disease-error" style="color: red; display: none;">disease is required</span>
             </div>
             <div class="form-group">
                 <label for="doc_name">Doctor Name</label>
@@ -35,61 +43,40 @@
             </div>
             <div class="form-group">
                 <label for="treatment-date">treatment Date</label>
-                <input type="date" id="treatment-date" min="2024-10-25" placeholder="select treatment date" required>
-                <span id="email-error" style="color: red; display: none;">Invalid Member ID</span>
+                <input type="date" id="treatment-date" min="2022-10-25" max="2024-10-25"
+                    placeholder="select treatment date" required>
             </div>
             <div class="flex-row" style="justify-content: space-between;margin-top: 50px;">
                 <div class="flex-row">
-                    <input type="button" onclick="cancelClick()" value="CANCEL">
                     <input type="reset" value="RESET">
-                    <input type="submit" value="ADD MORE BOOKS" onclick="addmoreBookClick(event)">
                 </div>
-                <input type="submit" value="LEND BOOK" onclick="lendbookClick(event)">
+                <input type="submit" value="ADD TREATMENT">
             </div>
         </form>
     </div>
+    <script src="script.js"></script>
     <script>
-
-        // validations
-
-        function validateBookAccessNo() {
-            const accessInput = document.getElementById('access');
-            const accessError = document.getElementById('access-error');
-            const accessPattern = /[^a-zA-Z!@#$%&*`~]{8}/;
-
-            if (!accessPattern.test(accessInput.value)) {
-                accessError.style.display = 'block';
-                return false;
-            } else {
-                accessError.style.display = 'none';
-                return true;
+        checkPatientAvailable();
+        function checkPatientAvailable() {
+            let data = JSON.parse(localStorage.getItem("patientData"));
+            if (data == null) {
+                var treatmentForm = document.getElementById('addTreatmentForm')
+                treatmentForm.style.display = 'none'
+                var container = document.getElementById("add-treatment-container")
+                container.innerHTML = "<h3 style='text-align:center;color:red;'>MESSAGE : ADD PATIENT DETAILS before adding Treatments</h3>"
             }
         }
 
-        function cancelClick() {
-            window.location.href = "index.html"
-        }
-        function lendbookClick(event) {
-            submitForm(event)
-            window.location.href = 'summary.html'
-        }
-        function addmoreBookClick(event) {
-            submitForm(event)
-            window.location.href = 'add-treatment.html'
-        }
-
-        function submitForm(event) {
+        var addTreatmentForm = document.getElementById("addTreatmentForm")
+        addTreatmentForm.addEventListener('submit', (event) => {
             event.preventDefault()
 
-            if (!validateBookAccessNo()) {
-                return;
-            }
-            var book_access_no = document.getElementById('access').value
+            var disease = document.getElementById("select-disease").value
+            var doc_name = document.getElementById('doc_name').value
             var treatment_date = document.getElementById('treatment-date').value
 
             var arr = JSON.parse(localStorage.getItem("arr"));
-            let obj = { book_access_no, treatment_date }
-            console.log(obj, arr)
+            let obj = { disease, doc_name, treatment_date }
             if (arr) {
                 arr.push(obj)
                 localStorage.setItem("arr", JSON.stringify(arr))
@@ -98,6 +85,14 @@
                 localArr.push(obj)
                 localStorage.setItem("arr", JSON.stringify(localArr))
             }
+
+            window.location.href = 'summary.html'
+        })
+
+        function submitForm(event) {
+            event.preventDefault()
+
+
         }
     </script>
 </body>

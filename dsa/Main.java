@@ -3,24 +3,35 @@ import java.util.*;
 public class Main {
         public static void main(String[] arg) {
 
-
                 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                 stack_problems sp1 = new stack_problems();
 
+                // PROBLEM - 1
+                // Stack<Integer> s1 = new Stack<>();
+                // s1.push(1);
+                // s1.push(2);
+                // s1.push(3);
+                // s1.push(4);
+                // s1.push(5);
+                // s1.push(6);
+                // s1.push(7);
+                // s1.push(8);
+                // s1.push(9);
+                // s1.push(10);
+                // int[] arr = { 6, 10, 9, 8, 7, 3, 4, 5, 2, 1 };
+                // sp1.prob1(s1, arr);
 
+                // PROBLEM 4
 
+                // sp1.prob4("245+*");
+                sp1.prob4("87-24^*");
 
+                // PROBLEM 3
 
-
-
-
-
-
-
-
+                // System.out.println(sp1.prob3("[()]{}{[()()]()}"));
 
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
                 // twodarrays_strings_2 twod = new twodarrays_strings_2();
                 // PROBLEM 1
