@@ -21,6 +21,10 @@ public class Stack<Type> {
         return ll.rpop();
     }
 
+    public int size() {
+        return ll.length;
+    }
+
     @Override
     public String toString() {
         return "(BOTTOM) " + ll.toString() + "(TOP)";

@@ -22,14 +22,30 @@ public class Main {
                 // int[] arr = { 6, 10, 9, 8, 7, 3, 4, 5, 2, 1 };
                 // sp1.prob1(s1, arr);
 
-                // PROBLEM 4
+                // PROBLEM 2
 
-                // sp1.prob4("245+*");
-                sp1.prob4("87-24^*");
+                // sp1.prob2();
 
                 // PROBLEM 3
 
                 // System.out.println(sp1.prob3("[()]{}{[()()]()}"));
+
+                // PROBLEM 4
+
+                // sp1.prob4("245+*");
+                // sp1.prob4("87-24^*");
+
+                // PROBLEM 5
+
+                Stack<Integer> s1 = new Stack<>();
+                s1.push(1);
+                s1.push(4);
+                s1.push(3);
+                s1.push(2);
+                s1.push(2);
+                s1.push(5);
+                s1.push(5);
+                System.out.println(sp1.prob5(s1));
 
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 

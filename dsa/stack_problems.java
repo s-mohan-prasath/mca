@@ -1,7 +1,8 @@
 import java.util.*;
-import java.math.*;
 
 public class stack_problems {
+    Stack<Integer> sortedGlobalStack = new Stack<>();
+
     public stack_problems() {
 
     }
@@ -43,6 +44,67 @@ public class stack_problems {
 
     }
 
+    public void prob2() {
+
+        // Given a stack of integers. The task is to design a special stack such that
+        // maximum element can be found in O(1) time and O(1) extra space. Examples:
+        // Given Stack : 2 5 1 64 --> Maximum So Output must be 64 when getMax() is
+        // called
+
+        // SPECIALSTACK IS IMPLEMENTED BELOW
+        SpecialStack s = new SpecialStack();
+        s.push(1);
+        s.push(2);
+        s.push(3);
+        s.push(4);
+        s.push(5);
+
+        System.out.println(s);
+        System.out.println(s.getMax());
+        s.pop();
+        System.out.println(s);
+        System.out.println(s.getMax());
+        s.pop();
+        System.out.println(s.getMax());
+        System.out.println(s);
+        s.pop();
+        System.out.println(s.getMax());
+        System.out.println(s);
+    }
+
+    public boolean prob3(String exp) {
+        // Given an expression string exp , write a program to examine whether the pairs
+        // and the orders of “{“ , ”}” , ”(“ , ”)” , ”[“ , ”]” are correct in exp. For
+        // example, the program should print true for exp = “[()]{}{[()()]()}” and false
+        // for exp = “[(])”
+        int len = exp.length();
+        int i = 0;
+        Stack<String> stack = new Stack<>();
+        while (i < len) {
+            String c = exp.substring(i, i + 1);
+            if (c.equals("[") || c.equals("(") || c.equals("{")) {
+                stack.push(c);
+            } else {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                if (c.equals("]") && stack.peek().value.equals("[")) {
+                    stack.pop();
+                } else if (c.equals(")") && stack.peek().value.equals("(")) {
+                    stack.pop();
+                } else if (c.equals("}") && stack.peek().value.equals("{")) {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            }
+            i++;
+        }
+        if (stack.isEmpty() != true)
+            return false;
+        return true;
+    }
+
     public void prob4(String postFix) {
         Stack<String> s = new Stack<>();
         int len = postFix.length();
@@ -63,6 +125,55 @@ public class stack_problems {
             i++;
         }
         System.out.println(s.peek().value);
+    }
+
+    public Stack<Integer> prob5(Stack<Integer> stack) {
+        if (stack.isEmpty()) {
+            return null;
+        }
+        int maxValue = stack.pop().value;
+        this.sortWithoutWhile(stack, new Stack<>(), maxValue);
+        return this.sortedGlobalStack;
+    }
+
+    private void sortWithoutWhile(Stack<Integer> stack, Stack<Integer> tmp, Integer maxValue) {
+        if (stack.isEmpty() == true) {
+            this.sortedGlobalStack.push(maxValue);
+            if (tmp.isEmpty() == true) {
+                return;
+            } else {
+                maxValue = tmp.pop().value;
+                sortWithoutWhile(tmp, stack, maxValue);
+            }
+        } else {
+            int topValue = stack.pop().value;
+            if (topValue > maxValue) {
+                tmp.push(maxValue);
+                maxValue = topValue;
+            } else {
+                tmp.push(topValue);
+            }
+            sortWithoutWhile(stack, tmp, maxValue);
+        }
+    }
+
+    private void sortStack(Stack<Integer> current, Stack<Integer> sortedStack) {
+        if (current.isEmpty())
+            return;
+        Stack<Integer> tmp = new Stack<>();
+        Node<Integer> maxNode = current.pop();
+        Node<Integer> currentNode;
+        while (current.isEmpty() != true && maxNode != null) {
+            currentNode = current.pop();
+            if (currentNode.value > maxNode.value) {
+                tmp.push(maxNode.value);
+                maxNode = currentNode;
+            } else {
+                tmp.push(currentNode.value);
+            }
+        }
+        sortedStack.push(maxNode.value);
+        this.sortStack(tmp, sortedStack);
     }
 
     public int doArithmeticOperation(int operand1, int operand2, String operator) {
@@ -99,36 +210,54 @@ public class stack_problems {
             return 1;
     }
 
-    public boolean prob3(String exp) {
-        // Given an expression string exp , write a program to examine whether the pairs
-        // and the orders of “{“ , ”}” , ”(“ , ”)” , ”[“ , ”]” are correct in exp. For
-        // example, the program should print true for exp = “[()]{}{[()()]()}” and false
-        // for exp = “[(])”
-        int len = exp.length();
-        int i = 0;
-        Stack<String> stack = new Stack<>();
-        while (i < len) {
-            String c = exp.substring(i, i + 1);
-            if (c.equals("[") || c.equals("(") || c.equals("{")) {
-                stack.push(c);
-            } else {
-                if (stack.isEmpty()) {
-                    return false;
-                }
-                if (c.equals("]") && stack.peek().value.equals("[")) {
-                    stack.pop();
-                } else if (c.equals(")") && stack.peek().value.equals("(")) {
-                    stack.pop();
-                } else if (c.equals("}") && stack.peek().value.equals("{")) {
-                    stack.pop();
-                } else {
-                    return false;
-                }
+}
+
+// PROBLEM 2
+class SpecialStack {
+    SLinkedList<Integer> ll;
+    Integer maxi = -1;
+
+    public SpecialStack() {
+        ll = new SLinkedList<>();
+    }
+
+    public boolean isEmpty() {
+        return ll.length == 0;
+    }
+
+    public Node<Integer> peek() {
+        return ll.tail;
+    }
+
+    public void push(int value) {
+        if (this.isEmpty() == true || value <= this.maxi) {
+            if (this.isEmpty() == true) {
+                this.maxi = value;
             }
-            i++;
+            this.ll.push(value);
+        } else {
+            int currentMaxi = value;
+            int prevMaxi = this.maxi;
+            this.maxi = value;
+            value = (2 * currentMaxi) - prevMaxi;
+            this.ll.push(value);
         }
-        if (stack.isEmpty() != true)
-            return false;
-        return true;
+    }
+
+    public int getMax() {
+        return this.maxi;
+    }
+
+    public Node<Integer> pop() {
+        Node<Integer> top = ll.rpop();
+        if (top.value > maxi) {
+            this.maxi = 2 * this.maxi - top.value;
+        }
+        top.value = this.maxi;
+        return top;
+    }
+
+    public String toString() {
+        return ll.toString();
     }
 }
