@@ -1,31 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "helpfulfunctions.h"
 
-void getArray(int,int * arr);
-void getArrayLen(int*len);
-void prob1();
-void prob2();
-void prob3();
-void prob4();
-void prob5();
-void prob6();
-void prob7();
-void prob8();
-void prob9();
-void prob10();
-int min2(int,int);
-int max2(int,int);
-void sortArray(int len,int *arr);
-void findArrayStat(int len,int * arr,int *maxi,int *mini,int *sum,float *avg);
 
-int main()
-{
-    prob8();
-    return 0;
-}
-
-void prob1(){
+void ps5_prob1(){
     /*
     1. You work for a logistics company that manages a large warehouse. The warehouse has
 different sections where items are stored. Each section is represented by an array of item
@@ -53,12 +32,12 @@ following tasks to reorganize the warehouse:
     }
     printf("Duplicates removed : ");
     printArray(tempLen,arr);
-    sortArray(tempLen,arr);
+    sortArray(tempLen,arr,'a');
     printf("Sorted Items : ");
     printArray(tempLen,arr);
 }
 
-void prob2(){
+void ps5_prob2(){
 
 /*
 2. You are designing an advent calendar for a holiday event. The calendar has multiple
@@ -95,10 +74,10 @@ revealed, find all days where a specific type of gift was revealed.
 
 }
 
-void prob3(){
+void ps5_prob3(){
 
 /*
-3. As a teacher, you need to manage the grades of your students. Each student’s grades are
+3. As a teacher, you need to manage the grades of your students. Each studentï¿½s grades are
 stored in a list, and you need to perform the following operations:
 1. Calculate Average Grade: Find the average grade of a student.
 2. Find Highest Grade: Determine the highest grade among all students.
@@ -115,15 +94,15 @@ stored in a list, and you need to perform the following operations:
     findArrayStat(len,arr,&maxi,&mini,&sum,&avg);
     printf("Average Grade : %f\n",avg);
     printf("Maximum Grade : %d\n",maxi);
-    sortArray(len,arr);
+    sortArray(len,arr,'a');
     printf("Sorted Grade : ");
     printArray(len,arr);
 }
 
-void prob4(){
+void ps5_prob4(){
 
 /*
-4. Sam is responsible for managing the attendance records of an event. Each day’s
+4. Sam is responsible for managing the attendance records of an event. Each dayï¿½s
 attendance is recorded in an array. Write a program that will help him in performing the
 following tasks:
 1. Find the Maximum Attendance: Determine the highest attendance recorded.
@@ -145,7 +124,7 @@ attendance.
     printf("Average Grade : %f\n",avg);
 }
 
-void prob5(){
+void ps5_prob5(){
 
 /*
 5. You are analyzing scores from a video game competition. The scores for each player are
@@ -173,17 +152,17 @@ scored above a certain threshold.
         if(arr[i]>thresh)count++;
     }
     printf("No of Players above %d : %d\n",thresh,count);
-    sortArray(len,arr);
+    sortArray(len,arr,'a');
     printf("Sorted Scores : ");
     printArray(len,arr);
 }
 
-void prob6(){
+void ps5_prob6(){
 
 /*
-6. Given an array of integers 'ARR’ of size ‘N’. Replace each element of this array with
+6. Given an array of integers 'ARRï¿½ of size ï¿½Nï¿½. Replace each element of this array with
 its corresponding rank and return the array.
-The rank of an element is an integer between 1 to ‘N’ inclusive that represents how large
+The rank of an element is an integer between 1 to ï¿½Nï¿½ inclusive that represents how large
 the element is in comparison to other elements of the array. The following rules can also
 define the rank of an element:
 1. It is an integer starting from 1.
@@ -224,14 +203,14 @@ be the same.
     printArray(len,arr);
 }
 
-void prob7(){
+void ps5_prob7(){
 /*
 7. You are given an array/list 'prices' where the elements of the array represent the prices
 of the stock as they were yesterday and indices of the array represent minutes. Your task is
 to find and return the maximum profit you can make by buying and selling the stock. You
 can buy and sell the stock only once.
 Note:
-You can’t sell without buying first.
+You canï¿½t sell without buying first.
 */
     printf("\nStock Market Buy & Sell\n");
     int len;
@@ -248,7 +227,7 @@ You can’t sell without buying first.
     printf("maximum profit is %d\n",profit);
 }
 
-void prob8(){
+void ps5_prob8(){
 /*
 8. Given an array of distinct integers, find all the pairs having positive value and negative
 value of a number that exists in the array. Return the pairs in any order.
@@ -283,14 +262,14 @@ value of a number that exists in the array. Return the pairs in any order.
     }
 }
 
-void prob9(){
+void ps5_prob9(){
 /*
 9. You are part of an adventurous expedition team that has just returned from a lost city
 exploration. During your journey, you collected various artifacts, each represented by an integer
 value denoting its importance. However, your team accidentally mixed up the artifacts. You need
 to sort the artifacts, find certain interesting statistics, and identify any special patterns.
 Note:
-Here’s what you need to do:
+Hereï¿½s what you need to do:
 1. Sort the Artifacts: Sort the array of artifact values in non-decreasing order.
 2. Find the Most Common Artifact: Determine which artifact value appears most
 frequently. If there's a tie, choose the smallest value among the most frequent ones.
@@ -308,7 +287,7 @@ values.
     int i,j,end,isPresent,count;
 
     printf("Sorted Artifacts : ");
-    sortArray(len,arr);
+    sortArray(len,arr,'a');
     printArray(len,arr);
 
     // removing duplicates in the array
@@ -376,7 +355,7 @@ values.
     printf("\nSum of Unique Artifacts is %d",sum);
 }
 
-void prob10(){
+void ps5_prob10(){
 /*
 10. Given a sorted array of distinct integers and a target value, return the index if the target
 is found. If not, return the index where it would be if it were inserted in order.
@@ -397,73 +376,3 @@ is found. If not, return the index where it would be if it were inserted in orde
         printf("Index : %d",i);
     }
 }
-
-int min2(int a,int b){
-    return (a<b)?a:b;
-}
-
-int max2(int a,int b){
-    return (a>b)?a:b;
-}
-
-void findArrayStat(int len,int *arr,int *maxi,int *mini,int *sum,float *avg){
-    int maxiii,miniii,lsum;
-    maxiii = arr[0];
-    miniii = arr[0];
-    lsum = 0;
-    int i = 0;
-    while(i<len){
-        if(arr[i]>maxiii){
-            maxiii = arr[i];
-        }
-        else if(arr[i]<miniii){
-            miniii = arr[i];
-        }
-        lsum+=arr[i];
-        i++;
-
-    }
-    *mini = miniii;
-    *maxi = maxiii;
-    *sum = lsum;
-    *avg = ((float)lsum/len);
-}
-
-void sortArray(int len,int *arr){
-    int temp;
-    for(int i = 0;i<len;i++){
-        for(int j = i;j<len;j++){
-            if(arr[i]>arr[j]){
-                temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-    }
-}
-
-void getArrayLen(int *len)
-{
-    printf("Enter the length of Array : ");
-    scanf("%d", len);
-}
-
-void getArray(int len, int *arr)
-{
-    for (int i = 0; i < len; i++)
-    {
-        printf("Enter Element (i=%d) : ", i);
-        scanf("%d", &arr[i]);
-    }
-}
-
-void printArray(int len, int *arr)
-{
-    for (int i = 0; i < len; i++)
-    {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-}
-
-

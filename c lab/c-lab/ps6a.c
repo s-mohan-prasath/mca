@@ -2,28 +2,11 @@
 #include <stdlib.h>
 #include <math.h>
 #include <limits.h>
+#include "helpfulfunctions.h"
 
-void prob1();
-void prob2();
-void prob3();
-void prob4();
-void prob5();
-int min2(int,int);
-int min3(int,int,int);
-void get2DArrayLen(int*n,int*m);
-void get2DArray(int n,int m,int *arr);
-void print2DArray(int arr[][5],int n,int m);
-void print2DPointerArray(int n,int m,int *arr);
-void print1DArray(int,int*arr);
-int arraySum(int n,int *arr);
-int prob5Sum(int *arr,int row,int col,int n,int m);
+int ps6a_prob5Sum(int *arr,int row,int col,int n,int m);
 
-int main()
-{
-    prob5();
-    return 0;
-}
-void prob1(){
+void ps6a_prob1(){
 /*
 1) Given a square matrix A[5][5], write code to perform the following operations.
 a. To compute sum of the major diagonal
@@ -67,7 +50,7 @@ d. To compute the sum of the elements in the lower triangular matrix
     printf("iv) To compute the sum of the Lower Triangular Matrix\n");
     printf("Sum of Lower Triangular Matrix is %d\n",sumLower);
 }
-void prob2(){
+void ps6a_prob2(){
 
 /*
 2) Given a m x n matrix, consisting exactly of a single zero, set its entire row and column to 0.
@@ -99,8 +82,8 @@ void prob2(){
             }
         }
     }
-    print1DArray(n,i_s);
-    print1DArray(m,j_s);
+    printArray(n,i_s);
+    printArray(m,j_s);
     // change the ith and jth row elements to zero
     for(i = 0;i<n;i++){
         if(i_s[i]==1){
@@ -118,7 +101,7 @@ void prob2(){
     }
     print2DPointerArray(n,m,arr[0]);
 }
-void prob3(){
+void ps6a_prob3(){
 
 /*
 Given an n x n matrix where each of the rows and columns is sorted in ascending
@@ -163,7 +146,7 @@ element in the sorted order, not the kth distinct element.
     }
     printf("kth smallest integer in the sorted 2D array : %d",minValue);
 }
-void prob4(){
+void ps6a_prob4(){
 
 /*
 4) You are given row x col grid representing a map where grid[i][j] = 1 represents land
@@ -194,7 +177,7 @@ width and height don't exceed 100. Determine the perimeter of the island.
     }
     printf("Perimeter of the Island is %d\n",total);
 }
-void prob5(){
+void ps6a_prob5(){
 
 /*
 Given an n x n array of integers matrix, return the minimum sum of any falling path
@@ -212,79 +195,29 @@ Specifically, the next element from position (row, col) will be (row + 1, col - 
     int mini=INT_MAX;
     int row = 0;
     for(int col = 0;col<m;col++){
-        mini = min2(mini,prob5Sum(&arr[0][0],row,col,n,m));
+        mini = min2(mini,ps6a_prob5Sum(&arr[0][0],row,col,n,m));
     }
     printf("The Minimum sum of the falling path is %d",mini);
 }
-int prob5Sum(int*arr,int row,int col,int n,int m){
+int ps6a_prob5Sum(int*arr,int row,int col,int n,int m){
     if(row==n-1){
         return *(arr+(row*m+col));
     }else{
         int a,b,c;
         int sum;
-        b = prob5Sum(arr,row+1,col,n,m);
+        b = ps6a_prob5Sum(arr,row+1,col,n,m);
         if(col-1>=0 && col+1<m){
-            a = prob5Sum(arr,row+1,col-1,n,m);
-            c = prob5Sum(arr,row+1,col+1,n,m);
+            a = ps6a_prob5Sum(arr,row+1,col-1,n,m);
+            c = ps6a_prob5Sum(arr,row+1,col+1,n,m);
             sum = min3(a,b,c);
         }
         else if(col-1>=0){
-            a = prob5Sum(arr,row+1,col-1,n,m);
+            a = ps6a_prob5Sum(arr,row+1,col-1,n,m);
             sum = min2(a,b);
         }else if(col+1<m){
-            c = prob5Sum(arr,row+1,col+1,n,m);
+            c = ps6a_prob5Sum(arr,row+1,col+1,n,m);
             sum = min2(b,c);
         }
         return *(arr+(row*m+col)) + sum;
-    }
-}
-int min2(int a,int b){
-    return (a<b) ? a:b;
-}
-int min3(int a,int b,int c){
-    return min2(a,min2(b,c));
-}
-void get2DArrayLen(int *n,int *m){
-    printf("Enter number of rows (n) : ");
-    scanf("%d",n);
-    printf("Enter number of columns (m) : ");
-    scanf("%d",m);
-}
-void get2DArray(int n,int m,int *arr){
-    int i,j;
-    for(i=0;i<n;i++){
-        for(j=0;j<m;j++){
-            printf("Enter (%d,%d) : ",i,j);
-            scanf("%d",arr+(i*m+j));
-        }
-    }
-}
-void print2DArray(int arr[][5],int n,int m){
-    for(int i = 0;i<n;i++){
-        for(int j = 0;j<m;j++){
-            printf("%d\t",arr[i][j]);
-        }
-        printf("\n");
-    }
-}
-void print1DArray(int len,int *arr){
-    for(int i = 0;i<len;i++){
-        printf("%d,",arr[i]);
-    }
-    printf("\n");
-}
-void print2DPointerArray(int n,int m,int *arr){
-    int i,j;
-    for(i=0;i<n;i++){
-        for(j=0;j<m;j++){
-            printf("%d\t",*(arr+(i*n+j)));
-        }
-        printf("\n");
-    }
-}
-int arraySum(int n,int *arr){
-    int sum = 0;
-    for(int i = 0;i<n;i++){
-        sum+=arr[i];
     }
 }

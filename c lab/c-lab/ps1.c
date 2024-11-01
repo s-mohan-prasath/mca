@@ -2,27 +2,11 @@
 #include <stdlib.h>
 #include <math.h>
 
-int prob2Disc(int a,int b,int c);
-void prob4PrintDay(int n);
-int prob9FindNumOfDigits(int n);
-void prob9IntToArray(int n,int *arr);
-void prob1();
-void prob2();
-void prob3();
-void prob4();
-void prob5(int,int);
-void prob6();
-void prob7();
-void prob8();
-void prob9();
-void prob10();
-
-int main(){
-    prob10();
-    return 0;
-}
-
-void prob1(){
+void ps1_prob1(){
+/*
+Write a C program to compute the following
+f = (x^3 - 2*x^2 + x - 6.3)/(x^2 + 0.05*x + 3.14)
+*/
     printf("Problem 1\n");
     int x;
     float out;
@@ -32,7 +16,10 @@ void prob1(){
     printf("%f",out);
 }
 
-void prob2(){
+void ps1_prob2(){
+/*
+Write a C program to print the roots of a quadratic equation
+*/
     printf("Find roots of the equation?\n");
     int a,b,c;
     printf("Enter the coefficient of x^2 x and constant (space separated) : ");
@@ -41,7 +28,7 @@ void prob2(){
             printf("\nGiven equation is not a quadratic equation\n");
     }
     else{
-        int d = prob2Disc(a,b,c);
+        int d = ps1_prob2Disc(a,b,c);
         if(d<0){
             printf("Roots are Imaginary\n");
             printf("(%d+(%d)i)/%d and (%d+(%d)i)/%d",-b,d,2*a,-b,-d,2*a);
@@ -55,7 +42,17 @@ void prob2(){
     }
 }
 
-void prob3(){
+void ps1_prob3(){
+/*
+Write the complete C program that asks the user to enter the value for t
+from the keyboard and then it computes and prints the value of p which
+is expressed as a function of t by
+
+p(t) = { 20          when 0<t<=2
+         4(t+2)      when 13<t<=16 or t>30
+         4(t^2 + 2t) when otherwise
+        }
+*/
     int t;
     printf("\nEnter the value of t : ");
     scanf("%d",&t);
@@ -69,7 +66,37 @@ void prob3(){
     }
 }
 
-void prob4(){
+void ps1_prob4(){
+/*
+Write a program that outputs the day of the week given a date expressed as y (day) m (month) o (year).
+You will use the following formula:
+
+m1 = { m-2  si m>=3
+       m+10 si1 m<3
+}
+
+a1 = { a    si m>=3
+       a-1  si m<3
+}
+
+and with ns being the two first digits of a1 and as the two last digits of a1
+
+f = j + as + ((as)/4) - 2(ns) + (ns/4) + (26(m1) - 2)/10
+
+The day of the week will then be given by the modulo off and 7 (0 is Sunday, 1 Monday etc). Let the date be
+DD/MM/CCYY (european format), where DD is the day of the month, MM is the month, CC the century-digits and
+ YY the year within the century. The for the date 23/06/1994. Starting with the century CC-digits,
+ calculate CC/4 - 2*CC-1 and remember the result. With all divisions in this exercise, discard any remainder
+  and just keep the whole part. So, in our example, this is 19/4=4 minus 2*19=38 minus 1, giving minus 35.
+Now, using the year YY, calculate 5*YY/4. In this example that's 5*94 = 470/4 = discarding the remainder.
+Adding this to our existing result gives 117-35 = 82.
+Using the month MM, calculate 26*(MM+1)/10. In our example this is 26*7 = 182 / 10 = 18,
+again discarding the remainder. Add this to our running total giving 82+18 = 100.
+Finally just add the day DD. Here 100 + 23 = 123.
+Now divide the result by 7, just keeping the remainder; here 123(mod 7) = 4. Counting Sunday as zero, Monday = 1 etc,
+we get 4 = Thursday. Easy, when you know how
+
+*/
     int cc,yy,mm,dd;
     printf("Enter the date in the format dd/mm/cc/yy : ");
     scanf("%d/%d/%d/%d",&dd,&mm,&cc,&yy);
@@ -78,36 +105,50 @@ void prob4(){
     yy = (int)5*yy/4;
     mm = (int)(26*(mm+1)/10);
     dd = cc+yy+mm+dd;
-    prob4PrintDay(dd%7);
+    ps1_prob4PrintDay(dd%7);
 }
 
-void prob5(int a, int b){
+void ps1_prob5(int a, int b){
+/*
+Write a program to find the biggest among two numbers without using any control structures.
+*/
     int x = a+b;
     int y = abs(a-b);
     int d = (x+y)/2;
     printf("Maximum number is %d",d);
 }
 
-void prob6(){
+void ps1_prob6(){
+/*
+    Write a C program to print # the format given below
+*/
     printf("\nProblem - 6\nWhat do you want to print in the console : \n");
-    printf("Type 1 for triangle\nType 2 for Pyramid\nType 3 for Diamond\nType 4 for Right Arrow\nType 5 for Inverse Right Arrow\n\ntype: ");
+    printf("Type 1 for triangle\nType 2 for Pyramid\nType 3 for Diamond\nType 4 for Right Arrow\nType 5 for Inverse Pyramid\n\ntype: ");
     int n;
     scanf("%d",&n);
     if(n==1){
-        prob6RightTriangle();
+        ps1_prob6RightTriangle();
     }else if(n==2){
-        prob6Pyramid();
+        ps1_prob6Pyramid();
     }else if(n==3){
-        prob6Diamond();
+        ps1_prob6Diamond();
     }else if(n==4){
-        prob6RightArrow();
+        ps1_prob6RightArrow();
     }else if(n==5){
-        prob6InversePyramid();
+        ps1_prob6InversePyramid();
     }
 
 }
 
-void prob7(){
+void ps1_prob7(){
+/*
+Write a program for a matchstick game being played between the computer and a user. Your program should ensure that the computer always wins. Rules for the game are as follows:
+There are 21 matchsticks.
+The computer asks the player to pick 1, 2, 3, or 4 matchsticks.
+After the person picks, the computer does its picking.
+Whoever is forced to pick up the last matchstick loses the game.
+*/
+
     printf("\nMATCH STICK GAME\nRULES : player can only pick 1,2,3 or 4 sticks\n\n");
     int turn = 0,sticks=21,k;
     /*
@@ -140,7 +181,13 @@ void prob7(){
     printf("You lose the game");
 }
 
-void prob8(){
+void ps1_prob8(){
+/*
+A number is said to be perfect if it is equal to the sum of all numbers which are its
+factors (excluding itself). So, for example, 6 is perfect, because it is the sum of its
+factors 1,2,3. Write a program which determines if a number is perfect.
+It should also print its factors.
+*/
     int k;
     printf("\nCHECK WHETHER THE NUMBER IS PERFECT?\n\nEnter the number : ");
     scanf("%d",&k);
@@ -158,7 +205,14 @@ void prob8(){
     }
 }
 
-void prob9(){
+void ps1_prob9(){
+/*
+Write a program that takes as input a natural number x and prints the smallest palindrome
+larger than x. A palindrome is a word, number, phrase, or other sequence of characters which
+reads the same backward as forward, such as madam, racecar. There are also numeric palindromes,
+including date/time stamps using short digits
+1 l/l l/l 1 11:11 and long digits 02/02/2020.
+*/
     int n,i,nd,start,end;
     printf("Enter a number : ");
     scanf("%d",&n);
@@ -168,9 +222,9 @@ void prob9(){
     }
     i = n+1;
     while(1){
-        nd = prob9FindNumOfDigits(i);
+        nd = ps1_prob9FindNumOfDigits(i);
         int num[nd];
-        prob9IntToArray(i,num);
+        ps1_prob9IntToArray(i,num);
         start = 0;
         end = nd-1;
         while(start<end){
@@ -189,7 +243,14 @@ void prob9(){
 }
 
 
-void prob10(){
+void ps1_prob10(){
+/*
+According to a study, the approximate level of intelligence of a person can be calculated
+using the following formula: i = 2 + ( y + 0.5 x )
+Write a program, which will produce a table of values of i, y and x, where y varies from 1 to 6,
+and, for each value of y, x varies from 5.5 to 12.5 in steps of 0.5.
+
+*/
     int y;
     float x,i;
     for(y=1;y<7;y++){
@@ -203,9 +264,18 @@ void prob10(){
 
 // HELPER FUNCTIONS
 
-void prob6RightTriangle(){
+void ps1_prob6RightTriangle(){
+/*
+#
+##
+###
+####
+#####
+
+k = denotes the number of line in the shape
+*/
     int k;
-    printf("\nEnter the size of Right Triangle : ");
+    printf("\nEnter the size of Right Triangle (k) : ");
     scanf("%d",&k);
     printf("\n");
     for(int i=1;i<=k;i++){
@@ -216,9 +286,17 @@ void prob6RightTriangle(){
     }
 }
 
-void prob6InversePyramid(){
+void ps1_prob6InversePyramid(){
+/*
+#########
+ #######
+  #####
+   ###
+    #
+k - denotes the maximum number of character in the first line
+*/
     int k;
-    printf("\nEnter the length of Pyramid (odd number) : ");
+    printf("\nEnter the length of Pyramid (odd number k ) : ");
     scanf("%d",&k);
     printf("\n");
     if(k%2==0){
@@ -244,7 +322,16 @@ void prob6InversePyramid(){
 
 }
 
-void prob6Pyramid(){
+void ps1_prob6Pyramid(){
+/*
+    #
+   ###
+  #####
+ #######
+#########
+
+k - denotes the maximum number of character in the last line
+*/
     int k;
     printf("\nEnter the length of Pyramid (odd number) : ");
     scanf("%d",&k);
@@ -272,7 +359,20 @@ void prob6Pyramid(){
 
 }
 
-void prob6Diamond(){
+void ps1_prob6Diamond(){
+/*
+    #
+   ###
+  #####
+ #######
+#########
+ #######
+  #####
+   ###
+    #
+
+k - denotes the maximum number of character in the middle line
+*/
     int k;
     printf("\nEnter the length of Diamond (odd number) : ");
     scanf("%d",&k);
@@ -307,7 +407,21 @@ void prob6Diamond(){
 
 }
 
-void prob6RightArrow(){
+void ps1_prob6RightArrow(){
+/*
+#####
+  ####
+    ###
+      ##
+        #
+        #
+      ##
+    ###
+  ####
+#####
+
+k - number of characters in the first and last line
+*/
     int n;
     printf("Enter a number greater than 2 : ");
     scanf("%d",&n);
@@ -342,7 +456,7 @@ void prob6RightArrow(){
 
 }
 
-void prob4PrintDay(int n){
+void ps1_prob4PrintDay(int n){
     if(n==0)printf("SUNDAY");
     else if(n==1)printf("MONDAY");
     else if(n==2)printf("TUESDAY");
@@ -353,11 +467,11 @@ void prob4PrintDay(int n){
     printf("\n");
 }
 
-int prob2Disc(int a,int b,int c){
+int ps1_prob2Disc(int a,int b,int c){
     return (b*b-4*a*c);
 }
 
-int prob9FindNumOfDigits(int n){
+int ps1_prob9FindNumOfDigits(int n){
     int count = 0;
     while(n>0){
         count++;
@@ -366,7 +480,7 @@ int prob9FindNumOfDigits(int n){
     return count;
 }
 
-void prob9IntToArray(int n,int *arr){
+void ps1_prob9IntToArray(int n,int *arr){
     int i = 0;
     while(n>0){
         arr[i] = n%10;
@@ -389,19 +503,19 @@ C:\Users\MCA\Desktop\D24MX113\C-LAB\c-lab-handson-1\main.c|15|warning: multi-cha
 C:\Users\MCA\Desktop\D24MX113\C-LAB\c-lab-handson-1\main.c|15|warning: passing argument 1 of 'scanf' makes pointer from integer without a cast [-Wint-conversion]|
 C:\Program Files\CodeBlocks\MinGW\x86_64-w64-mingw32\include\stdio.h|523|note: expected 'const char * restrict' but argument is of type 'int'|
 
-------------------REDEFINITION OF prob4
+------------------REDEFINITION OF ps1_prob4
 
-I have defined two prob4 function in the script
+I have defined two ps1_prob4 function in the script
 
 ||=== Build file: "no target" in "no project" (compiler: unknown) ===|
 Z:\CODING\SEM1\C Lab\workout\c-problems-1\main.c||In function 'main':|
-Z:\CODING\SEM1\C Lab\workout\c-problems-1\main.c|9|warning: implicit declaration of function 'prob4'; did you mean 'prob2'? [-Wimplicit-function-declaration]|
-Z:\CODING\SEM1\C Lab\workout\c-problems-1\main.c|13|warning: conflicting types for 'prob4'|
-Z:\CODING\SEM1\C Lab\workout\c-problems-1\main.c|9|note: previous implicit declaration of 'prob4' was here|
-Z:\CODING\SEM1\C Lab\workout\c-problems-1\main.c||In function 'prob6':|
+Z:\CODING\SEM1\C Lab\workout\c-problems-1\main.c|9|warning: implicit declaration of function 'ps1_prob4'; did you mean 'prob2'? [-Wimplicit-function-declaration]|
+Z:\CODING\SEM1\C Lab\workout\c-problems-1\main.c|13|warning: conflicting types for 'ps1_prob4'|
+Z:\CODING\SEM1\C Lab\workout\c-problems-1\main.c|9|note: previous implicit declaration of 'ps1_prob4' was here|
+Z:\CODING\SEM1\C Lab\workout\c-problems-1\main.c||In function 'ps1_prob6':|
 
 
-prob6 error
+ps1_prob6 error
 
 Z:\CODING\SEM1\C Lab\workout\c-problems-1\main.c|206|error: 'cols' undeclared (first use in this function); did you mean 'cos'?|
 int i=0,start=0;rows=2*n,cols=n;

@@ -2,21 +2,12 @@
 #include <stdlib.h>
 #include <math.h>
 
-int isPositiveNumber(int n);
-void prob1();
-void prob2();
-void prob3();
-void prob4();
-void prob5();
-void prob6();
-
-int main()
-{
-    //prob1();
-    printf("%d",9);
-    return 0;
-}
-void prob1(){
+void ps2_prob1(){
+/*
+Write a C program that accepts a positive integer from the keyboard. If the input is invalid,
+it stops with appropriate message. For a valid input, it determines the first and last digits of the number.
+Further, it checks whether the first digit or the last digit is multiple of the other with appropriate message.
+*/
     int n,first,last;
     printf("Enter a positive number : ");
     scanf("%d",&n);
@@ -40,7 +31,20 @@ void prob1(){
 
 }
 
-void prob2(){
+void ps2_prob2(){
+/*
+Write a C program that reads two real numbers (from keyboard) representing the x and y coordinates
+of a point in the Cartesian plane. It then checks whether the point lies inside,
+outside or on a circle of radius 5 with centre at the origin. Finally,
+it prints appropriate message too.
+
+(Example: Typical input: 2.5 3.0
+Typical output: The point lies inside the circle
+Typical input: 1.9 4.8
+Typical output: The point lies outside the circle
+Typical input: 3.0 4.0 Typical output: The point lies on the circle)
+
+*/
     float x,y,r=5.0;
     printf("2) To Check whether the point lies inside, outside or on the circle\n");
     printf("Enter the points in the format (x,y) : ");
@@ -54,12 +58,18 @@ void prob2(){
 
 }
 
-void prob3(){
+void ps2_prob3(){
+/*
+Write a C program that accepts a positive integer (from the keyboard).
+If the input is invalid, it stops after printing the message Invalid input.
+For a valid input, it then computes and prints out the sum
+ 1*n + 2*(n − 1) + 3*(n − 2) +...+ (n − 1)*2 + n*1
+*/
     int n, mid,i=1,addition=0;
     long long sum = 0;
     printf("Enter the value of n : ");
     scanf("%d",&n);
-    if(isPositiveNumber(n) == 0){
+    if(ps2_isPositiveNumber(n) == 0){
         printf("INVALID INPUT : value of n should be positive");
         return;
     }
@@ -76,7 +86,18 @@ void prob3(){
     printf("sum is %lld",sum);
 }
 
-void prob4(){
+void ps2_prob4(){
+/*
+Write a C program that accepts a three digit positive integer from the keyboard.
+If the input is invalid, it stops after printing the message Invalid input.
+For a valid input, it then checks whether the sum of the digits is equal
+to the product of the digits. Finally, it prints appropriate message too.
+(Example: Typical input: 123
+Typical output: The sum of the digits is equal to the product of the digits
+Typical input: 121
+Typical output: The sum of the digits is NOT equal to the product of the digits)
+
+*/
     int n,a,b,c;
     printf("Enter the three digit positive number : ");
     scanf("%d",&n);
@@ -92,11 +113,17 @@ void prob4(){
     }
 }
 
-void prob5(){
+void ps2_prob5(){
+/*
+Write a C program that accepts a three digit positive integer from the keyboard.
+If the input is invalid, it stops after printing the message Invalid input.
+For a valid input, it then checks whether the sum of the first and the last digits is
+equal to the middle digit. Finally, it prints appropriate message too.
+*/
     int a,b,c,n;
     printf("Enter the three digit positive number : ");
     scanf("%d",&n);
-    if(isPositiveNumber(n)==1 && (n>99 && n<1000)){
+    if(ps2_isPositiveNumber(n)==1 && (n>99 && n<1000)){
         c = n%10;
         n = n/10;
         b = n%10;
@@ -108,7 +135,12 @@ void prob5(){
     }
 }
 
-void prob6(){
+void ps2_prob6(){
+/*
+The Bessel function of the first kind of order zero is defined by J0(x)
+  Write a C program that accepts real x from the keyboard.
+  Then it calculates and prints out the value of J0(x) using the first 20 terms only.
+*/
     float x;
     printf("Enter the value of x : ");
     scanf("%f",&x);
@@ -129,7 +161,8 @@ void prob6(){
 
 //HELPER FUNCTIONS
 
-int isPositiveNumber(int n){
+int ps2_isPositiveNumber(int n){
+    // to check whether the number is positive
     if(n>0)return 1;
     else return 0;
 }

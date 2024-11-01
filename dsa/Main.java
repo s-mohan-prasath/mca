@@ -3,9 +3,11 @@ import java.util.*;
 public class Main {
         public static void main(String[] arg) {
 
+                
+
                 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                stack_problems sp1 = new stack_problems();
+                // stack_problems sp1 = new stack_problems();
 
                 // PROBLEM - 1
                 // Stack<Integer> s1 = new Stack<>();
@@ -37,15 +39,15 @@ public class Main {
 
                 // PROBLEM 5
 
-                Stack<Integer> s1 = new Stack<>();
-                s1.push(1);
-                s1.push(4);
-                s1.push(3);
-                s1.push(2);
-                s1.push(2);
-                s1.push(5);
-                s1.push(5);
-                System.out.println(sp1.prob5(s1));
+                // Stack<Integer> s1 = new Stack<>();
+                // s1.push(1);
+                // s1.push(4);
+                // s1.push(3);
+                // s1.push(2);
+                // s1.push(2);
+                // s1.push(5);
+                // s1.push(5);
+                // System.out.println(sp1.prob5(s1));
 
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 

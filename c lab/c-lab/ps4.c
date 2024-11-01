@@ -1,29 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "helpfulfunctions.h"
 
-void getArrayLen(int *len);
-void getArray(int len, int *arr);
-void printArray(int len, int *arr);
-void printSubArray(int *arr, int len, int start, int end);
-int max2(int,int);
-void prob1();
-void prob2();
-void prob3();
-void prob4();
-void prob5();
-void prob6();
-void prob7();
-//TODO: check the function with the wide range of test cases and make it suitable to handle all the test cases
-void prob8();
-
-int main()
-{
-    prob6();
-    return 0;
-}
-
-void prob1()
+void ps4_prob1()
 {
     int n, i = 0, sales, maxSale = 0, maxSaleId = 1, minSaleId = 1, minSale = 0, totalSales = 0, count;
     printf("Enter Number of Sales People : ");
@@ -71,7 +51,7 @@ void prob1()
     printf("the total number of salespeople whose sales exceeded the value entered is %d\n", count);
 }
 
-void prob2()
+void ps4_prob2()
 {
     int i, n, noOfCorrect, ans;
     char gradeAgain;
@@ -108,7 +88,7 @@ void prob2()
     } while (gradeAgain == 'y');
 }
 
-void prob3()
+void ps4_prob3()
 {
     int l, temp;
     printf("LENGTH OF THE ARRAY SHOULD BE EVEN \n");
@@ -153,7 +133,7 @@ void prob3()
     printArray(l, arr);
 }
 
-void prob4()
+void ps4_prob4()
 {
     // referred from https:www.geekinterview.com/question_details/39488
     int arr[] = {1, 2, 3, 4, 5, 6, 6};
@@ -193,7 +173,7 @@ at this point you have two equations with two parameters, solve and rule!
     */
 }
 
-void prob5()
+void ps4_prob5()
 {
     int i, j, len, ele, temp, maxLen, currLen;
     getArrayLen(&len);
@@ -249,7 +229,7 @@ void prob5()
     printf("Maximum length of consecutive subsequence is %d", maxLen);
 }
 
-void prob6()
+void ps4_prob6()
 {
     int arr[] = {1,2,3,0,-1,-10};
     int len = 6;
@@ -280,11 +260,7 @@ void prob6()
     printf("%d",max2(maxProd1,maxProd2));
 }
 
-void prob8()
-{
-}
-
-void prob7()
+void ps4_prob7()
 {
     /*
     Edge cases
@@ -337,42 +313,7 @@ void prob7()
     printf("\n");
 }
 
-// HELPER FUNCTION
-
-int max2(int a,int b){
-    return (a>b) ? a:b;
-}
-
-void getArrayLen(int *len)
+//TODO: check the function with the wide range of test cases and make it suitable to handle all the test cases
+void ps4_prob8()
 {
-    printf("Enter the length of Array : ");
-    scanf("%d", len);
-}
-
-void getArray(int len, int *arr)
-{
-    for (int i = 0; i < len; i++)
-    {
-        printf("Enter Element (i=%d) : ", i);
-        scanf("%d", &arr[i]);
-    }
-}
-
-void printArray(int len, int *arr)
-{
-    printf("Elements are :\n");
-    for (int i = 0; i < len; i++)
-    {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-}
-
-void printSubArray(int *arr, int len, int start, int end)
-{
-    while (start <= end)
-    {
-        printf("%d ", arr[start]);
-        start++;
-    }
 }

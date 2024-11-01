@@ -1,27 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "helpfulfunctions.h"
 
-void prob1();
-void prob2();
-void prob3();
-void prob4();
-void prob5();
-void prob6();
-void prob7();
-void prob8();
-void prob9();
-void getArrayLen(int*len);
-void getArray(int len,int*array);
-int findElementInArray(int len,int *arr,int ele);
-
-int main()
-{
-    prob9();
-    return 0;
-}
-
-void prob1(){
+void ps3_prob1(){
     int n;
     getArrayLen(&n);
     int arr[n];
@@ -51,7 +33,7 @@ void prob1(){
     printf("Second largest number is %d\n",arr[1]);
 }
 
-void prob2(){
+void ps3_prob2(){
     int n;
     getArrayLen(&n);
     int arr[n];
@@ -64,7 +46,7 @@ void prob2(){
     printArray(n,arr);
 }
 
-void prob3(){
+void ps3_prob3(){
     int n;
     getArrayLen(&n);
     int arr[n];
@@ -81,7 +63,7 @@ void prob3(){
     printf("value = %d is not present in the array",k);
 }
 
-void prob4(){
+void ps3_prob4(){
     int positives=0,negatives=0,evens=0,odds=0,n;
     getArrayLen(&n);
     int arr[n];
@@ -105,7 +87,7 @@ void prob4(){
     printf("Number of Odd Numbers is %d\n",odds);
 }
 
-void prob5(){
+void ps3_prob5(){
     int n;
     getArrayLen(&n);
     int arr[n];
@@ -122,7 +104,7 @@ void prob5(){
     return;
 }
 
-void prob6(){
+void ps3_prob6(){
     int n,mid,temp;
     getArrayLen(&n);
     int arr[n];
@@ -136,7 +118,7 @@ void prob6(){
     printArray(n,arr);
 }
 
-void prob7(){
+void ps3_prob7(){
     int n;
     getArrayLen(&n);
     int arr[n];
@@ -167,7 +149,7 @@ void prob7(){
     printf("\n");
 }
 
-void prob8(){
+void ps3_prob8(){
     int i,j,n,key,start,end;
     getArrayLen(&n);
     printf("Enter the value of key to rotate : ");
@@ -189,7 +171,7 @@ void prob8(){
     printArray(n,arr);
 }
 
-void prob9(){
+void ps3_prob9(){
     int n1=5,n2=7;
     int arr1[5] = {-2,-1,0,1,2};
     int arr2[7] = {0,1,2,3,4,5,6};
@@ -228,53 +210,6 @@ void prob9(){
 
 }
 
-
-
-//HELPER FUNCTIONS
-
-void getArrayLen(int*len){
-    int n;
-    printf("Enter the length of the array : ");
-    scanf("%d",&n);
-    *len = n;
-}
-void getArray(int len,int *array){
-    for(int i = 0;i<len;i++){
-        printf("Enter the value (i=%d) : ",i);
-        scanf("%d",&array[i]);
-    }
-}
-void printArray(int len,int*arr){
-    for(int i = 0;i<len;i++){
-        printf("%d ",arr[i]);
-    }
-    printf("\n");
-}
-void sortArray(int len,int*arr,char c){
-    for(int i = 0;i<len;i++){
-        for(int j = i+1;j<len;j++){
-            int temp=arr[i];
-            if(c=='a' && arr[i]>arr[j]){
-                    arr[i]=arr[j];
-                    arr[j]=temp;
-            }else if(c!='a' && arr[i]<arr[j]){
-                    arr[i]=arr[j];
-                    arr[j]=temp;
-            }
-        }
-    }
-
-}
-int findElementInArray(int len,int *arr,int ele){
-    for(int i = 0;i<len;i++){
-        if(arr[i]==ele){
-                return 1;
-        }
-    }
-    return 0;
-}
-
-
 //ERROR LOGS
 /*
 problem 1 errors
@@ -293,4 +228,3 @@ problem 9 errors
 variable sized objects may not be initialized
 
 */
-

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="c-lab" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/c-lab" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/c-lab" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="helpfulfunctions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="helpfulfunctions.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ps1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ps1.h" />
+		<Unit filename="ps2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ps2.h" />
+		<Unit filename="ps3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ps3.h" />
+		<Unit filename="ps4.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ps4.h" />
+		<Unit filename="ps5.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ps5.h" />
+		<Unit filename="ps6a.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ps6a.h" />
+		<Unit filename="ps7.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ps7.h" />
+		<Unit filename="string_ps.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="string_ps.h" />
+		<Unit filename="structs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="structs.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

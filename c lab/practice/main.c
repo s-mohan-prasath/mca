@@ -1,15 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include "lib.h"
 
 void zoho_qn1();
 void zoho_qn2();
 int min2(int,int);
 void maxAreaInSquare();
 
+// IMPLEMENTING LINKED LIST
+
+
 int main()
 {
-    maxAreaInSquare();
+    struct LinkedList * ll = createLinkedList();
+    addNodeToLinkedList(ll,1);
+    addNodeToLinkedList(ll,2);
+    addNodeToLinkedList(ll,3);
+    addNodeToLinkedList(ll,4);
+    printLinkedList(ll);
+    printf("\n%d",findInLinkedList(ll,3));
     return 0;
 }
 

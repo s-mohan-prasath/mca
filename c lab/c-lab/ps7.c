@@ -1,27 +1,17 @@
+
 #include <stdio.h>
 #include <stdlib.h>
+#include "helpfulfunctions.h"
 
-void prob1();
-int prob3();
-void prob4();
-void prob5();
-
-void get2DArray(int n,int m,int *arr);
-void get2DArrayLen(int *n,int*m);
 int checkRange(int,int,int,int);
 
-int main()
-{
-    prob2();
-    return 0;
-}
-void prob1(){
+void ps7_prob1(){
 
 /*
 Write an efficient algorithm that searches for a value target in an m x n integer matrix
 matrix. This matrix has the following properties:
-• Integers in each row are sorted in ascending from left to right.
-• Integers in each column are sorted in ascending from top to bottom.
+- Integers in each row are sorted in ascending from left to right.
+- Integers in each column are sorted in ascending from top to bottom.
 
 Test case 1
 Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]],
@@ -79,14 +69,14 @@ Output: true
     printf("false");
 }
 
-void prob2(){
+void ps7_prob2(){
 
 /*
 2. You are given an integer array nums. You need to create a 2D array from nums satisfying
 the following conditions:
-• The 2D array should contain only the elements of the array nums.
-• Each row in the 2D array contains distinct integers.
-• The number of rows in the 2D array should be minimal.
+ï¿½ The 2D array should contain only the elements of the array nums.
+ï¿½ Each row in the 2D array contains distinct integers.
+ï¿½ The number of rows in the 2D array should be minimal.
 Return the resulting array. If there are multiple answers, return any of them.
 Note that the 2D array can have a different number of elements on each row.
 Test Case 1:
@@ -155,7 +145,7 @@ Explanation: We can create a 2D array that contains the following rows:
     }
 }
 
-int prob3(){
+int ps7_prob3(){
 
 /*
 Q3. Given an m x n matrix, return true if the matrix is Toeplitz. Otherwise, return false.
@@ -193,15 +183,15 @@ A matrix is Toeplitz if every diagonal from top-left to bottom-right has the sam
     return 1;
 }
 
-void prob4(){
+void ps7_prob4(){
 
 /*
 Q4. You are given an m x n binary matrix mat of 1's (representing soldiers) and 0's
 (representing civilians). The soldiers are positioned in front of the civilians. That is, all the 1's
 will appear to the left of all the 0's in each row.
 A row i is weaker than a row j if one of the following is true:
-• The number of soldiers in row i is less than the number of soldiers in row j.
-• Both rows have the same number of soldiers and i < j.
+ï¿½ The number of soldiers in row i is less than the number of soldiers in row j.
+ï¿½ Both rows have the same number of soldiers and i < j.
 Return the indices of the k weakest rows in the matrix ordered from weakest to strongest.
 Test Case 1:
 Input: mat =
@@ -264,7 +254,7 @@ Output: [2,0,3]
     }
 }
 
-void prob5(){
+void ps7_prob5(){
 
 /*
 Q5. Anti-theft security devices are activated inside a bank. You are given a 0-indexed binary
@@ -272,8 +262,8 @@ string array bank representing the floor plan of the bank, which is an m x n 2D 
 bank[i] represents the ith row, consisting of '0's and '1's. '0' means the cell is empty, while'1'
 means the cell has a security device.
 There is one laser beam between any two security devices if both conditions are met:
-• The two devices are located on two different rows: r1 and r2, where r1 < r2.
-• For each row i where r1 < i < r2, there are no security devices in the ith row.
+ï¿½ The two devices are located on two different rows: r1 and r2, where r1 < r2.
+ï¿½ For each row i where r1 < i < r2, there are no security devices in the ith row.
 Laser beams are independent, i.e., one beam does not interfere nor join with another.
 Return the total number of laser beams in the bank.
 */
@@ -308,31 +298,6 @@ Return the total number of laser beams in the bank.
         }
     }
     printf("No of Laser Beams in the Bank is %d",noOfBeams);
-}
-
-void print1DArray(int n,int *arr){
-    int i = 0;
-    while(i<n){
-        printf("%d ",arr[i]);
-        i++;
-    }
-}
-
-void get2DArrayLen(int *n,int *m){
-    printf("Enter number of rows (n) : ");
-    scanf("%d",n);
-    printf("Enter number of columns (m) : ");
-    scanf("%d",m);
-}
-
-void get2DArray(int n,int m,int *arr){
-    int i,j;
-    for(i=0;i<n;i++){
-        for(j=0;j<m;j++){
-            printf("Enter (%d,%d) : ",i,j);
-            scanf("%d",arr+(i*m+j));
-        }
-    }
 }
 
 int checkRange(int i,int j,int n,int m){
