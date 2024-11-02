@@ -66,6 +66,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ps7.h" />
+		<Unit filename="ps8.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ps8.h" />
 		<Unit filename="string_ps.c">
 			<Option compilerVar="CC" />
 		</Unit>

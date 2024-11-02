@@ -3,8 +3,10 @@
 #include <string.h>
 #include "helpfulfunctions.h"
 #include "structs.h"
+#include "ctype.h"
 
 int checkCommonCharacters(int l1,int l2,char *s1,char *s2);
+char* string_ps_prob9_recu(int times,int strLen,char *str);
 
 void string_ps_prob1(){
 
@@ -379,7 +381,85 @@ char* string_ps_prob8(){
     return s;
 }
 
+char* string_ps_prob9(){
+/*
+9. Given an encoded string, return its decoded string.
+The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is
+being repeated exactly k times. Note that k is guaranteed to be a positive integer.
+You may assume that the input string is always valid; there are no extra white spaces, square
+brackets are well-formed, etc. Furthermore, you may assume that the original data does not
+contain any digits and that digits are only for those repeat numbers, k. For example, there will
+not be input like 3a or 2[4].
+The test cases are generated so that the length of the output will never exceed 105.
+Example 1:
+Input: s = "3[a]2[bc]"
+Output: "aaabcbc"
+Example 2:
+Input: s = "3[a2[c]]"
+Output: "accaccacc"
+Example 3:
+Input: s = "2[abc]3[cd]ef"
+Output: "abcabccdcdcdef"
+*/
 
+    printf("Formulate a String\n");
+    int len;
+    getStringLen(&len);
+    char s[len];
+    getString(s);
+    return string_ps_prob9_recu(1,len,s);
+}
+
+char* string_ps_prob9_recu(int times,int strLen,char *str){
+    char* localStr = malloc(sizeof(char));
+    char* subStr = malloc(sizeof(char));
+    char* formulatedStr = malloc(sizeof(char));
+    *localStr = *subStr = *formulatedStr = '\0';
+
+    int localStrLen,subStrLen,formulatedStrLen,localTimes;
+    localStrLen = subStrLen = formulatedStrLen = 1;
+
+    int i,stringStart,stringEnd,digitStart,digitEnd,openBraceCount,closeBraceCount;
+    stringStart = digitStart = -1;
+    i = 0;
+    while(i<strLen-1){
+        if(isdigit(str[i])==1){
+            if(digitStart==-1){
+                digitStart = i;
+                digitEnd = i+1;
+            }
+            else{
+                digitEnd++;
+            }
+        }
+        else if(str[i]=='['){
+            stringStart = i+1;
+            openBraceCount = 1;
+            closeBraceCount = 0;
+            while(openBraceCount!=closeBraceCount){
+                i++;
+                if(str[i]=='[')openBraceCount++;
+                else if(str[i]==']')closeBraceCount++;
+            }
+            stringEnd = i;
+            localTimes = createNumberFromString(digitStart,digitEnd,str);
+            subStr = createSubstring(stringStart,stringEnd,str);
+            subStrLen = stringEnd-stringStart+1;
+            formulatedStr = string_ps_prob9_recu(localTimes,subStrLen,subStr);
+            formulatedStrLen = sizeofStringMalloc(formulatedStr);
+            localStr = concatStringMalloc(localStrLen,formulatedStrLen,localStr,formulatedStr);
+            localStrLen = localStrLen + formulatedStrLen - 1;
+            digitStart = -1;
+        }else{
+            localStrLen++;
+            localStr = realloc(localStr,localStrLen*sizeof(char));
+            *(localStr + localStrLen - 2) = str[i];
+            *(localStr + localStrLen - 1) = '\0';
+        }
+        i++;
+    }
+    return createMultipleTimesString(times,0,localStrLen-1,localStr);
+}
 
 int checkCommonCharacters(int l1,int l2,char *s1,char *s2){
     int alpha[26];

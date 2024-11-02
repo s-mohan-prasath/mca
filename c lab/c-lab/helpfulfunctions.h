@@ -1,6 +1,7 @@
 int max2(int,int);
 int min2(int,int);
 int min3(int a,int b,int c);
+int powerOf(int a,int b);
 // ARRAYS
 void getArrayLen(int*len);
 void getArray(int len,int*arr);
@@ -18,7 +19,11 @@ void print2DVariableColumnStrings(int rows,int *twod);
 // strings
 void getStringLen(int*len);
 void getString(char*s);
-
+int sizeofStringMalloc(char *s);
+char* createSubstring(int s,int e,char *str);
+char* concatStringMalloc(int l1,int l2,char *str1,char *str2);
+char* createMultipleTimesString(int times,int s,int e,char* str);
+int createNumberFromString(int s,int e,char *str);
 // CHARACTER FUNCTIONS
 int checkVowel(char c);
 int checkAlphaNum(char c);

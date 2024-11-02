@@ -4,7 +4,7 @@ public class practice {
     }
 
     public static void main(String[] arg) {
-        String str1 = "2[abc]3[cd]ef";
+        String str1 = "20[a]3[cd]ef";
         System.out.println(c_string_ps_recur(1, str1));
     }
 

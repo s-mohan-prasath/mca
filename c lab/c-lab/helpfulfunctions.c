@@ -10,6 +10,13 @@ int min3(int a,int b,int c){
 int max2(int a,int b){
     return (a>b)?a:b;
 }
+int powerOf(int a,int b){
+    int num = 1;
+    for(int i = 0;i<b;i++){
+        num *=a;
+    }
+    return num;
+}
 void getArrayLen(int *len)
 {
     printf("Enter the length of Array : ");
@@ -131,6 +138,69 @@ void getString(char*s){
     printf("Enter string : ");
     scanf("%[^\n]s",s);
 }
+char * concatStringMalloc(int l1,int l2,char *str1,char *str2){
+    int len,i;
+    len = l1-1+l2-1+1;
+    char *output = malloc(len*sizeof(char));
+    i = 0;
+    while(i<l1-1){
+        *(output+i) = *(str1+i);
+        i++;
+    }
+    i = 0;
+    while(i<l2-1){
+        *(output+l1-1+i) = *(str2+i);
+        i++;
+    }
+    *(output+len-1) = '\0';
+    return output;
+}
+int sizeofStringMalloc(char *s){
+    int i = 0;
+    int count = 0;
+    while(*(s+i)!='\0'){
+        count++;
+        i++;
+    }
+    return count+1;
+}
+char* createMultipleTimesString(int times,int s,int e,char* str){
+    int len,i,j,k;
+    len = (e-s)*times + 1; //+1 for last null character;
+    char *output = malloc(len*sizeof(char));
+    k = 0;
+    for(i = 0;i<times;i++){
+        j = s;
+        while(j<e){
+            *(output + k) = *(str+j);
+            j++;
+            k++;
+        }
+    }
+    *(output+(len-1)) = '\0';
+    return output;
+}
+char* createSubstring(int start,int end,char*str){
+    int len = end-start+1;// +1 for last null character in the string
+    char* substring = malloc(len*sizeof(char));
+    for(int i = 0;i<len-1;i++){
+        *(substring+i) = str[start+i];
+    }
+    *(substring + (len-1)) = '\0';
+    return substring;
+}
+int createNumberFromString(int s,int e,char *str){
+    int num,len;
+    num = 0;
+    len = e-s;
+    while(len>0){
+        num+=((int)(*(str+s)-'0')) * powerOf(10,len-1);
+        s++;
+        len--;
+    }
+    return num;
+}
+
 // CHARACTER FUNCTIONS
 int checkAlphaNum(char c){
     if((c>=48 && c<=57)||(c>=65&&c<=90)||(c>=97&&c<=122))return 1;

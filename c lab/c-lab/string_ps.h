@@ -4,4 +4,6 @@ void string_ps_prob3();
 int string_ps_prob4();
 int string_ps_prob5();
 int string_ps_prob6();
+void string_ps_prob7();
 char *string_ps_prob8();
+char* string_ps_prob9();
