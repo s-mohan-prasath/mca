@@ -150,6 +150,9 @@ int ps7_prob3(){
 /*
 Q3. Given an m x n matrix, return true if the matrix is Toeplitz. Otherwise, return false.
 A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same elements.
+
+SAMPLE INPUT :
+arr[3][4] = {1 2 3 4 5 1 2 3 9 5 1 2}
 */
 
     int n,m,i,j,k,diagFirstEle,iStart,jStart;
@@ -280,6 +283,7 @@ Return the total number of laser beams in the bank.
     for(i = 0;i<n;i++){
         printf("Enter the column string : ");
         scanf("%s",arr[i]);
+        arr[i][m-1] = '\0';
     }
     noOfBeams = 0;
     prevOnes = 0;

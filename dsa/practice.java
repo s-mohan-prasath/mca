@@ -1,11 +1,18 @@
+import java.util.HashMap;
+
 public class practice {
     public practice() {
 
     }
 
     public static void main(String[] arg) {
-        String str1 = "20[a]3[cd]ef";
-        System.out.println(c_string_ps_recur(1, str1));
+        HashMap<String, Integer> m = new HashMap<>();
+        m.put("mohan", 1);
+        if (m.containsKey("mohan")) {
+            System.out.println(m.get("mohan"));
+        }
+        // String str1 = "20[a]3[cd]ef";
+        // System.out.println(c_string_ps_recur(1, str1));
     }
 
     public static String c_string_ps_recur(int times, String str) {

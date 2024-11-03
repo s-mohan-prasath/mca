@@ -15,6 +15,8 @@
 
 int main()
 {
-    ps8_prob5();
+    while(1){
+        string_ps_prob1();
+    }
     return 0;
 }

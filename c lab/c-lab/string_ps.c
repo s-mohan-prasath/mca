@@ -24,12 +24,15 @@ Explanation: The last word is "World" with length 5.
     char s[len];
     getString(s);
     if(len<2)return;
-    int count = 0;
-    for(int i = len-2;i>=0;i--){
-        if(s[i]==' '){
-            break;
-        }
+    int i,count;
+    count = 0;
+    i = len-2;
+    while(i>=0 && s[i]==' '){
+        i--;
+    }
+    while(i>=0 && s[i]!=' '){
         count++;
+        i--;
     }
     printf("The last word length is %d\n",count);
 }

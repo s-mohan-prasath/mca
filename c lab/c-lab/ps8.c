@@ -81,7 +81,7 @@ area, but for this question, please write all of your code in this single funcit
 int getIndexBestArea(int grid[][SIZE]);
 
 use the following as input :
-arr = 5 3 8 4 6 1 7 9 2 5 4 7 3 8 6 5 1 9 2 4 8 2 5 7 1 4 9 6 3 8 1 5 7 2 3 8 6 4 9 2 9 6 3 5 1 4 8 7 2 5 7 1 6 3 9 8 4 2 6 4 9 2 5 7 8 1 3 6 3 1 8 9 2 4 7 5 8 7 5 4 3 6 1 9 2 8 4 9 6 2 5 3 7 1 2 3 4 5 6 7
+arr = 5 3 8 4 6 1 7 9 2 5 4 7 3 8 6 5 1 9 2 4 8 2 5 7 1 4 9 6 3 8 1 5 7 2 3 8 6 4 9 2 9 6 3 5 1 4 8 7 2 5 7 1 6 3 9 8 4 2 6 4 9 2 5 7 8 1 3 6 3 1 8 9 2 4 7 5 8 7 5 4 3 6 1 9 2 8 4 9 6 2 5 3 7 1 2 3 4 5 6 7 0 0 0
 */
     int n,m;
     get2DArrayLen(&n,&m);
