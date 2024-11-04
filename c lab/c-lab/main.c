@@ -11,12 +11,11 @@
 #include "ps7.h"
 #include "ps8.h"
 #include "string_ps.h"
+#include "ps10.h"
 #include "structs.h"
 
 int main()
 {
-    while(1){
-        string_ps_prob1();
-    }
+    ps10_prob5();
     return 0;
 }
