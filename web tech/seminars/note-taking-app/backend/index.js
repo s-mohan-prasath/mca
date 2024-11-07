@@ -1,56 +1,62 @@
 import express from 'express'
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import cors from 'cors'
+import { NoteModel } from './models/notes.js';
+
+dotenv.config()
 
 const app = express();
-
 app.use(express.json())
 app.use(cors())
 
-let PORT = 5000;
-
 app.get("/", (req, res) => {
     res.json({
-        "message": "success"
+        message: "success"
     }).status(200)
 })
-app.get("/notes", (req, res) => {
+app.get("/notes", async (req, res) => {
+    const notes = await NoteModel.find()
     res.json({
-        "message": "success",
-        "notes": notes
+        message: "success",
+        notes: notes
     }).status(200)
 })
+app.post("/notes", async (req, res) => {
+    let { title, brief } = req.body;
+    let note = await NoteModel.insertMany([{ title: title, brief: brief }])
+    console.log(note[0]._id)
+    res.json({
+        message: "note created successfully",
+        id: note[0]._id
+    })
+})
+app.put("/notes", async (req, res) => {
+    let { title, brief, _id } = req.body;
+    try {
+        let note = await NoteModel.updateOne({ _id }, { title, brief });
+        res.json({
+            message: "Note updated successfully",
+            ...note
+        })
+    } catch (e) {
+        console.log(e.message)
+    }
 
-var notes =
-    [
-        {
-            "id": 1,
-            "title": "Meeting Notes",
-            "brief": "Summary of the main points discussed in the client meeting."
-        },
-        {
-            "id": 2,
-            "title": "Project Ideas",
-            "brief": "List of potential ideas for upcoming projects and their brief descriptions."
-        },
-        {
-            "id": 3,
-            "title": "Shopping List",
-            "brief": "Items to purchase for the week, including groceries and essentials."
-        },
-        {
-            "id": 4,
-            "title": "Workout Plan",
-            "brief": "Outline of daily exercise routines and fitness goals."
-        },
-        {
-            "id": 5,
-            "title": "Book Summary",
-            "brief": "Key takeaways from the latest book I finished reading."
-        }
-    ]
-
-
-
-app.listen(PORT, () => {
-    console.log("server listening on port " + PORT)
+})
+app.delete("/note/:_id", async (req, res) => {
+    let { _id } = req.params
+    try {
+        let deletedNote = await NoteModel.deleteOne({ _id: _id })
+        console.log(deletedNote)
+        res.json({
+            message: "Note Deleted Successfully",
+        })
+    } catch (e) {
+        console.log(e)
+    }
+})
+app.listen(5000, () => {
+    mongoose.connect(process.env.mokesh)
+    console.log("Server is running " + process.env.mokesh)
 })
