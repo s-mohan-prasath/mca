@@ -1,7 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "helpfulfunctions.h"
 
 int getStringValue(int len,char *s);
+int ps10_prob2(){
+    int l1;
+    getStringLen(&l1);
+    char s1[l1],s2[l1];
+    printf("STRING 1\n");
+    getString(s1);
+    printf("STRING 2\n");
+    getString(s2);
+    int i1 = -1;
+    int i2 = -1;
+    char s1I1,s1I2;
+    for(int i = 0;i<l1;i++){
+        if(s1[i]!=s2[i]){
+            if(i1==-1){
+                s1I1 = s2[i];
+                i1 = i;
+            }
+            else if(i2==-1){
+                s1I2 = s2[i];
+                i2 = i;
+            }
+            else{
+                printf("false");
+                return 0;
+            }
+        }
+    }
+    if(i1==-1 && i2==-1){
+        printf("true");
+        return 1;
+    }else if(i2==-1){
+        printf("false");
+        return 0;
+    }
+    s1[i1] = s1I1;
+    s1[i2] = s1I2;
+    for(int i = 0;i<l1;i++){
+        if(s1[i]!=s2[i]){
+            printf("false");
+            return 0;
+        }
+    }
+    printf("true");
+    return 1;
+}
 int ps10_prob3(){
     printf("Return true if the summation of the numerical values of firstWord and secondWord equals the numerical value of targetWord, or false otherwise.");
     int len1,len2,len3;
@@ -30,8 +76,8 @@ int ps10_prob3(){
         printf("false");
         return 0;
     }
-
 }
+
 char* ps10_prob5(){
     int len,i,j;
     char c1,c2,temp;
