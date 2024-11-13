@@ -1,6 +1,16 @@
 
 public class Main {
         public static void main(String[] arg) {
+
+                // Solution so = new Solution();
+                // int[] gas = {1,2,3,4,5};
+                // int[] gas2 = {2,3,4};
+                
+                // int[] cost = {1,2,3,4,5};
+                // int[] cost2 = {3,4,3};
+                // so.canCompleteCircuit(gas2, cost2);
+                
+
                 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                 // stack_problems sp1 = new stack_problems();

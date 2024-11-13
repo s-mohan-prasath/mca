@@ -16,6 +16,6 @@
 
 int main()
 {
-    ps10_prob5();
+    ps10_prob3();
     return 0;
 }
