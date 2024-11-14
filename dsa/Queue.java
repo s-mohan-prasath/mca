@@ -1,19 +1,24 @@
-public class Queue<Type>{
+public class Queue<Type> {
     SLinkedList<Type> q;
-    public Queue(){
+
+    public Queue() {
         q = new SLinkedList<>();
     }
-    public boolean isEmpty(){
+
+    public boolean isEmpty() {
         return q.isEmpty();
     }
-    public void push(Node<Type> node){
-        q.push(node);
+
+    public void push(Type value) {
+        q.push(value);
     }
-    public void pop(){
+
+    public void pop() {
         q.fpop();
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return q.toString();
     }
 }

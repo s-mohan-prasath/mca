@@ -1,6 +1,8 @@
 int max2(int,int);
 int min2(int,int);
 int min3(int a,int b,int c);
+void swapChar(char *a,char *b);
+void swapInt(int *a,int *b);
 int powerOf(int a,int b);
 // ARRAYS
 void getArrayLen(int*len);

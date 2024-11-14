@@ -17,6 +17,17 @@ int powerOf(int a,int b){
     }
     return num;
 }
+void swapInt(int *a,int *b){
+    int temp = *a;
+    *a=*b;
+    *b=temp;
+}
+void swapChar(char *a,char *b){
+    char temp = *a;
+    *a=*b;
+    *b=temp;
+}
+
 void getArrayLen(int *len)
 {
     printf("Enter the length of Array : ");

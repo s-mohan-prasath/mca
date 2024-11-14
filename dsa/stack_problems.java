@@ -1,4 +1,3 @@
-import java.util.*;
 
 public class stack_problems {
     Stack<Integer> sortedGlobalStack = new Stack<>();
@@ -257,6 +256,7 @@ class SpecialStack {
         return top;
     }
 
+    @Override
     public String toString() {
         return ll.toString();
     }
