@@ -1,16 +1,36 @@
-import java.util.*;
 
 public class Main {
         public static void main(String[] arg) {
 
+                CircularQueue<Integer> cQ = new CircularQueue<>();
+                cQ.enQueue(1);
+                cQ.enQueue(2);
+                cQ.enQueue(3);
+                cQ.enQueue(4);
+                System.out.println(cQ);
+
+                // DoublyLinkedList<Integer> dl = new DoublyLinkedList<>();
+                // dl.push(1);
+                // dl.push(2);
+                // dl.push(3);
+                // dl.push(4);
+                // System.out.println(dl);
+
+                // CircularLinkeList<Integer> cl = new CircularLinkeList<>();
+                // cl.push(1);
+                // cl.push(2);
+                // cl.push(3);
+                // cl.push(4);
+                // cl.pop();
+                // System.out.println(cl);
+
                 // Solution so = new Solution();
                 // int[] gas = {1,2,3,4,5};
                 // int[] gas2 = {2,3,4};
-                
+
                 // int[] cost = {1,2,3,4,5};
                 // int[] cost2 = {3,4,3};
                 // so.canCompleteCircuit(gas2, cost2);
-                
 
                 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -3,6 +3,10 @@
 #include "helpfulfunctions.h"
 
 int getStringValue(int len,char *s);
+void ps10_prob4_sortSimul(int *m,char *c);
+int ps10_prob6_recur(int s1,int e1,int s2,int e2,char *str1,char *str2);
+
+
 int ps10_prob2(){
     int l1;
     getStringLen(&l1);
@@ -77,7 +81,50 @@ int ps10_prob3(){
         return 0;
     }
 }
+char* ps10_prob4(){
+    int a,b,ch;
+    printf("Enter the value of a b c : ");
+    scanf("%d %d %d",&a,&b,&ch);
+    int len = a+b+ch;
+    char *printer = malloc(len*sizeof(char));
 
+    int m[] = {a,b,ch};
+    char c[] = {'a','b','c'};
+
+    int  i = 0;
+    ps10_prob4_sortSimul(m,c);
+    while(m[0]>1){
+        printer[i++] = c[0];
+        printer[i++] = c[0];
+        m[0]-=2;
+        if(m[1]==0 && m[2]==0){
+            printer[i] = '\0';
+            return printer;
+        }
+        if(m[1]==0){
+            swapInt(&m[1],&m[2]);
+            swapChar(&c[1],&c[2]);
+        }
+        if(m[1]>=1){
+            printer[i++] = c[1];
+            m[1]-=1;
+        }
+        if(m[0]<=1){
+            ps10_prob4_sortSimul(m,c);
+        }
+    }
+    if(m[0]==1){
+        printer[i++] = c[0];
+        if(m[1]==1){
+            printer[i++] = c[1];
+            if(m[2]==1){
+                printer[i++] = c[2];
+            }
+        }
+    }
+    printer[i] = '\0';
+    return printer;
+}
 char* ps10_prob5(){
     int len,i,j;
     char c1,c2,temp;
@@ -105,6 +152,39 @@ char* ps10_prob5(){
     printf("%s",s);
     return s;
 }
+int ps10_prob6(){
+    int l1,l2;
+    printf("ENTER LENGTH OF PATTERN STRING\n");
+    getStringLen(&l1);
+    printf("ENTER LENGTH OF STRING\n");
+    getStringLen(&l2);
+    char str1[l1],str2[l2];
+    printf("ENTER PATTERN STRING\n");
+    getString(str1);
+    printf("ENTER STRING\n");
+    getString(str2);
+    return ps10_prob6_recur(0,l1,0,l2,str1,str2);
+}
+int ps10_prob6_recur(int s1,int e1,int s2,int e2,char *str1,char *str2){
+    if(s1==e1 && s2==e2){
+        return 1;
+    }
+    else if(s1!=e1 && s2!=e2 && (str1[s1]==str2[s2] || str1[s1]=='?')){
+        return ps10_prob6_recur(s1+1,e1,s2+1,e2,str1,str2);
+    }else if(s1!=e1 &&str1[s1]=='*'){
+        int output = 0;
+        for(int i = s2; i<=e2;i++){
+            output |= ps10_prob6_recur(s1+1,e1,i,e2,str1,str2);
+            if(output){
+                return 1;
+            }
+        }
+        return 0;
+    }else{
+        return 0;
+    }
+}
+
 int getStringValue(int len,char *s){
     int i,num;
     num = 0;
@@ -115,6 +195,15 @@ int getStringValue(int len,char *s){
     }
     return num;
 }
-
-
-
+void ps10_prob4_sortSimul(int *m,char *c){
+    int tempM;
+    char tempC;
+    for(int i = 0;i<3;i++){
+        for(int j = i+1;j<3;j++){
+            if(m[i]<=m[j]){
+                swapInt(&m[i],&m[j]);
+                swapChar(&c[i],&c[j]);
+            }
+        }
+    }
+}
