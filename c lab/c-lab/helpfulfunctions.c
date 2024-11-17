@@ -100,6 +100,11 @@ void findArrayStat(int len,int *arr,int *maxi,int *mini,int *sum,float *avg){
     *sum = lsum;
     *avg = ((float)lsum/len);
 }
+void makeArrayElementsZero(int len,int *arr){
+    for(int i = 0;i<len;i++){
+        arr[i] = 0;
+    }
+}
 // TWO D ARRAYS
 void get2DArrayLen(int *n,int *m){
     printf("Enter number of rows (n) : ");

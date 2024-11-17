@@ -5,8 +5,10 @@
 #include "structs.h"
 #include "ctype.h"
 
+void makeArrayElementsZero(int len,int *arr);
 int checkCommonCharacters(int l1,int l2,char *s1,char *s2);
 char* string_ps_prob9_recu(int times,int strLen,char *str);
+
 
 void string_ps_prob1(){
 
@@ -413,6 +415,66 @@ Output: "abcabccdcdcdef"
     return string_ps_prob9_recu(1,len,s);
 }
 
+int string_ps_prob10(){
+/*
+10. Given a string s and an integer k, return the length of the longest substring of s such that the
+frequency of each character in this substring is greater than or equal to k.
+if no such substring exists, return 0.
+
+Example 1:
+Input: s = "aaabb", k = 3
+Output: 3
+Explanation: The longest substring is "aaa", as 'a' is repeated 3 times.
+Example 2:
+Input: s = "ababbc", k = 2
+Output: 5
+Explanation: The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated 3
+times.
+Constraints:
+1 <= s.length <= 104
+s consists of only lowercase English letters.
+1 <= k <= 105
+*/
+    int len;
+    getStringLen(&len);
+    char str[len];
+    getString(str);
+    int k;
+    printf("Enter k : ");
+    scanf("%d",&k);
+    int ascii1[26];
+    int ascii2[26];
+    makeArrayElementsZero(26,ascii1);
+    makeArrayElementsZero(26,ascii2);
+
+    int i,m,pointI,pointJ,maxi;
+    maxi = 0;
+    //updating the freq of all the characters in the string to ascii1
+    for(i = 0;i<len;i++){
+        ascii1[str[i]%97]++;
+    }
+    for(pointI = 0;pointI<len;pointI++){
+        if(ascii1[str[pointI]%97]>=k){
+            for(pointJ = pointI;pointJ<len;pointJ++){
+                char c = str[pointJ];
+                int check = ascii1[c%97]>=k;
+                if(check){
+                    ascii2[c%97]++;
+                }else{
+                    for(m = pointI;m<pointJ;m++){
+                        if(ascii2[str[m]%97]<k)break;
+                    }
+                    if(m==pointJ){
+                        maxi = max2(pointJ-pointI,maxi);
+                    }
+                }
+            }
+        }
+        ascii1[str[pointI]]--;
+    }
+    return maxi;
+}
+
 char* string_ps_prob9_recu(int times,int strLen,char *str){
     char* localStr = malloc(sizeof(char));
     char* subStr = malloc(sizeof(char));
@@ -478,4 +540,3 @@ int checkCommonCharacters(int l1,int l2,char *s1,char *s2){
     }
     return 0;
 }
-

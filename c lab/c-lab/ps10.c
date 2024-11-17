@@ -7,6 +7,31 @@ void ps10_prob4_sortSimul(int *m,char *c);
 int ps10_prob6_recur(int s1,int e1,int s2,int e2,char *str1,char *str2);
 
 
+int ps10_prob1(){
+    int len;
+    getStringLen(&len);
+    char str[len];
+    getString(str);
+    int i,j,index,oddCount,output;
+    oddCount = output = 0;
+    int counter[26];
+    makeArrayElementsZero(26,counter);
+    for(i=0;i<len-1;i++){
+        for(j=i;j<len-1;j++){
+            index = str[j]%97;
+            if((++counter[index])%2==0){
+                oddCount--;
+            }else{
+                oddCount++;
+            }
+            if(oddCount==0 || oddCount==1)output++;
+        }
+        makeArrayElementsZero(26,counter);
+        oddCount = 0;
+    }
+    printf("The number of beautiful strings are %d\n",output);
+    return output;
+}
 int ps10_prob2(){
     int l1;
     getStringLen(&l1);

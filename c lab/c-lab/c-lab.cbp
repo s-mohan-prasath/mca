@@ -46,6 +46,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ps10.h" />
+		<Unit filename="ps11.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ps11.h" />
 		<Unit filename="ps2.c">
 			<Option compilerVar="CC" />
 		</Unit>
