@@ -12,6 +12,7 @@ void sortArray(int len,int*arr,char c);
 int findElementInArray(int len,int *arr,int ele);
 void printSubArray(int *arr, int len, int start, int end);
 void findArrayStat(int len,int * arr,int *maxi,int *mini,int *sum,float *avg);
+void makeArrayElementsZero(int len,int *arr);
 //two D arrays
 void get2DArrayLen(int*n,int*m);
 void get2DArray(int n,int m,int *arr);

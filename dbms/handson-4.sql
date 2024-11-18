@@ -87,7 +87,10 @@ select * from hs4_emp where empcode = 'E105';
 select count(*) from hs4_emp where age<45;
 -- 14 Compute NET SALARY (Netsal = Basic + HRA +DA) for employees in the Payslip table.
 select (basic+hra+da) as "Net Salary" from hs4_payslip;
-
+-- 15 Give the employee with empcode 'E110' a bonus of 15% of Basic and update the value held in column Netsal.
+UPDATE hs4_payslip set basic = floor((basic)*115/100), TOTAL_SAL = floor((basic)*115/100)+hra+da where empcode='E110';
+--16 Display Name, Address, Empcode, Net salary, & age from EMPLY and PAYSLIP tables respectively.
+SELECT e.empname,e.address,e.empcode,e.age,s.TOTAL_SAL FROM hs4_emp e,hs4_payslip s;
 -- 17 Retrieve all information from EMPLY table for employees whose Basic Salary is more than 6000.
 select * from hs4_emp emp, hs4_payslip sal where emp.empcode = sal.empcode and sal.basic > 6000;
 

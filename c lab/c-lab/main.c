@@ -16,6 +16,6 @@
 
 int main()
 {
-    printf("%s",ps10_prob4());
+    ps11_prob2();
     return 0;
 }

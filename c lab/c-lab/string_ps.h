@@ -7,3 +7,4 @@ int string_ps_prob6();
 void string_ps_prob7();
 char *string_ps_prob8();
 char* string_ps_prob9();
+int string_ps_prob10();
