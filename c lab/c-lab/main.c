@@ -13,9 +13,18 @@
 #include "string_ps.h"
 #include "ps10.h"
 #include "structs.h"
+#include "ca2lab.h"
 
 int main()
 {
-    ps11_prob2();
+    ca2_prob1();
     return 0;
 }
+
+
+
+
+
+
+
+

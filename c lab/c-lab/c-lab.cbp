@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="ca2lab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ca2lab.h" />
 		<Unit filename="helpfulfunctions.c">
 			<Option compilerVar="CC" />
 		</Unit>
