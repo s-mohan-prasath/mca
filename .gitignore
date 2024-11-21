@@ -15,6 +15,7 @@ obj/
 
 # Ignore __pycache__ inside the dsa folder
 dsa/__pycache__/
+*.class
 
 # Ignore any folder named example_folder at any level
 out/
