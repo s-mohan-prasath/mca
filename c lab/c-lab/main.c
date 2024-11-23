@@ -16,6 +16,5 @@
 
 int main()
 {
-    ps11_prob2();
     return 0;
 }

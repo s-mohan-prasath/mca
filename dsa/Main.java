@@ -1,13 +1,18 @@
 
+import java.util.Arrays;
+
 public class Main {
         public static void main(String[] arg) {
-
-                CircularQueue<Integer> cQ = new CircularQueue<>();
-                cQ.enQueue(1);
-                cQ.enQueue(2);
-                cQ.enQueue(3);
-                cQ.enQueue(4);
-                System.out.println(cQ);
+                char[][] mat = new char[5][2];
+                for (int i = 0; i < 5; i++) {
+                        System.out.println(Arrays.toString(mat[i]));
+                }
+                // CircularQueue<Integer> cQ = new CircularQueue<>();
+                // cQ.enQueue(1);
+                // cQ.enQueue(2);
+                // cQ.enQueue(3);
+                // cQ.enQueue(4);
+                // System.out.println(cQ);
 
                 // DoublyLinkedList<Integer> dl = new DoublyLinkedList<>();
                 // dl.push(1);

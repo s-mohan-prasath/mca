@@ -38,6 +38,7 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="presentation-1.h" />
 		<Unit filename="ps1.c">
 			<Option compilerVar="CC" />
 		</Unit>
