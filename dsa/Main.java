@@ -1,12 +1,9 @@
 
-import java.util.Arrays;
 
 public class Main {
         public static void main(String[] arg) {
-                char[][] mat = new char[5][2];
-                for (int i = 0; i < 5; i++) {
-                        System.out.println(Arrays.toString(mat[i]));
-                }
+                int[] nums = {1,2};
+                System.out.println(Math.round((float)nums[0]/nums[1]));
                 // CircularQueue<Integer> cQ = new CircularQueue<>();
                 // cQ.enQueue(1);
                 // cQ.enQueue(2);
