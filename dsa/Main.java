@@ -1,7 +1,9 @@
 
 public class Main {
         public static void main(String[] arg) {
-
+                Solution sol = new Solution();
+                int[] nums = {1,1,1,1,1,1,1,1,1,7,8,9,1,1,1,1,1,1,1,1,1};
+                sol.maximumSubarraySum(nums,3);
                 CircularQueue<Integer> cQ = new CircularQueue<>();
                 cQ.enQueue(1);
                 cQ.enQueue(2);

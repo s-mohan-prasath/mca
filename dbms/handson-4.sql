@@ -15,9 +15,9 @@ CREATE TABLE HS4_PAYSLIP(
     CONSTRAINT fk_emp_payslip FOREIGN KEY (Empcode) references HS4_EMP(Empcode)
 );
 CREATE TABLE HS4_DEPT(
-    Deptcode varchar(5),
+    dept_code varchar(5),
     Deptname varchar(15),
-    constraint pk_dept_id PRIMARY KEY (Deptcode)
+    constraint pk_dept_id PRIMARY KEY (dept_code)
 );
 
 -- INSERT DATA INTO THE TABLES
@@ -49,13 +49,13 @@ CREATE TABLE HS4_DEPT(
 --INSERT INTO hs4_payslip (Empcode, Basic, HRA, DA) VALUES ('E110', 5000, 300, 100);
 --INSERT INTO hs4_payslip (Empcode, Basic, HRA, DA) VALUES ('E111', 6000, 200, 120);
 
---INSERT INTO hs4_dept (DEPTCODE, DEPTNAME) VALUES ('D301', 'Sales');
---INSERT INTO hs4_dept (DEPTCODE, DEPTNAME) VALUES ('D302', 'Account');
---INSERT INTO hs4_dept (DEPTCODE, DEPTNAME) VALUES ('D707', 'Research');
---INSERT INTO hs4_dept (DEPTCODE, DEPTNAME) VALUES ('D909', 'Advertising');
---INSERT INTO hs4_dept (DEPTCODE, DEPTNAME) VALUES ('D202', 'Stock');
---INSERT INTO hs4_dept (DEPTCODE, DEPTNAME) VALUES ('D110', 'Computer');
---INSERT INTO hs4_dept (DEPTCODE, DEPTNAME) VALUES ('D305', 'Marketing');
+--INSERT INTO hs4_dept (dept_code, DEPTNAME) VALUES ('D301', 'Sales');
+--INSERT INTO hs4_dept (dept_code, DEPTNAME) VALUES ('D302', 'Account');
+--INSERT INTO hs4_dept (dept_code, DEPTNAME) VALUES ('D707', 'Research');
+--INSERT INTO hs4_dept (dept_code, DEPTNAME) VALUES ('D909', 'Advertising');
+--INSERT INTO hs4_dept (dept_code, DEPTNAME) VALUES ('D202', 'Stock');
+--INSERT INTO hs4_dept (dept_code, DEPTNAME) VALUES ('D110', 'Computer');
+--INSERT INTO hs4_dept (dept_code, DEPTNAME) VALUES ('D305', 'Marketing');
 
 
 -- 1 Update table EMPLY, add 15 years of age to employee with EMPCODE 'E107'.
@@ -73,14 +73,14 @@ ALTER TABLE hs4_payslip ADD Total_Sal number;
 UPDATE hs4_payslip set total_sal = (basic+hra+da);
 -- 7 Display records from EMPY1 table for employees whose age is between 25 and 45.
 SELECT * from hs4_emp where age between 25 and 45;
--- 8 Retrieve the Deptcode and total no of employees in each department.
+-- 8 Retrieve the dept_code and total no of employees in each department.
 select dept_code,count(empcode) from hs4_emp group by dept_code;
--- 9 Retrieve empcode, empname, address, deptcode for all employees in "account" and "stock" departments.
-select empcode,empname,address,dept_code from hs4_emp where dept_code in (select deptcode from hs4_dept where deptname in ('Account','Stock'));
+-- 9 Retrieve empcode, empname, address, dept_code for all employees in "account" and "stock" departments.
+select empcode,empname,address,dept_code from hs4_emp where dept_code in (select dept_code from hs4_dept where deptname in ('Account','Stock'));
 -- 10 Display average, maximum and minimum age of employees.
 select floor(avg(age)) as "Average Age",max(age) as "Maximum Age",min(age) as "Minimum Age" from hs4_emp;
 -- 11 Delete all records belonging to research department in the EMPY1 table.
-DELETE hs4_emp where dept_code in (select deptcode from hs4_dept where deptname='Research');
+DELETE hs4_emp where dept_code in (select dept_code from hs4_dept where deptname='Research');
 -- 12 List details of employee with empcode 'E105'.
 select * from hs4_emp where empcode = 'E105';
 -- 13 Count the number of employees whose age is less than 45.

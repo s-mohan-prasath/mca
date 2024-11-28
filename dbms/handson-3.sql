@@ -101,9 +101,52 @@ select * from hs3_emp where sal<1000 and job = 'CLERK';
 select * from hs3_emp e,(select deptno,round(avg(sal),2) as sal from hs3_emp group by deptno) t where e.sal > t.sal and e.deptno = t.deptno;
 
 
+---------------------------------------------------------------------------------------------------------------------------------
 
+--1. List the employees working in research department
+--2. List employees who are located in New York and Chicago
+--3. Display the department name in which ANALYSTS are working
 
-select * from hs3_emp;
+SELECT dname from hs3_dept where deptno in (SELECT deptno from hs3_emp where job = 'ANALYST');
 
+--4. Display employees who are reporting to JONES
+
+SELECT * from hs3_emp where mgr in (SELECT mgr from hs3_emp where ename = 'JONES');
+
+--5. Display all the employees who are reporting to Jones Manager
+SELECT * from hs3_emp where mgr in (SELECT mgr from hs3_emp where ename = 'JONES');
+--6. Display all the managers in SALES and ACCOUNTING department
+SELECT * from hs3_emp where deptno in (SELECT deptno from hs3_dept where dname in('ACCOUNTING','SALES'));
+--7. Display all the employee names in Research and Sales Department who are having at least 1 person reporting to them
+
+--8. Display all employees who do not have any reportees
+SELECT * from hs3_emp where mgr is NULL;
+--9. List employees who are having at least 2 reporting
+
+--10. List the department names which are having more than 5 employees
+SELECT * FROM (SELECT deptno, COUNT(EMPNO) as count from hs3_emp GROUP BY DEPTNO) tmp WHERE tmp.count > 5;
+--11. List department name having at-least 3 salesman
+SELECT d.dname AS department_name FROM hs3_emp e JOIN hs3_dept d ON e.deptno = d.deptno WHERE e.job = 'Salesman' GROUP BY d.dname HAVING COUNT(e.empno) >= 3;
+--12. List employees from research and accounting having at-least 2 reporting
+select * from hs3_emp e join hs3_dept d on e.deptno = d.deptno where d.dname in ('RESEARCH','SALES') AND EXISTS (select 1 from hs3_emp e2 where e2.mgr = e.empno);
+--13. Display second max salary
+select sal from (SELECT sal, DENSE_rank() OVER (ORDER BY sal DESC) AS rank FROM hs3_emp GROUP BY sal) where rank =2;
+--14. Display 4th max salary
+select sal from (SELECT sal, DENSE_rank() OVER (ORDER BY sal DESC) AS rank FROM hs3_emp GROUP BY sal) where rank = 4;
+
+--------------------------------------------------------------------------------
+
+--15. Write a query to get 4th max salary from EMP table
+select * from (SELECT sal, DENSE_rank() OVER (ORDER BY sal DESC) AS rank FROM hs3_emp GROUP BY sal) where rank = 4;
+--16. Write a query to get 2nd & 6th max salary from EMP table
+select * from (SELECT sal, DENSE_rank() OVER (ORDER BY sal DESC) AS rank FROM hs3_emp GROUP BY sal) where rank = 4 or rank=6;
+--17. Write a query to get first 3 salaries from the EMP table
+select * from (SELECT sal, DENSE_rank() OVER (ORDER BY sal DESC) AS rank FROM hs3_emp GROUP BY sal) where rank between 1 and 3;
+--18. Write a query to get 2nd least salary from the EMP table
+select * from (SELECT sal, DENSE_rank() OVER (ORDER BY sal) AS rank FROM hs3_emp GROUP BY sal) where rank = 2;
+--19. Write a query to get least 3 salaries from the EMP table
+select * from (SELECT sal, DENSE_rank() OVER (ORDER BY sal) AS rank FROM hs3_emp GROUP BY sal) where rank between 1 and 3;
+--20. List all the employees whose salaries are greater than their respective departmental average salary
+select * from hs3_emp e,(select deptno, ROUND(avg(sal),2) as average from hs3_emp group by deptno) tmp where e.deptno=tmp.deptno and e.sal>tmp.average;
 
 
