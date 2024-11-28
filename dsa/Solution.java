@@ -1,37 +1,29 @@
 class Solution {
-    public char[][] rotateTheBox(char[][] box) {
-        int n = box.length;
-        int m = box[0].length;
-        char[][] output = new char[m][n];
-        int i, j, stones;
-        for (i = 0; i < n; i++) {
-            j = 0;
-            while (j < m) {
-                stones = 0;
-                while (j < m && box[i][j] != '*') {
-                    stones = (box[i][j] == '#') ? stones + 1 : stones;
-                    output[j][n - i - 1] = '.';
-                    j++;
-                }
-                if (stones == 0) {
-                    if (j != m) {
-                        output[j][n - i - 1] = '*';
-                    }
-                } else {
-                    int startI = j;
-                    if (j != m && box[i][j] == '*') {
-                        output[startI][n - i - 1] = '*';
-                    }
-                    startI--;
-                    while (stones > 0) {
-                        output[startI][n - i - 1] = '#';
-                        stones--;
-                        startI--;
-                    }
-                }
-                j++;
+    int n;
+    int[][] dp;
+    public int minimumObstacles(int[][] grid) {
+        this.n = grid.length;
+        int m = grid[0].length;
+        this.dp = new int[n][m];
+        return this.minBrick(n-1,m-1,'N',grid);
+    }
+    private int minBrick(int i,int j,char dontGo,int[][] arr){
+        if(i==0&&j==0)return 0;
+        else if(dp[i][j]!=0){
+            return (dp[i][j] != -1) ? dp[i][j] : 0;
+        }else{
+            int mini = Integer.MAX_VALUE;
+            if(dontGo!='l'&&j-1>=0){
+                mini = Math.min(mini,this.minBrick(i,j-1,'r',arr));
             }
+            if(dontGo!='u'&&i-1>=0){
+                mini = Math.min(mini,this.minBrick(i-1,j,'d',arr));
+            }
+            if(dontGo!='d'&&i+1<this.n){
+                mini = Math.min(mini,this.minBrick(i+1,j,'u',arr));
+            }
+            this.dp[i][j] = arr[i][j] + mini;
+            return (this.dp[i][j] == -1) ? 0 : this.dp[i][j];
         }
-        return output;
     }
 }
