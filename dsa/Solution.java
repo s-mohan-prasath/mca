@@ -1,59 +1,29 @@
-import java.util.*;
 class Solution {
-    public long maximumSubarraySum(int[] nums, int k) {
-        HashMap<Integer,Integer> map = new HashMap<>();
-        int distinctCount = 0;
-        int len = nums.length;
-        long sum,maxSum;
-        int ele;
-        sum = 0;
-        for(int i = 0;i<k;i++){
-            ele = nums[i];
-            if(map.containsKey(ele)){
-                if(map.get(ele)==1)distinctCount--;
-                int value = map.get(ele)+1;
-                map.put(ele,value);
-            }else{
-                map.put(ele,1);
-                distinctCount+=1;
-            }
-            sum+=nums[i];
-        }
-        maxSum = (distinctCount==k) ? sum : 0;
-        for(int i = 1;i<=len-k;i++){
-            //keys
-            int left = nums[i-1];
-            int right = nums[k+i-1];
-            //values
-            if(map.get(left)==1)distinctCount--;
-            else if(map.get(left)==2)distinctCount++;
-            int leftValue = map.get(left)-1;
-
-            int rightValue;
-            if(map.containsKey(right)){
-                if(map.get(right)==0){
-                    distinctCount++;
-                }else if(map.get(right)==1){
-                    distinctCount--;
-                }
-                rightValue = map.get(right) + 1;
-            }else{
-                rightValue = 1;
-                distinctCount++;
-            }
-
-            map.put(left,leftValue);
-            map.put(right,rightValue);
-
-            sum = sum - left + right;
-            System.out.println("Sum : "+sum+" distinct : "+distinctCount+"One count : "+map.get(1));
-            if(distinctCount==k){
-                maxSum = max2(maxSum,sum);
-            }
-        }
-        return maxSum;
+    int n;
+    int[][] dp;
+    public int minimumObstacles(int[][] grid) {
+        this.n = grid.length;
+        int m = grid[0].length;
+        this.dp = new int[n][m];
+        return this.minBrick(n-1,m-1,'N',grid);
     }
-    private long max2(long a, long b){
-        return (a>b) ? a:b;
+    private int minBrick(int i,int j,char dontGo,int[][] arr){
+        if(i==0&&j==0)return 0;
+        else if(dp[i][j]!=0){
+            return (dp[i][j] != -1) ? dp[i][j] : 0;
+        }else{
+            int mini = Integer.MAX_VALUE;
+            if(dontGo!='l'&&j-1>=0){
+                mini = Math.min(mini,this.minBrick(i,j-1,'r',arr));
+            }
+            if(dontGo!='u'&&i-1>=0){
+                mini = Math.min(mini,this.minBrick(i-1,j,'d',arr));
+            }
+            if(dontGo!='d'&&i+1<this.n){
+                mini = Math.min(mini,this.minBrick(i+1,j,'u',arr));
+            }
+            this.dp[i][j] = arr[i][j] + mini;
+            return (this.dp[i][j] == -1) ? 0 : this.dp[i][j];
+        }
     }
 }

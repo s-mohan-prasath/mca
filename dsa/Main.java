@@ -1,15 +1,15 @@
 
+
 public class Main {
         public static void main(String[] arg) {
-                Solution sol = new Solution();
-                int[] nums = {1,1,1,1,1,1,1,1,1,7,8,9,1,1,1,1,1,1,1,1,1};
-                sol.maximumSubarraySum(nums,3);
-                CircularQueue<Integer> cQ = new CircularQueue<>();
-                cQ.enQueue(1);
-                cQ.enQueue(2);
-                cQ.enQueue(3);
-                cQ.enQueue(4);
-                System.out.println(cQ);
+                int[] nums = {1,2};
+                System.out.println(Math.round((float)nums[0]/nums[1]));
+                // CircularQueue<Integer> cQ = new CircularQueue<>();
+                // cQ.enQueue(1);
+                // cQ.enQueue(2);
+                // cQ.enQueue(3);
+                // cQ.enQueue(4);
+                // System.out.println(cQ);
 
                 // DoublyLinkedList<Integer> dl = new DoublyLinkedList<>();
                 // dl.push(1);
