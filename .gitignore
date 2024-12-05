@@ -1,3 +1,4 @@
+"web tech"/exercises/exercise11/backend/node_modules
 # Ignore node_modules in the /web tech directory
 node_modules/
 bin/

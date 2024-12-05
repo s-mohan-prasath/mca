@@ -1,0 +1,113 @@
+* {
+    font-family: "Open Sans", sans-serif;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* CONTAINER STYLING */
+
+.display-container {
+    width: 100%;
+    min-height: 100%;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+}
+
+.flex {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.flex>div:nth-child(1) {
+    width: 40%;
+    background-color: rgb(176, 109, 239);
+}
+
+/* CARDS */
+
+.subscriber-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    word-wrap: break-word;
+    max-width: 80%;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.subscriber-card p {
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.subscriber-card>p:nth-child(1) {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.icon-cont {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+i{
+    padding:5px;
+    border:1px solid black;
+}
+.fa-edit{
+    color: black;
+}
+.fa-trash-alt{
+    color:red
+}
+
+/* FORM STYLING */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 10px;
+}
+
+.form-group label {
+    width: 200px;
+    color: rgb(0, 0, 0);
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button, input[type="submit"] {
+    padding: 10px;
+    background-color: aqua;
+    border-radius: 10px;
+}
+
+input[type="submit"]:hover, button:hover, i:hover {
+    cursor: pointer;
+}
