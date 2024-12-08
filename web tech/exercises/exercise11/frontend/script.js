@@ -92,8 +92,8 @@ const editSubscriber = (id, subscriberData) => {
 };
 
 const deleteSubscriber = (id) => {
-    let yes = prompt("Do you want to delete?")
-    if(!yes)return;
+    let yes = prompt("Do you want to delete? (yes/no)")
+    if (yes == 'no') return;
     fetch(`http://localhost:3000/${id}`, {
         method: "DELETE",
     })
@@ -107,6 +107,41 @@ const deleteSubscriber = (id) => {
             alert("could not subscriber")
         });
 };
+const searchSubscribers = () => {
+    const query = document.getElementById("search-input").value.trim();
+
+    fetch(`http://localhost:3000/search?query=${encodeURIComponent(query)}`)
+        .then((res) => res.json())
+        .then((data) => {
+            const subscriberContainer = document.getElementById("display-container");
+            subscriberContainer.innerHTML = "<h2>Subscribers</h2>"; // Clear current subscribers
+
+            if (data?.subscribers?.length) {
+                data.subscribers.forEach((subscriber) => {
+                    const subscriberCard = `
+              <div class="subscriber-card" id="note-${subscriber._id}">
+                <div class="icon-cont">
+                  <i class="fas fa-edit" onclick="editSubscriber('${subscriber._id}')"></i>
+                  <i class="fas fa-trash-alt" onclick="deleteSubscriber('${subscriber._id}')"></i>
+                </div>
+                <p><strong>${subscriber.aadharno}</strong></p>
+                <p>${subscriber.name}</p>
+                <p><strong>Hobbies:</strong> ${subscriber.hobbies}</p>
+                <p><strong>Websites:</strong> ${subscriber.websites}</p>
+              </div>
+            `;
+                    subscriberContainer.insertAdjacentHTML("beforeend", subscriberCard);
+                });
+            } else {
+                subscriberContainer.innerHTML += "<p>No subscribers found for this query.</p>";
+            }
+        })
+        .catch((error) => {
+            console.error("Error fetching search results:", error);
+            alert("Error occurred while searching subscribers.");
+        });
+};
+
 
 document.getElementById("subscriberForm").addEventListener("submit", createSubscriber);
 displaySubscribers();

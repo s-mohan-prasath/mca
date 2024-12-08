@@ -22,6 +22,25 @@ app.get("/", async (req, res) => {
         res.json({ message: "Could not get Subscribers details", error: e.message })
     }
 })
+app.get("/search", async (req, res) => {
+    const { query } = req.query; // Expecting a search query as a query parameter
+
+    if (!query) {
+        return res.status(400).json({ status: "failed", message: "Query parameter is required" });
+    }
+
+    try {
+        // MongoDB query to find matching websites using regex
+        const subscribers = await SubscriberModel.find({
+            websites: { $regex: query, $options: "i" } // Case-insensitive search
+        });
+
+        return res.status(200).json({ status: "success", subscribers });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ status: "failed", message: "Error occurred while searching", error });
+    }
+});
 app.post("/", async (req, res) => {
     try {
         let subscriberData = req.body;

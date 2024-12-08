@@ -1,9 +1,17 @@
 
-
 public class Main {
         public static void main(String[] arg) {
-                int[] nums = {1,2};
-                System.out.println(Math.round((float)nums[0]/nums[1]));
+                BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+                Integer[] treeNodes = { 20, 40, 9, 7, 15, 25, 45, 41, 23, 31, 100 };
+                bst.insertListOfNodes(treeNodes);
+                System.out.println(bst.search(15));
+                System.out.println(bst.search(100));
+                System.out.println(bst.search(1000));
+                bst.delete(40);
+                bst.preorder(bst.root);
+                System.out.println("");
+                // ------------------------------------------------------------------------------------
+
                 // CircularQueue<Integer> cQ = new CircularQueue<>();
                 // cQ.enQueue(1);
                 // cQ.enQueue(2);

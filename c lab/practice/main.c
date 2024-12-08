@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <limits.h>
 #include "lib.h"
 
@@ -10,19 +11,73 @@ void maxAreaInSquare();
 
 // IMPLEMENTING LINKED LIST
 
+void print2DArray(int n,int m,char twod[n][m]);
+void print2DMallocChars(int n,char ** twod);
+void create2DChars();
+struct birth{
+    int dd;
+    int mm;
+    int yyyy;
+};
+struct student{
+    char name[50];
+    int age;
+    struct birth dob;
+};
 
 int main()
 {
-    struct LinkedList * ll = createLinkedList();
-    addNodeToLinkedList(ll,1);
-    addNodeToLinkedList(ll,2);
-    addNodeToLinkedList(ll,3);
-    addNodeToLinkedList(ll,4);
-    printLinkedList(ll);
-    printf("\n%d",findInLinkedList(ll,3));
     return 0;
 }
-
+void structuresUsingPointers(){
+    struct student s1,*ptr;
+    ptr = &s1;
+    printf("Enter Name Age dd mm yyyy : ");
+    scanf("%s %d %d %d %d",ptr->name,&ptr->age,&ptr->dob.dd,&ptr->dob.mm,&ptr->dob.yyyy);
+    printf("%s %d %d %d %d",ptr->name,ptr->age,ptr->dob.dd,ptr->dob.mm,ptr->dob.yyyy);
+}
+void arrayOfStructures(){
+    struct student students[3];
+    for(int i = 0;i<3;i++){
+        printf("Enter Name Age dd mm yyyy : ");
+        scanf("%s %d %d %d %d",students[i].name,&students[i].age,&students[i].dob.dd,&students[i].dob.mm,&students[i].dob.yyyy);
+    }
+    for(int i =0;i<3;i++){
+        printf("%s %d %d/%d/%d\n",students[i].name,students[i].age,students[i].dob.dd,students[i].dob.mm,students[i].dob.yyyy);
+    }
+}
+void workingWithMemCpy(){
+    int nums1[5] = {1,2,3,4,5};
+    int nums2[5] = {6,7,8,9,10};
+    memcpy(nums1,nums2,3*sizeof(int));
+    for(int i =0;i<5;i++){
+        printf("%d\t",nums1[i]);
+    }
+}
+void print2DMallocChars(int n,char ** twod){
+    for(int i = 0;i<n;i++){
+        printf("%s\n",twod[i]);
+    }
+}
+void print2DArray(int n,int m,char twod[n][m]){
+    for(int i = 0;i<n;i++){
+        printf("%s\n",twod[i]);
+    }
+}
+void create2DChars(){
+    int n = 3,m=3;
+    char names[n][m];
+    for(int i = 0;i<n;i++){
+        printf("Enter name %d : ",i+1);
+        scanf("%s",names[i]);
+    }
+    printf("names\n");
+    char temp[m];
+    strcpy(temp,names[0]);
+    strcpy(names[0],names[1]);
+    strcpy(names[1],temp);
+    print2DArray(n,m,names);
+}
 //ZOHO round 1 questions
 
 void maxAreaInSquare(){
