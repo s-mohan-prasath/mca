@@ -1,15 +1,31 @@
 
 public class Main {
         public static void main(String[] arg) {
-                BinarySearchTree<Integer> bst = new BinarySearchTree<>();
-                Integer[] treeNodes = { 20, 40, 9, 7, 15, 25, 45, 41, 23, 31, 100 };
-                bst.insertListOfNodes(treeNodes);
-                System.out.println(bst.search(15));
-                System.out.println(bst.search(100));
-                System.out.println(bst.search(1000));
-                bst.delete(40);
-                bst.preorder(bst.root);
-                System.out.println("");
+                DirectedGraph dg = new DirectedGraph();
+                dg.addNode("A");
+                dg.addNode("B");
+                dg.addNode("C");
+                String[] nodes = { "A", "B", "C", "D", "E", "F", "G" };
+                dg.addNodeAll(nodes);
+                String[][] edges = { { "A", "B" }, { "B", "E" }, { "B", "C" }, { "C", "D" }, { "C", "F" },
+                                { "F", "G" } };
+                dg.addEdgeAll(edges);
+                System.out.println("This is how the graph looks like!");
+                dg.print();
+                System.out.println("It's breadth first search");
+                dg.bfs();
+                System.out.println("It's depth first search");
+                dg.dfs();
+                // ----------------------------------------------------------------------------------
+                // BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+                // Integer[] treeNodes = { 20, 40, 9, 7, 15, 25, 45, 41, 23, 31, 100 };
+                // bst.insertListOfNodes(treeNodes);
+                // System.out.println(bst.search(15));
+                // System.out.println(bst.search(100));
+                // System.out.println(bst.search(1000));
+                // bst.delete(40);
+                // bst.preorder(bst.root);
+                // System.out.println("");
                 // ------------------------------------------------------------------------------------
 
                 // CircularQueue<Integer> cQ = new CircularQueue<>();

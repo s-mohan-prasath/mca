@@ -13,8 +13,8 @@ public class Queue<Type> {
         q.push(value);
     }
 
-    public void pop() {
-        q.fpop();
+    public Node<Type> pop() {
+        return q.fpop();
     }
 
     @Override

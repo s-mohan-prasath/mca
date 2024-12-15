@@ -76,6 +76,26 @@ public class SLinkedList<Type> {
         return poppedNode;
     }
 
+    public Node<Type> remove(Type val) {
+        Node<Type> removedNode = null, prev, tmp;
+        prev = null;
+        tmp = this.head;
+        while (tmp != null) {
+            if (tmp.value == val) {
+                removedNode = tmp;
+                if (prev == null) {
+                    this.head = tmp.next;
+                } else {
+                    prev.next = tmp.next;
+                }
+                break;
+            }
+            prev = tmp;
+            tmp = tmp.next;
+        }
+        return removedNode;
+    }
+
     @Override
     public String toString() {
         Node<Type> tmp = this.head;
