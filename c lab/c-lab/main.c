@@ -17,6 +17,10 @@
 
 int main()
 {
+    FILE *file = fopen("note.txt","w");
+    fputs("Good",file);
+    printf("%d",ftell(file));
+    fclose(file);
     return 0;
 }
 
