@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int min2(int a,int b){
     return (a<b)?a:b;
@@ -28,6 +29,9 @@ void swapChar(char *a,char *b){
     *b=temp;
 }
 
+long long uuid(counter){
+    return time(NULL) + (++counter);
+}
 void getArrayLen(int *len)
 {
     printf("Enter the length of Array : ");

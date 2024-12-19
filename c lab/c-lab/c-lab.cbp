@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ca2lab.h" />
+		<Unit filename="files.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="files.h" />
 		<Unit filename="helpfulfunctions.c">
 			<Option compilerVar="CC" />
 		</Unit>

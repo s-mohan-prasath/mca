@@ -4,6 +4,7 @@ int min3(int a,int b,int c);
 void swapChar(char *a,char *b);
 void swapInt(int *a,int *b);
 int powerOf(int a,int b);
+long long uuid();
 // ARRAYS
 void getArrayLen(int*len);
 void getArray(int len,int*arr);
