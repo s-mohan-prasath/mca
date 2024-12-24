@@ -9,36 +9,12 @@ public class Main {
                 y = 1000;
         }
 
-        public static void heapify(int[] heap, int i, int size) {
-                int largestI = i;
-                int l = 2 * i + 1;
-                int r = 2 * i + 2;
-                if (l < size && heap[l] > heap[largestI])
-                        largestI = l;
-                if (r < size && heap[r] > heap[largestI])
-                        largestI = r;
-                if (largestI != i) {
-                        int temp = heap[i];
-                        heap[i] = heap[largestI];
-                        heap[largestI] = temp;
-                        heapify(heap, largestI, size);
-                }
-        }
-
         public static void main(String[] arg) {
 
                 int size = 7;
                 int[] heap = { 1, 2, 5, 3, 4, 6, 7 };
-                // BUILDING MAX HEAP
-                for (int k = size / 2 - 1; k >= 0; k--)
-                        heapify(heap, k, size);
-                // HEAP SORT
-                for (int k = size - 1; k >= 0; k--) {
-                        int temp = heap[0];
-                        heap[0] = heap[k];
-                        heap[k] = temp;
-                        heapify(heap, 0, --size);
-                }
+                Sorting sort = new Sorting();
+                sort.heap_sort(heap, size);
 
                 System.out.println(Arrays.toString(heap));
                 // CompleteBTree<Integer> ctree = new CompleteBTree<>();
