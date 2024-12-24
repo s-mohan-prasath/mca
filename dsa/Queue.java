@@ -17,6 +17,10 @@ public class Queue<Type> {
         return q.fpop();
     }
 
+    public Node<Type> front() {
+        return q.head;
+    }
+
     @Override
     public String toString() {
         return q.toString();
