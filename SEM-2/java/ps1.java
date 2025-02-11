@@ -1,9 +1,9 @@
 
 import java.util.*;
 
-public class problemsheet1 {
+public class ps1 {
 
-    public problemsheet1() {
+    public ps1() {
         System.out.println("program1 started");
     }
 
