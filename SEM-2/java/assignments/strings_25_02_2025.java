@@ -30,7 +30,6 @@ public class strings_25_02_2025 {
                 k = str.indexOf(substr);
             }
         }
-
     }
     private boolean qn2_palin(String str){
         int len = str.length();
