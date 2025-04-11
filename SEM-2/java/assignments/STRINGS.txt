@@ -1,0 +1,152 @@
+STRINGS
+
+1.
+
+(a), (b) can be assigned
+
+(c), (d) cannot be assigned as they are int and double datatype respectively
+
+(e) can be assigned if the value stored in it is String datatype ThT
+
+2.
+
+Tuesday
+next
+Tuesday the 24th
+last Wednesday
+
+3.
+
+(a) arr.charAt(4)
+(b) hold.charAt(0)
+(c) str.char(3)
+(d) line.char(0)
+(e) we should know the length of the string to get the last character
+
+4. 
+false
+true
+
+5.
+
+after execution of (a)
+  
+str - "fantastic weekend"
+str1 - "fantastic"
+str2
+str3 " weekend"
+i
+j
+
+after execution of (b)
+  
+str - "123456 hi"
+str1 - 
+str2 - "hi"
+str3 " weekend"
+i
+j
+
+after execution of (c)
+  
+str - 
+str1 - 
+str2 -
+str3 - "waterfall"
+i - 9
+j - 9
+
+6. 
+
+(a) true
+(b) false
+(c) true
+(d) false
+(e) true
+(f) false
+
+7.
+
+OUTPUT:
+
+p is ano value
+p is anodone value
+p is aXYdone value
+
+8.
+
+m, k, and j : -1 8 -1
+
+9.
+
+(a) str1 = "morning"
+(b) str2 = "g news"
+(c) str1 = "morn"
+(d) str2 = "g ne"
+
+10.
+
+(a) your dog is full of fur
+(b) your cat is full offoodr
+(c) luncroome aggravation
+(d) half of theorangee
+
+11. 
+
+(a) "happy ho appliances"
+(b) "officerefrigerat"
+(c) "micro telephone"
+(d) "microeleph television"
+
+12.
+
+first alexander alexanderfirst
+9
+
+13.
+
+Jacksonville fl here is Jacksonville fl
+24 15 24
+
+14.
+
+Output : 
+
+Enter the last name: Smith
+Mr. Linda Smith
+Enter the last name: Brown
+Ms. Mary Brown
+Enter the last name:Jones
+Mrs. Bill Jones
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

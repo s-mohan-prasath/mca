@@ -1,0 +1,82 @@
+package bank;
+
+public class BankAccount {
+    private String accountHolder;
+    private double balance;
+
+    public BankAccount() {
+        this.accountHolder = "Unknown";
+        this.balance = 0.0;
+    }
+
+    public BankAccount(String accountHolder, double balance) {
+        this.accountHolder = accountHolder;
+        this.balance = balance;
+    }
+
+    public void showAccountInfo() {
+        System.out.println("Account Holder: " + accountHolder);
+        System.out.println("Balance: $" + balance);
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("$" + amount + " deposited successfully.");
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && balance >= amount) {
+            balance -= amount;
+            System.out.println("$" + amount + " withdrawn successfully.");
+        } else {
+            System.out.println("Insufficient funds or invalid withdrawal amount.");
+        }
+    }
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------
+
+package customer;
+
+import bank.BankAccount; // Importing BankAccount class from the bank package
+
+public class Customer {
+    private String customerName;
+    private BankAccount customerAccount;
+
+    public Customer(String customerName, BankAccount customerAccount) {
+        this.customerName = customerName;
+        this.customerAccount = customerAccount;
+    }
+
+    public void performTransactions() {
+        System.out.println("Customer Name: " + customerName);
+        customerAccount.deposit(500.0); // Deposit $500
+        customerAccount.withdraw(200.0); // Withdraw $200
+        customerAccount.showAccountInfo(); // Display account details
+    }
+}
+
+
+
+
+
+//------------------------------------------------------------------------------------------------------------
+
+
+import bank.BankAccount;
+import customer.Customer;
+
+public class Driver {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("John Doe", 1000.0);
+        Customer customer = new Customer("John Doe", account);
+        customer.performTransactions();
+    }
+}

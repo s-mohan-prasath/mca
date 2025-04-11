@@ -20,3 +20,9 @@ dsa/__pycache__/
 
 # Ignore any folder named example_folder at any level
 out/
+
+# Ignore rar and zip file
+
+*.zip
+*.jar
+*.rar

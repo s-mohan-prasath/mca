@@ -1,0 +1,25 @@
+CLASSES & OBJECTS
+
+PREDICT THE OUTPUT
+
+1. 
+double
+
+2. 
+5 10
+
+3. 
+
+Static
+Constructor
+Constructor
+
+4.
+
+Yes, the static method can be called from a constructor. A Constructor is nothing but a function called during instantiation, similar to the other non-static functions. Non-static member functions can access static members.
+
+5. Why is there no return type for the Constructor?
+
+Constructors Are Not Called Explicitly
+A constructor is invoked automatically when an object is created using new keyword.
+Since Java automatically manages constructor invocation, there is no need for a return type.
