@@ -1,3 +1,3 @@
-export async function generateOtp(){
-    return 11111
+export function generateOtp(){
+    return Math.floor(1000 + Math.random() * 9000);
 }

@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# OTP SERVICE
 
-## Getting Started
+## CREATE .env file and update the env file
 
-First, run the development server:
+MYSQL_HOST=
+MYSQL_USER=
+MYSQL_PASSWORD=
+DB_NAME=
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+ADMIN_EMAIL=
+ADMIN_PASSWORD=
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Create SQL Tables
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1) go to app/resources/db.sql file
+2) copy and execute the sql statements in the file to create SQL tables
+3) create new sql user for this application and update the hostname,user,password,db_name in the .env file
+4) update the table names (if changes made in table names while table creation) - go to app/config/db_tables.js
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Change Email
 
-## Learn More
+if you want to change the email address from which you
+want to send email do the following steps
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1) create new google account
+2) add two step verification
+3) go to https://myaccounts.google.com/apppasswords
+4) create new app - now a password will be generated for the app
+5) change the ADMIN_PASSWORD in the .env file

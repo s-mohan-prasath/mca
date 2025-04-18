@@ -1,4 +1,3 @@
-import Image from "next/image";
 import OTP from "./components/OTP";
 
 export default function Home() {
