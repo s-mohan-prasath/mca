@@ -10,10 +10,10 @@ public class Main {
         frame.setSize(1080,720);
 
         RectangleUI rect = new RectangleUI();
-        JButton moveButton = new JButton("Move");
+        JButton moveButton = new JButton("Start Elevator");
 
         moveButton.addActionListener(e->{
-            rect.moveDown(10);
+            rect.startEscalator(1);
             rect.repaint();
         });
 
