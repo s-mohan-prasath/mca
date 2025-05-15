@@ -1,5 +1,7 @@
 package greedy;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         exe_prims();
@@ -15,6 +17,10 @@ public class Main {
         edges[5] = new prims.Edge(2, 3);
 
         int [][] cost = new int[5][5];
+
+        for(int[] c : cost){
+            Arrays.fill(c, Integer.MAX_VALUE);
+        }
 
         cost[0][1] = cost[1][0] = 1;
         cost[0][4] = cost[4][0] = 10;

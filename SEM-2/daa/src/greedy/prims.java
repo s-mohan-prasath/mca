@@ -46,22 +46,25 @@ public class prims {
         }
         System.out.println("near 0 : "+Arrays.toString(near));
         mincost += cost[k][l];
-        near[k] = near[l] = 0;
+        near[k] = near[l] = -1;
         for(int i = 1;i<n-1;i++){
             // choosing vertex which connects with the constructing spanning tree (t)
-            int minJ = 0;
-            for(int j = 1;j<n;j++){
-                if(cost[j][near[j]] < cost[minJ][near[minJ]]){
+            Integer minJ = null;
+            for(int j = 0;j<n;j++){
+                if(near[j]==-1)continue;
+                else if(minJ==null)minJ = j;
+                else if(cost[j][near[j]] < cost[minJ][near[minJ]]){
                     minJ = j;
                 }
             }
+            System.out.println("Choosing a vertex with minimum cost : "+minJ+ " with cost = "+cost[minJ][near[minJ]]);
             t[i][0] = minJ;
             t[i][1] = near[minJ];
-
-            near[minJ] = 0;
+            mincost += cost[minJ][near[minJ]];
+            near[minJ] = -1;
 
             for(int m = 0;m<n;m++){
-                if(near[m]!=0 && cost[m][near[m]]>cost[m][minJ])near[m] = minJ;
+                if(near[m]!=-1 && cost[m][near[m]]>cost[m][minJ])near[m] = minJ;
             }
             System.out.println("near "+i+" : "+Arrays.toString(near));
         }
