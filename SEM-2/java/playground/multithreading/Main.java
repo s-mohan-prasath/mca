@@ -1,19 +1,38 @@
 
-
 public class Main {
     @SuppressWarnings("UseSpecificCatch")
-    public static void main(String[] args) {
-        try {
-            runner r1 = new runner("Thread1");
-            runner r2 = new runner("Thread2");
-            Thread t1 = new Thread(r1);
-            Thread t2 = new Thread(r2);
-            t1.start();
-            t2.start();
-            Thread.sleep(1000);
-            t1.interrupt();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    public static void main(String[] args) throws InterruptedException {
+        Bank.main(args);
+    }
+}
+
+class Bank {
+    static int balance = 0;
+
+    public static void main(String[] args) throws InterruptedException {
+        Thread t1 = new Thread(() -> {
+            increment();
+        });
+
+        Thread t2 = new Thread(() -> {
+            decrement();
+        });
+        t1.start();
+        t2.start();
+        t1.join();
+        t2.join();
+        System.out.println(balance);
+    }
+
+    public static void increment() {
+        synchronized (Bank.class) {
+            balance++;
+        }
+    }
+
+    public static synchronized void decrement() {
+        synchronized (Bank.class) {
+            balance--;
         }
     }
 }
@@ -32,7 +51,7 @@ class runner implements Runnable {
             try {
                 Thread.sleep(i * 1000);
             } catch (InterruptedException ex) {
-                System.out.println("Interrupted while sleeping for "+i+" seconds");
+                System.out.println("Interrupted while sleeping for " + i + " seconds");
             }
         }
     }
