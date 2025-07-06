@@ -1,13 +1,14 @@
 import DP.*;
 import backtrack.nqueens;
 import backtrack.sumofsubsets;
+import divide_and_conquer.*;
 
 import java.lang.reflect.Array;
+import java.nio.ByteBuffer;
 import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
-        exenQueens();
+        System.out.println((int) (Math.random() * 10));
     }
     public static void exenQueens(){
         nqueens nqueens = new nqueens(6);
@@ -22,5 +23,14 @@ public class Main {
     }
     public static void exe_sumofsubsets_backtrack(){
         sumofsubsets dp = new sumofsubsets(new int[]{5,10,12,13,15,18},30);
+    }
+    public static void exe_mergeSort(){
+        int[] a = new int[]{5,4,0,-1,10,-10};
+        merge_sort mergeSort = new merge_sort(6,a);
+        System.out.println(Arrays.toString(a));
+    }
+    public static void exe_quickSort(){
+        int[] a = new int[]{1,2,3,4,5,6,7};
+        new quick_sort(a);
     }
 }
