@@ -44,7 +44,6 @@ public class MatrixVectorMultiplication {
         for (int val : result) System.out.print(val + " ");
     }
 }
-
 public class MatrixTranspose {
     static class Transposer extends Thread {
         int row;
@@ -132,8 +131,6 @@ public class MaxFinder {
         System.out.println("Maximum value: " + globalMax);
     }
 }
-import java.util.Arrays;
-
 public class CharFrequency {
     static class Worker extends Thread {
         String chunk;
