@@ -68,5 +68,4 @@ public class Main {
         }
         return dp[1][n - 1];
     }
-
 }
