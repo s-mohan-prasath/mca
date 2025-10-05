@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>💬 Open Chat App</title>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <style>
+        /* ===== Base Reset ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #007bff, #00c6ff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ===== Chat Container ===== */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            width: 100%;
+            max-width: 480px;
+            height: 90vh;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        /* ===== Header ===== */
+        .chat-header {
+            background: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 14px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        /* ===== Chat Area ===== */
+        #chat {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Scrollbar styling */
+        #chat::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #chat::-webkit-scrollbar-thumb {
+            background: #bbb;
+            border-radius: 8px;
+        }
+
+        /* ===== Message Bubbles ===== */
+        .msg {
+            margin: 8px 0;
+            padding: 10px 14px;
+            border-radius: 12px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .msg-incoming {
+            background: #e5e5ea;
+            align-self: flex;
+        }
+
+        .msg-outgoing {
+            background: #007bff;
+            color: #fff;
+            align-self: flex-end;
+        }
+
+        /* ===== Input Section ===== */
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background: #fff;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .chat-input button {
+            margin-left: 10px;
+            padding: 12px 18px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .chat-input button:hover {
+            background: #005fcc;
+        }
+
+        #chat-members {
+            display: flex;
+            overflow-x: scroll;
+            gap: 2px;
+            padding: 10px;
+        }
+
+        .chat-member {
+            padding: 5px 10px;
+            background-color: aqua;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        .notif-card {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: sandybrown;
+            color: black;
+            padding: 10px 16px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-family: sans-serif;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+
+        /* ===== Responsive D esign ===== */
+        @media (max-width: 480px) {
+            .chat-container {
+                height: 100vh;
+                border-radius: 0;
+            }
+
+            .chat-header {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+
+<body style="position: relative;">
+    <div class="chat-container">
+        <div class="chat-header">💬Open Chat Room</div>
+        <div id="chat"></div>
+        <div class="chat-input">
+            <input id="msgInput" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+        <div id="chat-members">
+        </div>
+    </div>
+
+    <script>
+        let id = null;
+        let users = {}
+        let name = prompt("Enter your Name:");
+
+        if (!name || name.trim() === "") {
+            name = "Anonymous";
+        }
+        const socket = io("http://localhost:5001")
+
+        const chat = document.getElementById("chat");
+
+        socket.on("connect", () => {
+            name = name.substring(0, 30)
+            socket.emit("user_connect", { [socket.id]: { id: socket.id, name } });
+            socket.emit("member_connected", name)
+            id = socket.id
+        });
+        socket.on("member_connected", (name) => {
+            showNotification(name + " joined.")
+        })
+        socket.on("member_disconnected", (name) => {
+            showNotification(name + " left.")
+        })
+        socket.on("chat_members", (data) => {
+            users = data;
+            console.log("Users : ", data)
+            let chatMembers = document.getElementById("chat-members")
+            chatMembers.innerHTML = ""
+            let sockets = Object.keys(users)
+            sockets?.map(id => {
+                chatMembers.insertAdjacentHTML("beforeend",
+                    `<p class="chat-member">${users[id]?.name}</p>`
+                )
+            })
+        })
+        socket.on("chat_message", (data) => {
+            const div = document.createElement("div");
+            div.classList.add("msg");
+            if (data.id == id) {
+                div.innerHTML = `<b>Me :</b> ${data.msg}`;
+                div.classList.add("msg-outgoing");
+            } else {
+                div.innerHTML = `<b>${data.name}:</b> ${data.msg}`;
+                div.classList.add("msg-incoming");
+            }
+            chat.appendChild(div);
+            chat.scrollTop = chat.scrollHeight;
+        });
+
+        function sendMessage() {
+            const input = document.getElementById("msgInput");
+            const msg = input.value.trim();
+            if (msg) {
+                msg = msg.substring(0, 1000)
+                socket.emit("chat_message", { name, msg, id: socket.id });
+                input.value = "";
+            }
+        }
+        document.getElementById("msgInput").addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && !e.shiftKey) { // Enter pressed (without Shift)
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        function showNotification(message) {
+            const notif = document.createElement("div");
+            notif.classList.add("notif-card")
+            notif.textContent = message;
+            document.body.appendChild(notif);
+            requestAnimationFrame(() => notif.style.opacity = "1");
+            setTimeout(() => {
+                notif.style.opacity = "0";
+                setTimeout(() => notif.remove(), 1000);
+            }, 5000);
+        }
+    </script>
+</body>
+
+</html>
