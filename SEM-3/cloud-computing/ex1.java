@@ -180,4 +180,4 @@ public class CharFrequency {
             System.out.printf("%c: %d\n", (char)('a' + i), globalFreq[i]);
         }
     }
-}
+}                                                                                                                                                                                                                        
